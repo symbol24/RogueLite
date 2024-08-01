@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RState" load_steps=2 format=3 uid="uid://cmjhxmjlrxsch"]
+
+[ext_resource type="Script" path="res://Code/Characters/Player/StateMachine/r_state.gd" id="1_clkgm"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_clkgm")
+id = "idle"
+can_move = true
+can_jump = true
+can_be_hit = true
+can_die = true
+can_flip = true
+animation = "idle"

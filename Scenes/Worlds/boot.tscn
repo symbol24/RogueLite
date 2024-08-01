@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmmgows6ok2k1"]
+
+[ext_resource type="Texture2D" uid="uid://yp14s5khiori" path="res://Textures/UI/rid_back.png" id="1_pmcvw"]
+[ext_resource type="Texture2D" uid="uid://dfq0gjlrcdhka" path="res://Textures/UI/rid_glasses_mustache.png" id="2_ygksh"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_pmcvw")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture = ExtResource("2_ygksh")
+centered = false

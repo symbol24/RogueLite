@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://dcpmjvo8g7c0l"]
+
+[ext_resource type="Script" path="res://Code/Utilities/r_camera.gd" id="1_bjdmw"]
+[ext_resource type="TileSet" uid="uid://dyqi5tmh73t0p" path="res://Data/Tilesets/dungeon_01.tres" id="2_mae08"]
+[ext_resource type="PackedScene" uid="uid://cltt3q8rnwgxq" path="res://Scenes/Characters/Player/rogue_character.tscn" id="2_ohdfi"]
+[ext_resource type="Script" path="res://Code/Characters/r_character_data.gd" id="3_ijr33"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aq0sr"]
+size = Vector2(480, 64)
+
+[sub_resource type="Resource" id="Resource_uqvb7"]
+resource_local_to_scene = true
+script = ExtResource("3_ijr33")
+id = "swordswoman"
+speed = 100.0
+jump_height = 40.0
+jump_count = 1
+acceleration = 700
+friction = 1100
+air_multiplier = 0.6
+base_hp = 100.0
+starting_life_count = 1
+base_armor = 1.0
+magic_resist = 0.0
+
+[node name="TestDungeon" type="Node2D"]
+
+[node name="RCamera" type="Camera2D" parent="."]
+position = Vector2(160, 88)
+script = ExtResource("1_bjdmw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(144, 176)
+shape = SubResource("RectangleShape2D_aq0sr")
+
+[node name="TileMap" type="TileMap" parent="StaticBody2D"]
+tile_set = ExtResource("2_mae08")
+format = 2
+layer_0/name = "ground"
+layer_0/tile_data = PackedInt32Array(720917, 131072, 2, 655381, 131072, 2, 589845, 131072, 1, 720916, 131072, 2, 655380, 131072, 2, 589844, 131072, 1, 720915, 131072, 2, 655379, 131072, 2, 589843, 131072, 1, 720914, 131072, 2, 655378, 131072, 2, 589842, 131072, 1, 720913, 131072, 2, 655377, 131072, 2, 589841, 131072, 1, 720912, 131072, 2, 655376, 131072, 2, 589840, 131072, 1, 720911, 131072, 2, 655375, 131072, 2, 589839, 131072, 1, 720910, 131072, 2, 655374, 131072, 2, 589838, 131072, 1, 720909, 131072, 2, 655373, 131072, 2, 589837, 131072, 1, 720908, 131072, 2, 655372, 131072, 2, 589836, 131072, 1, 720907, 131072, 2, 655371, 131072, 2, 589835, 131072, 1, 720906, 131072, 2, 655370, 131072, 2, 589834, 131072, 1, 720905, 131072, 2, 655369, 131072, 2, 589833, 131072, 1, 720904, 131072, 2, 655368, 131072, 2, 589832, 131072, 1, 720903, 131072, 2, 655367, 131072, 2, 589831, 131072, 1, 720902, 131072, 2, 655366, 131072, 2, 589830, 131072, 1, 720901, 131072, 2, 655365, 131072, 2, 589829, 131072, 1, 720900, 131072, 2, 655364, 131072, 2, 589828, 131072, 1, 720899, 131072, 2, 655363, 131072, 2, 589827, 131072, 1, 720898, 131072, 2, 655362, 131072, 2, 589826, 131072, 1, 720897, 131072, 2, 655361, 131072, 2, 589825, 131072, 1, 720896, 131072, 2, 655360, 131072, 2, 589824, 131072, 1, 786431, 131072, 2, 720895, 131072, 2, 655359, 131072, 1, 786430, 131072, 2, 720894, 131072, 2, 655358, 131072, 1, 786455, 196608, 3, 720919, 196608, 2, 655383, 196608, 2, 589847, 196608, 1, 786454, 131072, 3, 720918, 131072, 2, 655382, 131072, 2, 589846, 131072, 1, 786453, 131072, 3, 786452, 131072, 3, 786451, 131072, 3, 786450, 131072, 3, 786449, 131072, 3, 786448, 131072, 3, 786447, 131072, 3, 786446, 131072, 3, 786445, 131072, 3, 786444, 131072, 3, 786443, 131072, 3, 786442, 131072, 3, 786441, 131072, 3, 786440, 131072, 3, 786439, 131072, 3, 786438, 131072, 3, 786437, 131072, 3, 786436, 131072, 3, 786435, 131072, 3, 786434, 131072, 3, 786433, 131072, 3, 786432, 131072, 3, 851967, 131072, 3, 851966, 131072, 3, 851965, 131072, 3, 786429, 131072, 2, 720893, 131072, 2, 655357, 131072, 1, 851964, 131072, 3, 786428, 131072, 2, 720892, 131072, 2, 655356, 131072, 1, 851963, 131072, 3, 786427, 131072, 2, 720891, 131072, 2, 655355, 131072, 1, 851962, 65536, 3, 786426, 65536, 2, 720890, 65536, 2, 655354, 65536, 1)
+
+[node name="Character" parent="." instance=ExtResource("2_ohdfi")]
+position = Vector2(147, 144)
+data = SubResource("Resource_uqvb7")

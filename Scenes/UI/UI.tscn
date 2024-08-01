@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpdxgddiw4vup"]
+
+[ext_resource type="Script" path="res://Code/UI/r_ui.gd" id="1_csoys"]
+[ext_resource type="Script" path="res://Code/UI/r_debug_ui.gd" id="2_hu0gv"]
+[ext_resource type="Theme" uid="uid://8vretd3mjbye" path="res://Data/Debug/display_theme.tres" id="3_pa1ep"]
+[ext_resource type="Theme" uid="uid://bvrtxil1545kj" path="res://Data/Debug/input_theme.tres" id="4_b1jwd"]
+
+[node name="Ui" type="CanvasLayer"]
+script = ExtResource("1_csoys")
+
+[node name="Debug" type="Control" parent="."]
+visible = false
+custom_minimum_size = Vector2(320, 176)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_hu0gv")
+
+[node name="debug_vbox" type="VBoxContainer" parent="Debug"]
+custom_minimum_size = Vector2(320, 100)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+
+[node name="display_label" type="RichTextLabel" parent="Debug/debug_vbox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_pa1ep")
+bbcode_enabled = true
+text = "this is the debug display"
+scroll_active = false
+scroll_following = true
+shortcut_keys_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="input_line" type="LineEdit" parent="Debug/debug_vbox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+theme = ExtResource("4_b1jwd")
+placeholder_text = "use command !help to list all commands"
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+drag_and_drop_selection_enabled = false

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://iapl7pc0s30h"]
+
+[ext_resource type="Script" path="res://Code/Actions/Player/move.gd" id="1_q11u4"]
+
+[node name="Move" type="Node2D"]
+script = ExtResource("1_q11u4")

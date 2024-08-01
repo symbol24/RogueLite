@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj3vbm3bjados"]
+
+[ext_resource type="Script" path="res://Code/Actions/Player/attack.gd" id="1_5uya8"]
+[ext_resource type="Script" path="res://Code/Utilities/attack_area.gd" id="2_jxjcf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rtqqs"]
+radius = 6.0
+height = 24.0
+
+[node name="Attack" type="Node2D"]
+script = ExtResource("1_5uya8")
+
+[node name="sword_attack_01" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("2_jxjcf")
+id = "sword_attack_01"
+
+[node name="attack_collider" type="CollisionShape2D" parent="sword_attack_01" groups=["flip"]]
+unique_name_in_owner = true
+position = Vector2(17, -20)
+shape = SubResource("CapsuleShape2D_rtqqs")

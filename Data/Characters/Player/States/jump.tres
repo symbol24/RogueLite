@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="RState" load_steps=2 format=3 uid="uid://dnc1ejixkm7ne"]
+
+[ext_resource type="Script" path="res://Code/Characters/Player/StateMachine/r_state.gd" id="1_n1ugr"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_n1ugr")
+id = "jump"
+can_move = true
+can_jump = false
+can_be_hit = true
+can_die = true
+can_flip = true
+animation = "jump"

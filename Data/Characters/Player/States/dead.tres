@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RState" load_steps=2 format=3 uid="uid://dlo72m51tw5d2"]
+
+[ext_resource type="Script" path="res://Code/Characters/Player/StateMachine/r_state.gd" id="1_dffln"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_dffln")
+id = "dead"
+can_move = false
+can_jump = false
+can_be_hit = false
+can_die = false
+animation = "death"

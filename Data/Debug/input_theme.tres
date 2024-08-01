@@ -1,0 +1,13 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bvrtxil1545kj"]
+
+[ext_resource type="StyleBox" uid="uid://b216eqx67c602" path="res://Data/Debug/input_bg.tres" id="1_8cqfh"]
+
+[resource]
+LineEdit/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+LineEdit/font_sizes/font_size = 5
+LineEdit/styles/focus = ExtResource("1_8cqfh")
+LineEdit/styles/normal = ExtResource("1_8cqfh")
+RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
+RichTextLabel/font_sizes/normal_font_size = 5
+RichTextLabel/styles/focus = ExtResource("1_8cqfh")
+RichTextLabel/styles/normal = ExtResource("1_8cqfh")

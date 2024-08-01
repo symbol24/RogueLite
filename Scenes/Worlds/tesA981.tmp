@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://uleds0oyamd8"]
+
+[ext_resource type="Texture2D" uid="uid://bdk6suqg5nckg" path="res://icon.svg" id="1_88eeo"]
+[ext_resource type="Script" path="res://Code/Utilities/r_camera.gd" id="1_rupqb"]
+[ext_resource type="PackedScene" uid="uid://cltt3q8rnwgxq" path="res://Scenes/Characters/Player/rogue_character.tscn" id="1_yxivj"]
+[ext_resource type="Script" path="res://Code/Characters/r_character_data.gd" id="3_d70uu"]
+
+[sub_resource type="Resource" id="Resource_7r2ny"]
+resource_local_to_scene = true
+script = ExtResource("3_d70uu")
+id = "swordswoman"
+speed = 100.0
+jump_height = 40.0
+jump_count = 1
+acceleration = 700
+friction = 1100
+air_multiplier = 0.6
+base_hp = 100.0
+starting_life_count = 1
+light_armor = 1.0
+dark_armor = 1.0
+fire_resist = 0.0
+air_resist = 0.0
+earth_resist = 0.0
+water_resist = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_unpcc"]
+size = Vector2(326, 20)
+
+[node name="TestWorld" type="Node2D"]
+
+[node name="RCamera" type="Camera2D" parent="."]
+position = Vector2(160, 88)
+script = ExtResource("1_rupqb")
+
+[node name="Character" parent="." instance=ExtResource("1_yxivj")]
+position = Vector2(131, 52)
+data = SubResource("Resource_7r2ny")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Icon" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(158.5, 153.5)
+scale = Vector2(2.50781, 0.101563)
+texture = ExtResource("1_88eeo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(161, 157)
+shape = SubResource("RectangleShape2D_unpcc")

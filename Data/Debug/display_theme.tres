@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://8vretd3mjbye"]
+
+[ext_resource type="StyleBox" uid="uid://b4uemjsb4007c" path="res://Data/Debug/display_bg.tres" id="1_kwwac"]
+
+[resource]
+RichTextLabel/colors/default_color = Color(0.674815, 0.674815, 0.674815, 1)
+RichTextLabel/font_sizes/normal_font_size = 5
+RichTextLabel/styles/normal = ExtResource("1_kwwac")

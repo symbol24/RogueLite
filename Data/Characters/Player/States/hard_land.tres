@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="RState" load_steps=2 format=3 uid="uid://w8my5xycdikp"]
+
+[ext_resource type="Script" path="res://Code/Characters/Player/StateMachine/r_state.gd" id="1_xiqg0"]
+
+[resource]
+script = ExtResource("1_xiqg0")
+id = "hard_land"
+can_move = false
+can_jump = false
+can_be_hit = true
+can_die = true
+animation = "hard_land"
