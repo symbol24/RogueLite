@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://pxnvcafqxidf"]
+
+[ext_resource type="Script" path="res://Code/UI/main_menu.gd" id="1_ifvjl"]
+[ext_resource type="Theme" uid="uid://cx5h5wxtfunq8" path="res://Data/UI/Themes/main_theme.tres" id="2_xnbp1"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_ifvjl")
+
+[node name="Main_menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 320.0
+offset_bottom = 176.0
+
+[node name="town" type="Button" parent="Main_menu"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 55.0
+offset_top = 82.0
+offset_right = 144.0
+offset_bottom = 100.0
+theme = ExtResource("2_xnbp1")
+text = "test town world"
+
+[node name="dungeon" type="Button" parent="Main_menu"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 167.0
+offset_top = 82.0
+offset_right = 274.0
+offset_bottom = 100.0
+theme = ExtResource("2_xnbp1")
+text = "test dungeon  world"

@@ -2,7 +2,9 @@ extends Node
 
 var commands:Array[String] = [
 							"!help",
-							"!godmode"
+							"!godmode",
+							"!dmgplayer",
+							"!addmaxhp"
 							]
 
 func stringify(_value1 = "", _value2 = "", _value3 = "", _value4 = "", _value5 = "", _value6 = "", _value7 = "", _value8 = "", _value9 = "", _value10 = "", _value11 = "", _value12 = "", _value13 = "", _value14 = "", _value15 = "", _value16 = "", _value17 = "", _value18 = "", _value19 = "", _value20 = "") -> String:
@@ -52,5 +54,18 @@ func do_command(_inputs:Array[String] = []):
 		"!godmode":
 			Signals.DebugToggleGodMode.emit()
 			Debug.log("Godmode toggled")
+		"!dmgplayer":
+			if _inputs.is_empty() or !_inputs[0].is_valid_float():
+				Debug.log("!dmgplayer requires a value (example: !dmgplayer 10).")
+			elif !_inputs.is_empty() or _inputs[0].is_valid_float():
+				var dmg = Damage.new()
+				dmg.base_value = _inputs[0].to_float()
+				dmg.damage_owner = GM.character
+				Signals.DebugCharacterHit.emit(dmg)
+		"!addmaxhp":
+			if _inputs.is_empty() or !_inputs[0].is_valid_float():
+				Debug.log("!addmaxhp requires a value (example: !addmaxhp 10).")
+			elif !_inputs.is_empty() or _inputs[0].is_valid_float():
+				Signals.DebugAddMaxHP.emit(_inputs[0].to_float())
 		_:
 			Debug.log("Command unrecognized")

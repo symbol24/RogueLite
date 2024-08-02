@@ -36,15 +36,16 @@ func _ready():
 			attacks.append(each)
 
 func _process(_delta):
-	if GM.is_playing() and r_owner.grounded:
-		if RInput.X and can_action:
-			combo_index += _combo_attack(combo_index, attacks)
-		
-		if !current_attack and !can_action:
-			timer += _delta
-		
-		if has_combo and combo_started:
-			combo_timer += _delta
+	if r_owner.data is MainCharacterData and r_owner.data:
+		if GM.is_playing() and r_owner.grounded:
+			if RInput.X and can_action:
+				combo_index += _combo_attack(combo_index, attacks)
+			
+			if !current_attack and !can_action:
+				timer += _delta
+			
+			if has_combo and combo_started:
+				combo_timer += _delta
 
 func _combo_attack(_index := 0, _attacks:Array[AttackArea] = attacks) -> int:
 	_attack(_attacks[_index].id)

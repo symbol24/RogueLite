@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://lbgkvfv4ujdn"]
+
+[ext_resource type="Script" path="res://Code/Utilities/spawn_point.gd" id="1_xbiwf"]
+
+[node name="spawn_point" type="Marker2D" groups=["spawnpoint"]]
+script = ExtResource("1_xbiwf")

@@ -26,15 +26,18 @@ var current_hp:float = 0.0:
 			current_hp = 0
 		elif current_hp > max_hp:
 			current_hp = max_hp
-		#SASignals.HPUpdated.emit(self, current_hp - pre)
+		#Debug.log(id, " character hp updated with ", current_hp - pre, " hp.")
+		Signals.HPUpdated.emit(self, current_hp - pre)
 		if current_hp == 0: 
-			#SASignals.CharacterDead.emit(self)
+			Signals.CharacterDead.emit(self)
 			current_lives -= 1
 
 var max_hp:float = 100:
 	set(value):
+		var pre = max_hp
 		max_hp = value
-		#SASignals.MaxHPUpdated.emit(self, max_hp)
+		Signals.MaxHPUpdated.emit(self, max_hp)
+		current_hp += max_hp - pre
 		
 var percent_hp:
 	get:
@@ -43,8 +46,8 @@ var percent_hp:
 var current_lives:int = 1:
 	set(value):
 		current_lives = value
-		#if current_lives == 0:
-			#SASignals.CharacterNoMoreLive.emit(self)
+		if current_lives == 0:
+			Signals.CharacterNoMoreLive.emit(self)
 
 func setup_data(_name := ""):
 	id += _name
@@ -57,3 +60,14 @@ func setup_starting_hp():
 
 func update_hp(_value := 0.0):
 	current_hp += _value
+
+func apply_damage(_damage:Damage):
+	var final_damage = _damage.base_value * _damage.crit_damage
+	for type in _damage.types:
+		match type:
+			Damage.TYPE.PHYSICAL:
+				final_damage -= base_armor
+			Damage.TYPE.MAGICAL:
+				final_damage -= final_damage * magic_resist
+		if final_damage < 0.0: final_damage = 0.0
+	current_hp -= final_damage

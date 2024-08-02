@@ -1,29 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://uleds0oyamd8"]
+[gd_scene load_steps=6 format=3 uid="uid://uleds0oyamd8"]
 
+[ext_resource type="Script" path="res://Code/Worlds/r_world.gd" id="1_71idh"]
 [ext_resource type="Script" path="res://Code/Utilities/r_camera.gd" id="1_rupqb"]
-[ext_resource type="PackedScene" uid="uid://cltt3q8rnwgxq" path="res://Scenes/Characters/Player/rogue_character.tscn" id="1_yxivj"]
 [ext_resource type="TileSet" uid="uid://dfokbtjwvntbu" path="res://Data/Tilesets/forest_test.tres" id="2_k0m4f"]
-[ext_resource type="Script" path="res://Code/Characters/r_character_data.gd" id="3_d70uu"]
+[ext_resource type="PackedScene" uid="uid://lbgkvfv4ujdn" path="res://Scenes/Utilities/spawn_point.tscn" id="3_vweik"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eam6a"]
 size = Vector2(560, 62)
 
-[sub_resource type="Resource" id="Resource_qspxj"]
-resource_local_to_scene = true
-script = ExtResource("3_d70uu")
-id = "swordswoman"
-speed = 100.0
-jump_height = 40.0
-jump_count = 1
-acceleration = 700
-friction = 1100
-air_multiplier = 0.6
-base_hp = 100.0
-starting_life_count = 1
-base_armor = 1.0
-magic_resist = 0.0
-
 [node name="TestWorld" type="Node2D"]
+script = ExtResource("1_71idh")
+
+[node name="spawn_point" parent="." instance=ExtResource("3_vweik")]
+position = Vector2(159, 133)
+start = true
 
 [node name="RCamera" type="Camera2D" parent="."]
 position = Vector2(160, 88)
@@ -42,7 +32,3 @@ layer_1/tile_data = PackedInt32Array(851997, 327681, 5, 786461, 327681, 2, 72092
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(184, 176)
 shape = SubResource("RectangleShape2D_eam6a")
-
-[node name="Character" parent="." instance=ExtResource("1_yxivj")]
-position = Vector2(147, 144)
-data = SubResource("Resource_qspxj")

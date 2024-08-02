@@ -11,15 +11,16 @@ func _ready():
 	Signals.CharacterGrounded.connect(_set_landed)
 
 func _physics_process(_delta):
-	if max_jump_count == 0 and r_owner.data:
-		max_jump_count = r_owner.data.jump_count
-		jump_count = r_owner.data.jump_count
-	if r_owner.data and GM.is_playing():
-		if RInput.A:
-			jump()
-		
-		_check_falling(r_owner.velocity.y)
-		_coyote_time(_delta)
+	if r_owner.data is MainCharacterData and r_owner.data:
+		if max_jump_count == 0 and r_owner.data:
+			max_jump_count = r_owner.data.jump_count
+			jump_count = r_owner.data.jump_count
+		if r_owner.data and GM.is_playing():
+			if RInput.A:
+				jump()
+			
+			_check_falling(r_owner.velocity.y)
+			_coyote_time(_delta)
 
 func jump():
 	if jump_count > 0:
@@ -35,7 +36,8 @@ func _set_landed(_character:RCharacter):
 			Signals.UpdateCharacterState.emit(r_owner, "hard_land")
 		else:
 			Signals.UpdateCharacterState.emit(r_owner, "idle")
-		jump_count = r_owner.data.jump_count
+		if r_owner.data is MainCharacterData and r_owner.data: jump_count = r_owner.data.jump_count
+		else: jump_count = 1
 		coyote_timer = 0.0
 
 func _check_falling(_y := 0.0):

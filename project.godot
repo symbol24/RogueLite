@@ -10,9 +10,14 @@ config_version=5
 
 [application]
 
-config/name="RogueLite"
-run/main_scene="res://Scenes/Worlds/test_world.tscn"
+config/name="Totally not Delicious in Dungeon"
+config/description="Delve into a dungeon by day to gather monster meat, cook it during the evening for your establishment."
+config/version="pre-prod"
+run/main_scene="res://Scenes/Worlds/boot.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="DFRL"
 config/features=PackedStringArray("4.2", "GL Compatibility")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]

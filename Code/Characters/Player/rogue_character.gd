@@ -1,6 +1,6 @@
 class_name RCharacter extends CharacterBody2D
 
-@export var data:RCharacterData
+@export var character_data:MainCharacterData
 
 @onready var sprite:Sprite2D = %sprite
 @onready var state_machine:RStateMachine = %RStateMachine
@@ -9,6 +9,7 @@ class_name RCharacter extends CharacterBody2D
 #Debug
 var godmode := false
 
+var data:RCharacterData
 var items_to_flip := []
 var direction := 0.0
 var last_y := 0.0
@@ -23,13 +24,19 @@ var grounded := true:
 
 func _ready():
 	Signals.DebugToggleGodMode.connect(_toggle_god_mode)
+	Signals.DebugCharacterHit.connect(_debug_character_hit)
+	Signals.DebugAddMaxHP.connect(_debug_update_max_hp)
 	Signals.StateUpdated.connect(_update_animation_from_state)
 	Signals.UpdateCharacterState.emit(self, "idle")
 	Signals.StartAttack.connect(_start_attack)
+	#Debug.log(character_data)
+	data = character_data.duplicate()
+	data.setup_data()
 	for child in get_children(true):
 		if child.is_in_group("flip"):
 			items_to_flip.append(child)
-	
+	if animator.is_node_ready():
+		Signals.CharacterReady.emit(self)
 
 func _physics_process(_delta):
 	if GM.is_playing():
@@ -38,6 +45,9 @@ func _physics_process(_delta):
 		
 		if state_machine.can_flip:
 			_flip_items(items_to_flip, direction, sprite)
+		
+		#if velocity != Vector2.ZERO:
+			#Debug.log("velocity ", velocity)
 		
 		if _get_can_move():
 			move_and_slide()
@@ -115,5 +125,18 @@ func _flip_items(_items := [], _x_vel := 0.0, _sprite:Sprite2D = null):
 	elif _x_vel < 0.0 and !_sprite.flip_h:
 		_sprite.flip_h = !_sprite.flip_h
 
+func _character_hit(_dmgs:Array[Damage] = []):
+	if !_dmgs.is_empty():
+		for dmg in _dmgs:
+			data.apply_damage(dmg)
+
 func _toggle_god_mode():
 	godmode = !godmode
+
+func _debug_character_hit(_dmg:Damage):
+	if self == GM.character and _dmg:
+		_character_hit([_dmg])
+
+func _debug_update_max_hp(_value := 0.0):
+	if self == GM.character :
+		data.max_hp += _value

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1j5bjvdyky0k"
-path="res://.godot/imported/UI - 16x16 UI Tileset.png-ef1718a08f3f7ae46d04f31df3e5be6f.ctex"
+uid="uid://dkvp4pccmp55b"
+path="res://.godot/imported/clock_fill.png-b4856178ad4d4bd32fc0d4d10e80bfb3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/UI/UI - Borders and HP/UI - 16x16 UI Tileset.png"
-dest_files=["res://.godot/imported/UI - 16x16 UI Tileset.png-ef1718a08f3f7ae46d04f31df3e5be6f.ctex"]
+source_file="res://Textures/UI/clock_fill.png"
+dest_files=["res://.godot/imported/clock_fill.png-b4856178ad4d4bd32fc0d4d10e80bfb3.ctex"]
 
 [params]
 

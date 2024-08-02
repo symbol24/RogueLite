@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cx5h5wxtfunq8"]
+
+[ext_resource type="FontFile" uid="uid://cwgexrmk5lpqw" path="res://Data/Fonts/MinimalPixel v2.ttf" id="1_s4agq"]
+
+[resource]
+Button/font_sizes/font_size = 10
+Button/fonts/font = ExtResource("1_s4agq")
+Label/colors/font_color = Color(1, 1, 1, 0.611765)
+Label/font_sizes/font_size = 7
+Label/fonts/font = null

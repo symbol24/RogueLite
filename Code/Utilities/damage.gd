@@ -4,7 +4,7 @@ enum TYPE {PHYSICAL, MAGICAL}
 
 @export var id := ""
 @export var base_value:float = 0
-@export var type:TYPE = TYPE.PHYSICAL
+@export var types:Array[TYPE] = [TYPE.PHYSICAL]
 
 var damage_owner:RCharacter:
 	get:
@@ -15,21 +15,23 @@ var damage_owner:RCharacter:
 		if _value:
 			damage_owner = _value
 			if damage_owner.data is MainCharacterData:
-				owner_cc = damage_owner.data.crit_chance
-				owner_cd = damage_owner.data.crit_dmg
+				crit_chance += damage_owner.data.crit_chance
+				crit_damage += damage_owner.data.crit_dmg
 		else:
 			Debug.error("Attempting to assign a null value to damage owner of damage data of ", id)
-var owner_cc := 0.0
-var owner_cd := 0.0:
+var crit_chance := 0.0
+var crit_damage := 0.0:
 	get:
 		var to_add := 0.0
-		if owner_cc > 1.0:
-			var over = owner_cc - 1.0
+		if crit_chance > 1.0:
+			var over = crit_chance - 1.0
 			to_add += over*0.3
-		return 1.0 + owner_cd + to_add
+		if is_critical:
+			return 1.0 + crit_damage + to_add
+		return 1.0
 var is_critical := false:
 	get:
 		var check:float = GM.rng.randf_range(0,1)
-		if check <= owner_cc:
+		if check <= crit_chance:
 			return true
 		return false

@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmmgows6ok2k1"]
+[gd_scene load_steps=4 format=3 uid="uid://bmmgows6ok2k1"]
 
+[ext_resource type="Script" path="res://Code/Worlds/boot.gd" id="1_fmsdc"]
 [ext_resource type="Texture2D" uid="uid://yp14s5khiori" path="res://Textures/UI/rid_back.png" id="1_pmcvw"]
 [ext_resource type="Texture2D" uid="uid://dfq0gjlrcdhka" path="res://Textures/UI/rid_glasses_mustache.png" id="2_ygksh"]
 
-[node name="Node2D" type="Node2D"]
+[node name="boot" type="Node2D"]
+script = ExtResource("1_fmsdc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_pmcvw")

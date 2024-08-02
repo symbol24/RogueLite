@@ -36,7 +36,10 @@ var ui_tab_right = 0
 
 var toggle_debug = 0
 
-var focus := FOCUS.UIFOCUS
+var focus := FOCUS.UIFOCUS:
+	set(_value):
+		focus = _value
+		Debug.log("Focus updated to ", _get_focus_as_string(focus))
 var focused_on_ui := false
 var focused_on_debug := false
 var allow_player_input := true :
@@ -141,3 +144,14 @@ func _reset_values():
 	ui_select = 0
 	
 	toggle_debug = 0
+
+func _get_focus_as_string(_focus:FOCUS) -> String:
+	match _focus:
+		FOCUS.GAMEPLAY:
+			return "GAMEPLAY"
+		FOCUS.UIFOCUS:
+			return "UIFOCUS"
+		FOCUS.DEBUG:
+			return "DEBUG"
+		_:
+			return "not in focus list?"

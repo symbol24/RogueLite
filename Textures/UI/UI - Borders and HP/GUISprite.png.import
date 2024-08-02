@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bj7yb5ltbkkyi"
-path="res://.godot/imported/health_bat.png-b9209e1af31232adae880d3c16f86e7b.ctex"
+uid="uid://cr5v7hrgknitp"
+path="res://.godot/imported/GUISprite.png-88eb38069ae66a1e63ba0f3d356b3125.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/UI/UI - Borders and HP/health_bat.png"
-dest_files=["res://.godot/imported/health_bat.png-b9209e1af31232adae880d3c16f86e7b.ctex"]
+source_file="res://Textures/UI/UI - Borders and HP/GUISprite.png"
+dest_files=["res://.godot/imported/GUISprite.png-88eb38069ae66a1e63ba0f3d356b3125.ctex"]
 
 [params]
 

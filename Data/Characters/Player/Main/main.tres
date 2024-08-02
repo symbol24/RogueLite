@@ -1,13 +1,20 @@
-[gd_resource type="Resource" script_class="MainCharacterData" load_steps=2 format=3 uid="uid://bp3d7xjkifo7v"]
+[gd_resource type="Resource" script_class="MainCharacterData" load_steps=2 format=3 uid="uid://f30cv8yiindy"]
 
 [ext_resource type="Script" path="res://Code/Characters/Player/r_main_character_data.gd" id="1_x7i77"]
 
 [resource]
-resource_local_to_scene = true
 script = ExtResource("1_x7i77")
 crit_chance = 0.05
 crit_dmg = 0.25
-id = "swordswoman"
+evaluating = 1
+skinning = 1
+picking = 1
+chopping = 1
+grilling = 1
+stewing = 1
+brewing = 1
+baking = 1
+id = "main"
 speed = 100.0
 jump_height = 40.0
 jump_count = 1

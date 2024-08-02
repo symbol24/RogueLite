@@ -1,7 +1,7 @@
-[gd_scene load_steps=27 format=3 uid="uid://cltt3q8rnwgxq"]
+[gd_scene load_steps=28 format=3 uid="uid://cltt3q8rnwgxq"]
 
 [ext_resource type="Script" path="res://Code/Characters/Player/rogue_character.gd" id="1_asnl3"]
-[ext_resource type="Resource" uid="uid://bp3d7xjkifo7v" path="res://Data/Characters/Player/Main/main.tres" id="2_msmg8"]
+[ext_resource type="Resource" uid="uid://f30cv8yiindy" path="res://Data/Characters/Player/Main/main.tres" id="2_msmg8"]
 [ext_resource type="Texture2D" uid="uid://cj7itk4n3ei6m" path="res://Textures/character/MainCharacter/adventurer_sprite_sheet_2024.png" id="3_iwxsa"]
 [ext_resource type="PackedScene" uid="uid://cb3ysor5w21bn" path="res://Scenes/Characters/Player/StateMachine/r_state_machine.tscn" id="4_mqffp"]
 [ext_resource type="PackedScene" uid="uid://biigovwg63m17" path="res://Scenes/Characters/Player/Actions/jump.tscn" id="4_ou0pb"]
@@ -14,6 +14,7 @@
 [ext_resource type="Resource" uid="uid://dlo72m51tw5d2" path="res://Data/Characters/Player/States/dead.tres" id="10_5wedh"]
 [ext_resource type="Resource" uid="uid://cvn4j7f2l622b" path="res://Data/Characters/Player/States/attack.tres" id="11_pw6gc"]
 [ext_resource type="PackedScene" uid="uid://bj3vbm3bjados" path="res://Scenes/Characters/Player/Actions/attack.tscn" id="13_v8aob"]
+[ext_resource type="Script" path="res://Code/Utilities/s_animator.gd" id="15_xk32d"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_svv6o"]
 radius = 5.0
@@ -600,7 +601,7 @@ _data = {
 [node name="Character" type="CharacterBody2D"]
 process_mode = 1
 script = ExtResource("1_asnl3")
-data = ExtResource("2_msmg8")
+character_data = ExtResource("2_msmg8")
 
 [node name="sprite" type="Sprite2D" parent="." groups=["flip"]]
 unique_name_in_owner = true
@@ -629,3 +630,4 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_vhg2s")
 }
+script = ExtResource("15_xk32d")

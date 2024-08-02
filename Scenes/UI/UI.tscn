@@ -1,21 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpdxgddiw4vup"]
+[gd_scene load_steps=11 format=3 uid="uid://bpdxgddiw4vup"]
 
 [ext_resource type="Script" path="res://Code/UI/r_ui.gd" id="1_csoys"]
 [ext_resource type="Script" path="res://Code/UI/r_debug_ui.gd" id="2_hu0gv"]
 [ext_resource type="Theme" uid="uid://8vretd3mjbye" path="res://Data/Debug/display_theme.tres" id="3_pa1ep"]
 [ext_resource type="Theme" uid="uid://bvrtxil1545kj" path="res://Data/Debug/input_theme.tres" id="4_b1jwd"]
+[ext_resource type="Texture2D" uid="uid://dxd233ierpbfa" path="res://Textures/UI/UI - Borders and HP/border_simple.png" id="5_nb5nh"]
+[ext_resource type="Texture2D" uid="uid://bj7yb5ltbkkyi" path="res://Textures/UI/UI - Borders and HP/health_bar_fill.png" id="6_hmtm1"]
+[ext_resource type="Script" path="res://Code/UI/hp_bar.gd" id="7_silkt"]
+[ext_resource type="Theme" uid="uid://cx5h5wxtfunq8" path="res://Data/UI/Themes/main_theme.tres" id="8_6pc2o"]
+[ext_resource type="Texture2D" uid="uid://c5swat33ox754" path="res://Textures/UI/clock_back.png" id="9_20jep"]
+[ext_resource type="Texture2D" uid="uid://di166dp145wpf" path="res://Textures/UI/clock_hand.png" id="10_e0ish"]
 
 [node name="Ui" type="CanvasLayer"]
 script = ExtResource("1_csoys")
 
 [node name="Debug" type="Control" parent="."]
 visible = false
+top_level = true
+z_index = 4096
 custom_minimum_size = Vector2(320, 176)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_hu0gv")
+metadata/_edit_lock_ = true
 
 [node name="debug_vbox" type="VBoxContainer" parent="Debug"]
 custom_minimum_size = Vector2(320, 100)
@@ -48,3 +57,74 @@ shortcut_keys_enabled = false
 middle_mouse_paste_enabled = false
 selecting_enabled = false
 drag_and_drop_selection_enabled = false
+
+[node name="DungeonUI" type="Control" parent="." groups=["dungeon_ui"]]
+visible = false
+custom_minimum_size = Vector2(320, 176)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="hp_container" type="Control" parent="DungeonUI"]
+custom_minimum_size = Vector2(320, 176)
+layout_mode = 2
+anchors_preset = 0
+offset_right = 70.0
+offset_bottom = 16.0
+metadata/_edit_lock_ = true
+
+[node name="hp_bar" type="TextureProgressBar" parent="DungeonUI/hp_container"]
+custom_minimum_size = Vector2(45, 10)
+layout_mode = 2
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 55.0
+offset_bottom = 20.0
+step = 0.1
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 2
+stretch_margin_top = 2
+stretch_margin_right = 2
+stretch_margin_bottom = 2
+texture_over = ExtResource("5_nb5nh")
+texture_progress = ExtResource("6_hmtm1")
+script = ExtResource("7_silkt")
+metadata/_edit_lock_ = true
+
+[node name="hp_label" type="Label" parent="DungeonUI/hp_container/hp_bar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(28, 7)
+layout_mode = 2
+offset_top = 2.0
+offset_right = 28.0
+offset_bottom = 9.0
+theme = ExtResource("8_6pc2o")
+text = "100/100"
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="TownUi" type="Control" parent="." groups=["town_ui"]]
+visible = false
+custom_minimum_size = Vector2(320, 176)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Clock" type="Control" parent="TownUi"]
+custom_minimum_size = Vector2(1, 1)
+anchors_preset = 0
+offset_left = 294.0
+offset_top = 26.0
+offset_right = 295.0
+offset_bottom = 27.0
+
+[node name="back" type="Sprite2D" parent="TownUi/Clock"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_20jep")
+
+[node name="hand" type="Sprite2D" parent="TownUi/Clock"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_e0ish")
