@@ -3,7 +3,7 @@ class_name RCharacter extends CharacterBody2D
 @export var character_data:MainCharacterData
 
 @onready var sprite:Sprite2D = %sprite
-@onready var state_machine:RStateMachine = %RStateMachine
+@onready var state_machine:RStateMachine = %state_machine
 @onready var animator:AnimationPlayer = %animator
 
 #Debug
@@ -28,8 +28,6 @@ func _ready():
 	Signals.DebugAddMaxHP.connect(_debug_update_max_hp)
 	Signals.StateUpdated.connect(_update_animation_from_state)
 	Signals.UpdateCharacterState.emit(self, "idle")
-	Signals.StartAttack.connect(_start_attack)
-	#Debug.log(character_data)
 	data = character_data.duplicate()
 	data.setup_data()
 	for child in get_children(true):
@@ -43,14 +41,11 @@ func _physics_process(_delta):
 		grounded = is_on_floor_only()
 		if !grounded: _apply_gravity(_delta)
 		
-		if state_machine.can_flip:
-			_flip_items(items_to_flip, direction, sprite)
-		
-		#if velocity != Vector2.ZERO:
-			#Debug.log("velocity ", velocity)
-		
 		if _get_can_move():
 			move_and_slide()
+		
+		if state_machine.can_flip:
+			_flip_items(items_to_flip, direction, sprite)
 
 func update_velocity(_value:float):
 	velocity.x = _value
@@ -95,25 +90,6 @@ func _update_animation(_new_anim := ""):
 		animator.play(_new_anim)
 	else: print("Animation ", _new_anim, " not present in animtor")
 
-func _emit_signal(_id := "", _opt1 := "", _opt2 := ""):
-	match _id:
-		"end_land":
-			Signals.UpdateCharacterState.emit(self, "idle")
-		"toggle_attack":
-			if _opt1 and _opt2:
-				var is_enabled := false
-				if _opt2 == "true": is_enabled = true
-				Signals.ToggleAttackCollier.emit(_opt1, is_enabled)
-		"attack_ended":
-			if _opt1:
-				Signals.AttackEnded.emit(self, _opt1)
-
-func _start_attack(_character:RCharacter, _name := ""):
-	Debug.log("Receiving ", _character.name, " and ", _name)
-	if _character == self and _name:
-		_update_animation(_name)
-		Signals.UpdateCharacterState.emit(self, "attack")
-
 func _flip_items(_items := [], _x_vel := 0.0, _sprite:Sprite2D = null):
 	for item in _items:
 		if _x_vel > 0.0 and _sprite.flip_h and item.position.x < 0.0:
@@ -125,10 +101,11 @@ func _flip_items(_items := [], _x_vel := 0.0, _sprite:Sprite2D = null):
 	elif _x_vel < 0.0 and !_sprite.flip_h:
 		_sprite.flip_h = !_sprite.flip_h
 
+func _emit_signal(_id := "", _opt1 := "", _opt2 := ""):
+	pass
+
 func _character_hit(_dmgs:Array[Damage] = []):
-	if !_dmgs.is_empty():
-		for dmg in _dmgs:
-			data.apply_damage(dmg)
+	pass
 
 func _toggle_god_mode():
 	godmode = !godmode

@@ -10,6 +10,7 @@ signal ClassReady(_name)
 signal LoadNewWorld(id)
 signal CharacterSet(data)
 signal WorldSet(world)
+signal TogglePause(value)
 
 #Worlds
 signal WorldReady(world)
@@ -35,6 +36,10 @@ signal UpdateCharacterState(character, state_id)
 signal UpdateInputFocus(focus)
 signal ToggleDungeonUI(value)
 signal ToggleTownUI(value)
+signal ToggleLoadingScreen(value)
+signal UIReady()
+signal HPBarSetupDone()
+signal TogglePauseMenu(value)
 
 #Debug
 signal DebugPrint(text)

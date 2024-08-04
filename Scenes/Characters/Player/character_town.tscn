@@ -1,0 +1,101 @@
+[gd_scene load_steps=13 format=3 uid="uid://cg1am2xvadc37"]
+
+[ext_resource type="Script" path="res://Code/Characters/Player/town_character.gd" id="1_0ad2t"]
+[ext_resource type="PackedScene" uid="uid://iapl7pc0s30h" path="res://Scenes/Characters/Player/Actions/move.tscn" id="2_1laym"]
+[ext_resource type="Texture2D" uid="uid://cvtsu65bm68p7" path="res://Textures/character/Player Template/Player Spritesheet.png" id="2_2p038"]
+[ext_resource type="PackedScene" uid="uid://b4l8w2tk2icqe" path="res://Scenes/Characters/Player/StateMachine/town_state_machine.tscn" id="2_b8bml"]
+[ext_resource type="Resource" uid="uid://f30cv8yiindy" path="res://Data/Characters/Player/Main/main.tres" id="2_qq0df"]
+[ext_resource type="Script" path="res://Code/Utilities/s_animator.gd" id="5_tiech"]
+[ext_resource type="PackedScene" uid="uid://oq3kbnwvxu2x" path="res://Scenes/Utilities/camera_remote.tscn" id="7_dhyrm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sea4f"]
+radius = 5.0
+height = 28.0
+
+[sub_resource type="Animation" id="Animation_h4mjc"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_teu28"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_f7uaa"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nqbir"]
+_data = {
+"RESET": SubResource("Animation_teu28"),
+"idle": SubResource("Animation_h4mjc"),
+"walk": SubResource("Animation_f7uaa")
+}
+
+[node name="CharacterTown" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_0ad2t")
+character_data = ExtResource("2_qq0df")
+
+[node name="sprite" type="Sprite2D" parent="." groups=["flip"]]
+unique_name_in_owner = true
+position = Vector2(0, -17)
+texture = ExtResource("2_2p038")
+hframes = 10
+vframes = 11
+
+[node name="move_collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -14)
+shape = SubResource("CapsuleShape2D_sea4f")
+
+[node name="Move" parent="." instance=ExtResource("2_1laym")]
+
+[node name="state_machine" parent="." instance=ExtResource("2_b8bml")]
+unique_name_in_owner = true
+
+[node name="animator" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("../Move")
+libraries = {
+"": SubResource("AnimationLibrary_nqbir")
+}
+script = ExtResource("5_tiech")
+
+[node name="camera_remote" parent="." instance=ExtResource("7_dhyrm")]
+unique_name_in_owner = true

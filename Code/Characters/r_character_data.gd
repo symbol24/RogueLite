@@ -14,6 +14,10 @@ class_name RCharacterData extends Resource
 @export var base_hp:float = 100
 @export var starting_life_count:int = 1
 
+@export_subgroup("attack")
+@export var physical:float = 1.0
+@export var magic:float = 1.0
+
 @export_subgroup("Defence")
 @export var base_armor:float = 1
 @export var magic_resist:float = 0.0

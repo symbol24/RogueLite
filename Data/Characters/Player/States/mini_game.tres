@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RState" load_steps=2 format=3 uid="uid://j71dsiltwbpj"]
+
+[ext_resource type="Script" path="res://Code/Characters/Player/StateMachine/r_state.gd" id="1_kv7q1"]
+
+[resource]
+script = ExtResource("1_kv7q1")
+id = "mini_game"
+can_move = false
+can_jump = false
+can_be_hit = false
+can_die = false
+can_flip = false
+animation = "idle"

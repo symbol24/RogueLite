@@ -1,0 +1,10 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4l8w2tk2icqe"]
+
+[ext_resource type="Script" path="res://Code/Characters/Player/StateMachine/r_state_machine.gd" id="1_0at56"]
+[ext_resource type="Resource" uid="uid://cmjhxmjlrxsch" path="res://Data/Characters/Player/States/idle.tres" id="2_kb1y4"]
+[ext_resource type="Resource" uid="uid://j71dsiltwbpj" path="res://Data/Characters/Player/States/mini_game.tres" id="3_47x3k"]
+[ext_resource type="Resource" uid="uid://buc7ilertamor" path="res://Data/Characters/Player/States/walk.tres" id="4_1c35i"]
+
+[node name="TownStateMachine" type="Node2D"]
+script = ExtResource("1_0at56")
+states = Array[Resource("res://Code/Characters/Player/StateMachine/r_state.gd")]([ExtResource("2_kb1y4"), ExtResource("3_47x3k"), ExtResource("4_1c35i")])

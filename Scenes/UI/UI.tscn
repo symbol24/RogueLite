@@ -1,15 +1,25 @@
-[gd_scene load_steps=11 format=3 uid="uid://bpdxgddiw4vup"]
+[gd_scene load_steps=19 format=3 uid="uid://bpdxgddiw4vup"]
 
 [ext_resource type="Script" path="res://Code/UI/r_ui.gd" id="1_csoys"]
 [ext_resource type="Script" path="res://Code/UI/r_debug_ui.gd" id="2_hu0gv"]
 [ext_resource type="Theme" uid="uid://8vretd3mjbye" path="res://Data/Debug/display_theme.tres" id="3_pa1ep"]
 [ext_resource type="Theme" uid="uid://bvrtxil1545kj" path="res://Data/Debug/input_theme.tres" id="4_b1jwd"]
 [ext_resource type="Texture2D" uid="uid://dxd233ierpbfa" path="res://Textures/UI/UI - Borders and HP/border_simple.png" id="5_nb5nh"]
+[ext_resource type="Script" path="res://Code/UI/dungeon_ui.gd" id="5_oik8b"]
 [ext_resource type="Texture2D" uid="uid://bj7yb5ltbkkyi" path="res://Textures/UI/UI - Borders and HP/health_bar_fill.png" id="6_hmtm1"]
 [ext_resource type="Script" path="res://Code/UI/hp_bar.gd" id="7_silkt"]
 [ext_resource type="Theme" uid="uid://cx5h5wxtfunq8" path="res://Data/UI/Themes/main_theme.tres" id="8_6pc2o"]
 [ext_resource type="Texture2D" uid="uid://c5swat33ox754" path="res://Textures/UI/clock_back.png" id="9_20jep"]
 [ext_resource type="Texture2D" uid="uid://di166dp145wpf" path="res://Textures/UI/clock_hand.png" id="10_e0ish"]
+[ext_resource type="Script" path="res://Code/UI/town_ui.gd" id="10_jrapj"]
+[ext_resource type="Texture2D" uid="uid://dwgwplmnb857q" path="res://Textures/UI/boot_back.png" id="11_lle2d"]
+[ext_resource type="Script" path="res://Code/UI/loading_screen.gd" id="11_tx6y7"]
+[ext_resource type="Script" path="res://Code/UI/RichTextEffects/rte_matrix.gd" id="13_0bd1q"]
+[ext_resource type="Script" path="res://Code/UI/pause_menu.gd" id="16_6u7vm"]
+[ext_resource type="Script" path="res://Code/UI/r_rich_text_label.gd" id="17_gfsa0"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_kpfai"]
+script = ExtResource("13_0bd1q")
 
 [node name="Ui" type="CanvasLayer"]
 script = ExtResource("1_csoys")
@@ -65,6 +75,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("5_oik8b")
 
 [node name="hp_container" type="Control" parent="DungeonUI"]
 custom_minimum_size = Vector2(320, 176)
@@ -112,6 +123,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("10_jrapj")
 
 [node name="Clock" type="Control" parent="TownUi"]
 custom_minimum_size = Vector2(1, 1)
@@ -128,3 +140,56 @@ texture = ExtResource("9_20jep")
 [node name="hand" type="Sprite2D" parent="TownUi/Clock"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_e0ish")
+
+[node name="LoadingScreen" type="Control" parent="."]
+visible = false
+custom_minimum_size = Vector2(320, 176)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("11_tx6y7")
+
+[node name="BootBack" type="Sprite2D" parent="LoadingScreen"]
+texture = ExtResource("11_lle2d")
+centered = false
+
+[node name="loading_label" type="RichTextLabel" parent="LoadingScreen"]
+custom_minimum_size = Vector2(320, 10)
+layout_mode = 0
+offset_top = 76.0
+offset_right = 320.0
+offset_bottom = 88.0
+theme = ExtResource("8_6pc2o")
+bbcode_enabled = true
+text = "[center][b]Loading [matrix]thisisalongword[/matrix][/b][/center]"
+scroll_active = false
+custom_effects = [SubResource("RichTextEffect_kpfai")]
+threaded = true
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="PauseMenu" type="Control" parent="."]
+process_mode = 3
+visible = false
+custom_minimum_size = Vector2(320, 176)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("16_6u7vm")
+
+[node name="background_sprite" type="Sprite2D" parent="PauseMenu"]
+texture = ExtResource("11_lle2d")
+centered = false
+
+[node name="pause_title" type="RichTextLabel" parent="PauseMenu"]
+custom_minimum_size = Vector2(320, 12)
+layout_mode = 0
+offset_top = 20.0
+offset_right = 320.0
+offset_bottom = 32.0
+theme = ExtResource("8_6pc2o")
+bbcode_enabled = true
+text = "[center][b]Pause Menu[/b][/center]"
+script = ExtResource("17_gfsa0")

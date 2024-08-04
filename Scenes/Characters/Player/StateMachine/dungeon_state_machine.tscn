@@ -1,0 +1,14 @@
+[gd_scene load_steps=9 format=3 uid="uid://cb3ysor5w21bn"]
+
+[ext_resource type="Script" path="res://Code/Characters/Player/StateMachine/r_state_machine.gd" id="1_bvv4x"]
+[ext_resource type="Resource" uid="uid://bnkeg845fh3q5" path="res://Data/Characters/Player/States/fall.tres" id="2_s2kec"]
+[ext_resource type="Resource" uid="uid://cmjhxmjlrxsch" path="res://Data/Characters/Player/States/idle.tres" id="3_3sr4j"]
+[ext_resource type="Resource" uid="uid://dnc1ejixkm7ne" path="res://Data/Characters/Player/States/jump.tres" id="4_0r8re"]
+[ext_resource type="Resource" uid="uid://buc7ilertamor" path="res://Data/Characters/Player/States/walk.tres" id="5_b2oh5"]
+[ext_resource type="Resource" uid="uid://cvn4j7f2l622b" path="res://Data/Characters/Player/States/attack.tres" id="6_xccli"]
+[ext_resource type="Resource" uid="uid://dlo72m51tw5d2" path="res://Data/Characters/Player/States/dead.tres" id="7_6klr4"]
+[ext_resource type="Resource" uid="uid://w8my5xycdikp" path="res://Data/Characters/Player/States/hard_land.tres" id="8_0aldc"]
+
+[node name="DungeonStateMachine" type="Node2D"]
+script = ExtResource("1_bvv4x")
+states = Array[Resource("res://Code/Characters/Player/StateMachine/r_state.gd")]([ExtResource("2_s2kec"), ExtResource("3_3sr4j"), ExtResource("4_0r8re"), ExtResource("5_b2oh5"), ExtResource("6_xccli"), ExtResource("7_6klr4"), ExtResource("8_0aldc")])

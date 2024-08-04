@@ -16,11 +16,11 @@ var combo_timer := 0.0:
 			combo_timer = 0.0
 			combo_index = 0
 			combo_started = false
-var combo_delay := 1.0
+var combo_delay := 5.0
 var combo_index := 0:
 	set(_value):
 		combo_index = _value
-		if combo_index >= attacks.size() or combo_index <= 0:
+		if combo_index >= attacks.size() or combo_index < 0:
 			_reset_combo()
 var has_combo := false:
 	get:
@@ -34,12 +34,13 @@ func _ready():
 	for each in temp:
 		if each is AttackArea:
 			attacks.append(each)
+	attacks.sort_custom(func(a, b): return a.id.naturalnocasecmp_to(b.id) < 0)
 
 func _process(_delta):
 	if r_owner.data is MainCharacterData and r_owner.data:
 		if GM.is_playing() and r_owner.grounded:
-			if RInput.X and can_action:
-				combo_index += _combo_attack(combo_index, attacks)
+			if RInput.attack and can_action:
+				combo_index = _combo_attack(combo_index, attacks)
 			
 			if !current_attack and !can_action:
 				timer += _delta
@@ -50,7 +51,7 @@ func _process(_delta):
 func _combo_attack(_index := 0, _attacks:Array[AttackArea] = attacks) -> int:
 	_attack(_attacks[_index].id)
 	if has_combo and !combo_started: combo_started = true
-	return 1
+	return _index + 1
 
 func _attack(_id := ""):
 	can_action = false
@@ -74,4 +75,5 @@ func _attack_ended(_character:RCharacter, _name := ""):
 	#Debug.log("Receiving in attack_ended ", _character.name, " and ", _name)
 	if _character == r_owner and _name == current_attack.id:
 		current_attack = null
+		can_action = true
 		Signals.UpdateCharacterState.emit(r_owner, "idle")

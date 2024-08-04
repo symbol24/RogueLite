@@ -1,27 +1,41 @@
 extends Node
 
 const WORLDS = [
-				{"id":"test_town", "preload":preload("res://Scenes/Worlds/test_town.tscn")},
-				{"id":"test_dungeon", "preload":preload("res://Scenes/Worlds/test_dungeon.tscn")},
-				{"id":"main_menu", "preload":preload("res://Scenes/Worlds/main_menu.tscn")}
+				{"id":"test_town", "path":"res://Scenes/Worlds/test_town.tscn"},
+				{"id":"test_dungeon", "path":"res://Scenes/Worlds/test_dungeon.tscn"},
+				{"id":"main_menu", "path":"res://Scenes/Worlds/main_menu.tscn"}
 				]
 
-const ROGUE_CHARACTER = preload("res://Scenes/Characters/Player/rogue_character.tscn")
+const CHARACTER_DUNGEON = preload("res://Scenes/Characters/Player/character_dungeon.tscn")
+const CHARACTER_TOWN = preload("res://Scenes/Characters/Player/character_town.tscn")
+const CAMERA = preload("res://Scenes/Utilities/r_camera.tscn")
 
 const JUMP_TIME_TO_PEAK := 0.6
 const JUMP_TIME_TO_DESCENT := 0.4
 const MAX_FALL_VELOCITY := 600.0
 
 var playing := true:
-	set(value):
-		#SASignals.IsPlaying.emit(value)
-		playing = value
+	set(_value):
+		playing = _value
+		if world and world is RPlayWorld:
+			Signals.TogglePauseMenu.emit(!playing)
 
-var world:RWorld
 var character:RCharacter
 var camera:Camera2D = null
 
-#build inf
+#Loading
+var world:RWorld
+var loading := ""
+var is_loading := false
+var load_complete := false
+var loading_status := 0.0
+var progress := []
+var ui_ready := false
+var extra_loading := false
+var loading_timer := 0.0
+var loading_delay := 1.0
+
+#build info
 var is_debug := true
 
 #RNG
@@ -36,6 +50,41 @@ func _ready():
 	Signals.CharacterReady.connect(_set_character)
 	Signals.WorldReady.connect(_set_world)
 	Signals.WorldSet.connect(_spawn_main_character)
+	Signals.UIReady.connect(_ui_ready)
+	Signals.TogglePause.connect(_toggle_pause)
+
+func _process(_delta):
+	if is_loading:
+			loading_status = ResourceLoader.load_threaded_get_status(loading, progress)
+			if loading_status == ResourceLoader.THREAD_LOAD_LOADED:
+				if !load_complete:
+					load_complete = true
+					_complete_load()
+	
+	if extra_loading:
+		loading_timer += _delta
+		if loading_timer >= loading_delay:
+			extra_loading = false
+			loading_timer = 0.0
+			_display_game()
+
+func _display_game():
+	#SASignals.ToggleLoading.emit(false)
+	_toggle_pause(false)
+
+func _complete_load():
+	is_loading = false
+	var new_world = ResourceLoader.load_threaded_get(loading)
+	if world:
+		world.queue_free()
+		world = null
+	if get_tree().paused: get_tree().paused = false
+	get_tree().change_scene_to_packed(new_world)
+	load_complete = false
+
+func _toggle_pause(_value := false):
+	playing = !_value
+	get_tree().set_pause(_value)
 
 func is_playing() -> bool:
 	return playing
@@ -56,17 +105,36 @@ func _spawn_main_character(_world:RWorld):
 	if _world.spawn_character:
 		var spawn_point = _world.get_start_spawnpoint()
 		if spawn_point:
-			var new_char = ROGUE_CHARACTER.instantiate()
+			var new_char = CHARACTER_DUNGEON.instantiate() if _world is RDungeon else CHARACTER_TOWN.instantiate()
 			world.add_child.call_deferred(new_char)
 			new_char.global_position = spawn_point.global_position
 
-func _get_world(_id := "") -> PackedScene:
-	for world in WORLDS:
-		if world["id"] == _id:
-			return world["preload"]
+func _spawn_camera():
+	if camera: camera.queue_free()
+	camera = null
+	if world:
+		var new_camera = CAMERA.instantiate()
+		world.add_child(new_camera)
+		if world is RPlayWorld and character:
+			character.camera_remote.remote_path = new_camera.get_path()
+		else:
+			camera.global_position = Vector2(160, 88)
+
+func _ui_ready():
+	_spawn_camera()
+	await get_tree().create_timer(loading_delay).timeout
+	Signals.ToggleLoadingScreen.emit(false)
+
+func _get_world(_id := "") -> String:
+	for w in WORLDS:
+		if w["id"] == _id:
+			return w["path"]
 	Debug.error("Id ", _id, " not found in world list.")
-	return null
+	return ""
 
 func _load_new_world(_id:=""):
-	var new = _get_world(_id)
-	get_tree().change_scene_to_packed(new)
+	Signals.ToggleLoadingScreen.emit(true)
+	loading = _get_world(_id)
+	if loading:
+		ResourceLoader.load_threaded_request(loading)
+		is_loading = true

@@ -1,0 +1,1 @@
+class_name RRemoteTransform2D extends RemoteTransform2D

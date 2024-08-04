@@ -16,7 +16,7 @@ func _physics_process(_delta):
 			max_jump_count = r_owner.data.jump_count
 			jump_count = r_owner.data.jump_count
 		if r_owner.data and GM.is_playing():
-			if RInput.A:
+			if RInput.jump:
 				jump()
 			
 			_check_falling(r_owner.velocity.y)

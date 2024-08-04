@@ -15,3 +15,6 @@ class_name MainCharacterData extends RCharacterData
 @export var stewing := 1
 @export var brewing := 1
 @export var baking := 1
+
+@export_group("Other")
+@export var luck:float = 0.0

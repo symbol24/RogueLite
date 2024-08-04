@@ -6,10 +6,10 @@ var move_left_right = 0
 var move_up_down = 0
 var aim_left_right = 0
 var aim_up_down = 0
-var A = 0
-var X = 0
-var X_released = 0
-var Y = 0
+var jump = 0
+var attack = 0
+var attack_released = 0
+var interact = 0
 var B = 0
 var start = 0
 var select = 0
@@ -39,7 +39,7 @@ var toggle_debug = 0
 var focus := FOCUS.UIFOCUS:
 	set(_value):
 		focus = _value
-		Debug.log("Focus updated to ", _get_focus_as_string(focus))
+		#Debug.log("Focus updated to ", _get_focus_as_string(focus))
 var focused_on_ui := false
 var focused_on_debug := false
 var allow_player_input := true :
@@ -83,10 +83,10 @@ func _listen_to_gameplay_inputs():
 	move_up_down = Input.get_axis("up", "down")
 	aim_left_right = Input.get_axis("aim_left", "aim_right")
 	aim_up_down = Input.get_axis("aim_up", "aim_down")
-	A = Input.is_action_just_pressed("A")
-	X = Input.is_action_just_pressed("X")
-	X_released = Input.is_action_just_released("X")
-	Y = Input.is_action_just_pressed("Y")
+	jump = Input.is_action_just_pressed("jump")
+	attack = Input.is_action_just_pressed("attack")
+	attack_released = Input.is_action_just_released("attack")
+	interact = Input.is_action_just_pressed("interact")
 	B = Input.is_action_just_pressed("B")
 	start = Input.is_action_just_pressed("start")
 	select = Input.is_action_just_pressed("select")
@@ -117,10 +117,10 @@ func _reset_values():
 	move_up_down = 0
 	aim_left_right = 0
 	aim_up_down = 0
-	A = 0
-	X = 0
-	X_released = 0
-	Y = 0
+	jump = 0
+	attack = 0
+	attack_released = 0
+	interact = 0
 	B = 0
 	start = 0
 	select = 0

@@ -6,6 +6,8 @@ extends RMenuWorld
 func _ready():
 	town.pressed.connect(_town)
 	dungeon.pressed.connect(_dungeon)
+	Signals.UIReady.emit()
+	town.grab_focus()
 	
 func _town():
 	Signals.LoadNewWorld.emit("test_town")

@@ -21,6 +21,7 @@ func _update_starting_max(_data:RCharacterData):
 		last_max = _data.max_hp
 		value = _data.percent_hp
 		hp_label.text = str(_data.current_hp) + "/" + str(_data.max_hp)
+		Signals.HPBarSetupDone.emit()
 	
 func _update_hp(_data:RCharacterData, _diff):
 	if GM.character and _data.id == GM.character.data.id:
@@ -29,7 +30,6 @@ func _update_hp(_data:RCharacterData, _diff):
 
 func _update_max_hp(_data:RCharacterData, _new_max):
 	if GM.character and _data.id == GM.character.data.id:
-		var current_size = size.x
 		var diff = (_data.max_hp - last_max) / _data.max_hp
 		size.x += start_size * diff
 		hp_label.text = str(_data.current_hp) + "/" + str(_data.max_hp)

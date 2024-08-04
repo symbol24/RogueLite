@@ -1,4 +1,4 @@
-class_name DebugUI extends Control
+class_name DebugUI extends RControl
 
 @onready var display_label:RichTextLabel = %display_label
 @onready var input_line:LineEdit = %input_line
