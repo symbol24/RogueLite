@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Code/Worlds/r_dungeon.gd" id="1_37ys7"]
 [ext_resource type="TileSet" uid="uid://dyqi5tmh73t0p" path="res://Data/Tilesets/dungeon_01.tres" id="2_mae08"]
-[ext_resource type="PackedScene" uid="uid://lbgkvfv4ujdn" path="res://Scenes/Utilities/spawn_point.tscn" id="4_t4nve"]
+[ext_resource type="PackedScene" uid="uid://lbgkvfv4ujdn" path="res://Scenes/UI/button_icons/spawn_point.tscn" id="4_t4nve"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aq0sr"]
 size = Vector2(480, 64)

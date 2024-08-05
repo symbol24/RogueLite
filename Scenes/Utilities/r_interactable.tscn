@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://br3vt7jr4vb0h"]
+
+[ext_resource type="Script" path="res://Code/Utilities/r_interactable.gd" id="1_hjd1d"]
+
+[node name="Interactable" type="Area2D"]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("1_hjd1d")
+
+[node name="interact_collider" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true

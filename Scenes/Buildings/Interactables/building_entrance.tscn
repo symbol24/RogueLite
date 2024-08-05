@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccxumj5vwpj6l"]
+
+[ext_resource type="Script" path="res://Code/Buildings/building_entrance.gd" id="1_bk7k6"]
+[ext_resource type="PackedScene" uid="uid://b6r7h1hpm11t8" path="res://Scenes/UI/button_icons/button_icon.tscn" id="2_8bnja"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fqbea"]
+radius = 13.0
+height = 46.0
+
+[node name="BuildingEntrance" type="Area2D"]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("1_bk7k6")
+
+[node name="interact_collider" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -23)
+shape = SubResource("CapsuleShape2D_fqbea")
+
+[node name="button_icon" parent="." instance=ExtResource("2_8bnja")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, -49)

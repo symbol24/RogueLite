@@ -1,5 +1,7 @@
 extends Node
 
+enum CURRENCIES {GOLD = 0, NOTHING = 1}
+
 const WORLDS = [
 				{"id":"test_town", "path":"res://Scenes/Worlds/test_town.tscn"},
 				{"id":"test_dungeon", "path":"res://Scenes/Worlds/test_dungeon.tscn"},
@@ -24,9 +26,17 @@ var character:RCharacter
 var camera:Camera2D = null
 
 #Loading
-var world:RWorld
+var world:RWorld:
+	set(_value):
+		world = _value
+		Debug.log("World is ", world.name)
+	
+var building:RBuilding
+var building_entrance_spawn_point:String
 var loading := ""
+var loading_building := ""
 var is_loading := false
+var is_loading_building := false
 var load_complete := false
 var loading_status := 0.0
 var progress := []
@@ -52,14 +62,23 @@ func _ready():
 	Signals.WorldSet.connect(_spawn_main_character)
 	Signals.UIReady.connect(_ui_ready)
 	Signals.TogglePause.connect(_toggle_pause)
+	Signals.LoadBuilding.connect(_load_building)
+	Signals.ExitBuilding.connect(_unload_building)
 
 func _process(_delta):
 	if is_loading:
-			loading_status = ResourceLoader.load_threaded_get_status(loading, progress)
-			if loading_status == ResourceLoader.THREAD_LOAD_LOADED:
-				if !load_complete:
-					load_complete = true
-					_complete_load()
+		loading_status = ResourceLoader.load_threaded_get_status(loading, progress)
+		if loading_status == ResourceLoader.THREAD_LOAD_LOADED:
+			if !load_complete:
+				load_complete = true
+				_complete_load()
+	
+	if is_loading_building:
+		loading_status = ResourceLoader.load_threaded_get_status(loading_building, progress)
+		if loading_status == ResourceLoader.THREAD_LOAD_LOADED:
+			if !load_complete:
+				load_complete = true
+				_complete_load_building()
 	
 	if extra_loading:
 		loading_timer += _delta
@@ -134,7 +153,41 @@ func _get_world(_id := "") -> String:
 
 func _load_new_world(_id:=""):
 	Signals.ToggleLoadingScreen.emit(true)
+	if !get_tree().paused: get_tree().paused = true
 	loading = _get_world(_id)
 	if loading:
 		ResourceLoader.load_threaded_request(loading)
 		is_loading = true
+
+func _load_building(_path := "", _entrance := ""):
+	Signals.ToggleLoadingScreen.emit(true)
+	if !get_tree().paused: get_tree().paused = true
+	building_entrance_spawn_point = _entrance
+	loading_building = _path
+	if loading_building:
+		ResourceLoader.load_threaded_request(loading_building)
+		is_loading_building = true
+
+func _complete_load_building():
+	is_loading_building = false
+	var new_building = ResourceLoader.load_threaded_get(loading_building)
+	building = new_building.instantiate()
+	world.add_child(building)
+	building.global_position = Vector2(-40000, -40000)
+	character.global_position = building.spawn_point.global_position
+	load_complete = false
+	if get_tree().paused: get_tree().paused = false
+	Signals.ToggleLoadingScreen.emit(false)
+
+func _unload_building(_building:RBuilding):
+	Signals.ToggleLoadingScreen.emit(true)
+	if !get_tree().paused: get_tree().paused = true
+	if building == _building:
+		character.global_position = world.get_spawn_by_name(building_entrance_spawn_point).global_position
+		building_entrance_spawn_point = ""
+		building.queue_free.call_deferred()
+		building = null
+	await get_tree().create_timer(loading_delay).timeout
+	if get_tree().paused: get_tree().paused = false
+	Signals.ToggleLoadingScreen.emit(false)
+	

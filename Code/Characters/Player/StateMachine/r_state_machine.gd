@@ -34,6 +34,11 @@ var can_flip:bool = false:
 		if current_state is RState:
 			return current_state.can_flip
 		return false
+var can_interact:bool = false:
+	get:
+		if current_state is RState:
+			return current_state.can_interact
+		return false
 
 var current_state:RState = NOTHING:
 	get:

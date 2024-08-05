@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ceojig7lsy1xq"]
+
+[ext_resource type="Script" path="res://Code/Actions/Player/interact.gd" id="1_l1bjg"]
+[ext_resource type="Script" path="res://Code/Utilities/r_area2d.gd" id="2_vqjum"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5uqnm"]
+radius = 11.0
+
+[node name="interact" type="Node2D"]
+script = ExtResource("1_l1bjg")
+
+[node name="interact_area" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 2
+collision_mask = 32
+script = ExtResource("2_vqjum")
+
+[node name="interact_collider" type="CollisionShape2D" parent="interact_area"]
+position = Vector2(-1, -15)
+shape = SubResource("CapsuleShape2D_5uqnm")

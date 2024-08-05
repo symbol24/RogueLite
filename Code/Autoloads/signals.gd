@@ -8,6 +8,8 @@ signal ClassReady(_name)
 
 #GameManger
 signal LoadNewWorld(id)
+signal LoadBuilding(path, entrance)
+signal ExitBuilding(building)
 signal CharacterSet(data)
 signal WorldSet(world)
 signal TogglePause(value)
