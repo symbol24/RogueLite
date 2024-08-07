@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DamageNumberData" load_steps=4 format=3 uid="uid://csebgyq5g3tj8"]
+
+[ext_resource type="Theme" uid="uid://up53p7bafhqa" path="res://Data/UI/Themes/physical_critical.tres" id="1_bsvck"]
+[ext_resource type="Script" path="res://Code/UI/dmg_nmd_data.gd" id="1_h0ptq"]
+[ext_resource type="Theme" uid="uid://b62gncbwt0bb5" path="res://Data/UI/Themes/physical_normal.tres" id="2_cfcyx"]
+
+[resource]
+script = ExtResource("1_h0ptq")
+normal_theme = ExtResource("2_cfcyx")
+critical_theme = ExtResource("1_bsvck")
+normal_vertical = 10.0
+critical_vertical = 20.0
+normal_delay = 1.0
+critical_delay = 2.0

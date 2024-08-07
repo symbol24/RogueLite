@@ -16,12 +16,7 @@ const JUMP_TIME_TO_PEAK := 0.6
 const JUMP_TIME_TO_DESCENT := 0.4
 const MAX_FALL_VELOCITY := 600.0
 
-var playing := true:
-	set(_value):
-		playing = _value
-		if world and world is RPlayWorld:
-			Signals.TogglePauseMenu.emit(!playing)
-
+var playing := true
 var character:RCharacter
 var camera:Camera2D = null
 
@@ -62,8 +57,10 @@ func _ready():
 	Signals.WorldSet.connect(_spawn_main_character)
 	Signals.UIReady.connect(_ui_ready)
 	Signals.TogglePause.connect(_toggle_pause)
+	Signals.ToggleEndRun.connect(_toggle_end_run)
 	Signals.LoadBuilding.connect(_load_building)
 	Signals.ExitBuilding.connect(_unload_building)
+	Signals.DebugEndRun.connect(_toggle_end_run)
 
 func _process(_delta):
 	if is_loading:
@@ -88,7 +85,6 @@ func _process(_delta):
 			_display_game()
 
 func _display_game():
-	#SASignals.ToggleLoading.emit(false)
 	_toggle_pause(false)
 
 func _complete_load():
@@ -99,11 +95,21 @@ func _complete_load():
 		world = null
 	if get_tree().paused: get_tree().paused = false
 	get_tree().change_scene_to_packed(new_world)
+	Debug.log("Scene set to: ", new_world)
 	load_complete = false
 
 func _toggle_pause(_value := false):
 	playing = !_value
+	if world and world is RPlayWorld:
+			Signals.TogglePauseMenu.emit(!playing)
 	get_tree().set_pause(_value)
+
+func _toggle_end_run(_value := false):
+	if world and world is RDungeon:
+		playing = !_value
+		Signals.UpdateInputFocus.emit(RInput.FOCUS.UIFOCUS)
+		Signals.ToggleEndRunMenu.emit(!playing)
+		get_tree().set_pause(_value)
 
 func is_playing() -> bool:
 	return playing
@@ -156,6 +162,7 @@ func _load_new_world(_id:=""):
 	if !get_tree().paused: get_tree().paused = true
 	loading = _get_world(_id)
 	if loading:
+		Debug.log("Loading: ", loading)
 		ResourceLoader.load_threaded_request(loading)
 		is_loading = true
 

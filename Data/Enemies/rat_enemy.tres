@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="REnemeyData" load_steps=2 format=3 uid="uid://bkcvd884oic06"]
+
+[ext_resource type="Script" path="res://Code/Enemies/r_enemy_data.gd" id="1_paism"]
+
+[resource]
+script = ExtResource("1_paism")
+attack_distance = 1000.0
+id = "rat_enemy"
+speed = 100.0
+jump_height = 100.0
+jump_count = 1
+acceleration = 700
+friction = 1100
+air_multiplier = 0.6
+base_hp = 20.0
+starting_life_count = 1
+physical = 0.0
+magic = 0.0
+base_armor = 0.0
+magic_resist = 0.0

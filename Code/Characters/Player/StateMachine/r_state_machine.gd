@@ -70,3 +70,6 @@ func _get_state(_id := "") -> RState:
 				return state
 	#print("state NOT found")
 	return NOTHING
+
+func is_state(_value := "") -> bool:
+	return current_state.id == _value

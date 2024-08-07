@@ -7,3 +7,5 @@ script = ExtResource("1_fj7u7")
 id = "sword_attack_02"
 base_value = 5.0
 types = Array[int]([0])
+crit_chance = 0.05
+crit_damage = 0.25

@@ -4,6 +4,7 @@ extends RMenuWorld
 @onready var dungeon:Button = %dungeon
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	town.pressed.connect(_town)
 	dungeon.pressed.connect(_dungeon)
 	Signals.UIReady.emit()

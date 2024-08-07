@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://up53p7bafhqa"]
+
+[ext_resource type="FontFile" uid="uid://cwgexrmk5lpqw" path="res://Data/Fonts/MinimalPixel v2.ttf" id="1_m3pkk"]
+
+[resource]
+RichTextLabel/colors/default_color = Color(1, 0.782934, 0.401216, 1)
+RichTextLabel/colors/font_outline_color = Color(0.111197, 0.111197, 0.111197, 1)
+RichTextLabel/constants/outline_size = 1
+RichTextLabel/font_sizes/normal_font_size = 9
+RichTextLabel/fonts/normal_font = ExtResource("1_m3pkk")

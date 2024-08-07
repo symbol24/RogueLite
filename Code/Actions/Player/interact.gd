@@ -12,7 +12,7 @@ func _ready():
 	interact_area.area_exited.connect(_area_exited)
 
 func _process(_delta):
-	if GM.is_playing():
+	if action_available:
 		if can_action and interactable and RInput.interact:
 			can_action = false
 			_interact()

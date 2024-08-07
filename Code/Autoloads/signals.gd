@@ -13,6 +13,7 @@ signal ExitBuilding(building)
 signal CharacterSet(data)
 signal WorldSet(world)
 signal TogglePause(value)
+signal ToggleEndRun(value)
 
 #Worlds
 signal WorldReady(world)
@@ -24,11 +25,13 @@ signal HPUpdated(character, difference)
 signal MaxHPUpdated(character, new_max_hp)
 signal CharacterDead(character)
 signal CharacterNoMoreLive(character)
+signal AttackReceived(target, damages)
+signal ToggleHitCollider(_owner, disabled)
 
 #Actions
 signal StartAttack(character, attack_name)
 signal AttackEnded(character, attack_name)
-signal ToggleAttackCollier(attack_name, is_enabled)
+signal ToggleAttackCollider(attack_name, is_enabled)
 
 #main characters state machine
 signal StateUpdated(character, state)
@@ -40,8 +43,11 @@ signal ToggleDungeonUI(value)
 signal ToggleTownUI(value)
 signal ToggleLoadingScreen(value)
 signal UIReady()
-signal HPBarSetupDone()
+signal UiElementReady()
 signal TogglePauseMenu(value)
+signal ToggleEndRunMenu(value)
+signal DmgNmbRepool(dmgnumber)
+signal DisplayDmgNumber(value, damage_type, is_critical, marker2D)
 
 #Debug
 signal DebugPrint(text)
@@ -50,3 +56,4 @@ signal DebugWarning(text)
 signal DebugToggleGodMode()
 signal DebugCharacterHit(damage)
 signal DebugAddMaxHP(value)
+signal DebugEndRun(value)

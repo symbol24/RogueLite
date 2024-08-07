@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b62gncbwt0bb5"]
+
+[ext_resource type="FontFile" uid="uid://cwgexrmk5lpqw" path="res://Data/Fonts/MinimalPixel v2.ttf" id="1_f7x52"]
+
+[resource]
+RichTextLabel/colors/default_color = Color(0.604741, 0.0945607, 2.40654e-07, 1)
+RichTextLabel/colors/font_outline_color = Color(0.111197, 0.111197, 0.111197, 1)
+RichTextLabel/constants/outline_size = 1
+RichTextLabel/font_sizes/normal_font_size = 5
+RichTextLabel/fonts/normal_font = ExtResource("1_f7x52")

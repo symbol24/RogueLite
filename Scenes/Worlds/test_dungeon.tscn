@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dcpmjvo8g7c0l"]
+[gd_scene load_steps=6 format=3 uid="uid://dcpmjvo8g7c0l"]
 
 [ext_resource type="Script" path="res://Code/Worlds/r_dungeon.gd" id="1_37ys7"]
 [ext_resource type="TileSet" uid="uid://dyqi5tmh73t0p" path="res://Data/Tilesets/dungeon_01.tres" id="2_mae08"]
+[ext_resource type="PackedScene" uid="uid://dvodbfubytheh" path="res://Scenes/Enemies/rat_enemy.tscn" id="4_e2syr"]
 [ext_resource type="PackedScene" uid="uid://lbgkvfv4ujdn" path="res://Scenes/UI/button_icons/spawn_point.tscn" id="4_t4nve"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aq0sr"]
@@ -26,3 +27,6 @@ layer_0/tile_data = PackedInt32Array(720917, 131072, 2, 655381, 131072, 2, 58984
 [node name="spawn_point" parent="." instance=ExtResource("4_t4nve")]
 position = Vector2(129, 140)
 start = true
+
+[node name="RatEnemy" parent="." instance=ExtResource("4_e2syr")]
+position = Vector2(215, 144)

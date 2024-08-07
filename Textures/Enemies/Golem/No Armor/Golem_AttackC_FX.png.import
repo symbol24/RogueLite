@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2vup6lumyi5o"
-path="res://.godot/imported/mannequin_spritesheet.png-e800f45ecb5e9a80b47ffc726143bef9.ctex"
+uid="uid://breyfd371gqu"
+path="res://.godot/imported/Golem_AttackC_FX.png-69f7c9989e0365316c4e78d7ce0f1e39.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Data/UI/Themes/mannequin_spritesheet.png"
-dest_files=["res://.godot/imported/mannequin_spritesheet.png-e800f45ecb5e9a80b47ffc726143bef9.ctex"]
+source_file="res://Textures/Enemies/Golem/No Armor/Golem_AttackC_FX.png"
+dest_files=["res://.godot/imported/Golem_AttackC_FX.png-69f7c9989e0365316c4e78d7ce0f1e39.ctex"]
 
 [params]
 

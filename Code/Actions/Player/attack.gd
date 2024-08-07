@@ -37,7 +37,7 @@ func _ready():
 	attacks.sort_custom(func(a, b): return a.id.naturalnocasecmp_to(b.id) < 0)
 
 func _process(_delta):
-	if r_owner.data is MainCharacterData and r_owner.data:
+	if action_available:
 		if GM.is_playing() and r_owner.grounded:
 			if RInput.attack and can_action:
 				combo_index = _combo_attack(combo_index, attacks)

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cm023u3c1vjio"]
+
+[ext_resource type="Script" path="res://Code/Enemies/r_enemy.gd" id="1_haqcm"]
+[ext_resource type="Script" path="res://Code/Utilities/s_animator.gd" id="2_4jhr5"]
+
+[node name="REnemy" type="CharacterBody2D"]
+script = ExtResource("1_haqcm")
+
+[node name="sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+
+[node name="move_collider" type="CollisionShape2D" parent="."]
+
+[node name="animator" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("../move_collider")
+script = ExtResource("2_4jhr5")

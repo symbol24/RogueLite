@@ -1,7 +1,7 @@
 class_name Move extends RAction
 
 func _physics_process(_delta):
-	if r_owner.data is MainCharacterData and r_owner.data:
+	if action_available:
 		r_owner.update_velocity(move(RInput.move_left_right, r_owner.velocity.x, _delta))
 		r_owner.update_direction(RInput.move_left_right)
 

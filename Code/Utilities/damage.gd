@@ -6,32 +6,47 @@ enum TYPE {PHYSICAL, MAGICAL}
 @export var base_value:float = 0
 @export var types:Array[TYPE] = [TYPE.PHYSICAL]
 
+@export var crit_chance := 0.0
+@export var crit_damage := 0.0
+
+var final_damage := 0.0
+var is_critical := false
+var critical_damage_multiplier := 0.0
+
 var damage_owner:RCharacter:
 	get:
 		if damage_owner == null:
 			Debug.error(id, " damage data is missing damage owner")
 		return damage_owner
 	set(_value):
-		if _value:
-			damage_owner = _value
-			if damage_owner.data is MainCharacterData:
-				crit_chance += damage_owner.data.crit_chance
-				crit_damage += damage_owner.data.crit_dmg
-		else:
-			Debug.error("Attempting to assign a null value to damage owner of damage data of ", id)
-var crit_chance := 0.0
-var crit_damage := 0.0:
-	get:
-		var to_add := 0.0
-		if crit_chance > 1.0:
-			var over = crit_chance - 1.0
-			to_add += over*0.3
-		if is_critical:
-			return 1.0 + crit_damage + to_add
-		return 1.0
-var is_critical := false:
-	get:
-		var check:float = GM.rng.randf_range(0,1)
-		if check <= crit_chance:
-			return true
-		return false
+		if _value: damage_owner = _value
+		else: Debug.error("Attempting to assign a null value to damage owner of damage data of ", id)
+
+func get_damage() -> Damage:
+	var _result = _check_crit()
+	final_damage = base_value * (1+critical_damage_multiplier)
+	return self
+
+func _check_crit() -> Dictionary:
+	var to_return := {}
+	var _is_crit := false
+	var _crit_dmg := 0.0
+	if damage_owner and damage_owner.data is MainCharacterData:
+		var cc = crit_chance + damage_owner.data.crit_chance
+		var cd = crit_damage + damage_owner.data.crit_dmg
+		
+		var check = GM.rng.randf_range(0,1)
+		var over := 0.0
+		if cc > 1.0:
+			over = (cc - 1.0) * 0.3
+		if check <= cc:
+			_is_crit = true
+			_crit_dmg = cd + over
+	
+	to_return = {"is_crit":_is_crit,
+				"crit_dmg_mult":_crit_dmg}
+	
+	is_critical = _is_crit
+	critical_damage_multiplier = _crit_dmg
+	
+	return to_return

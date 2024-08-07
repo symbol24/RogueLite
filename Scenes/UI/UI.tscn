@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bpdxgddiw4vup"]
+[gd_scene load_steps=22 format=3 uid="uid://bpdxgddiw4vup"]
 
 [ext_resource type="Script" path="res://Code/UI/r_ui.gd" id="1_csoys"]
 [ext_resource type="Script" path="res://Code/UI/r_debug_ui.gd" id="2_hu0gv"]
@@ -7,13 +7,16 @@
 [ext_resource type="Texture2D" uid="uid://dxd233ierpbfa" path="res://Textures/UI/UI - Borders and HP/border_simple.png" id="5_nb5nh"]
 [ext_resource type="Script" path="res://Code/UI/dungeon_ui.gd" id="5_oik8b"]
 [ext_resource type="Texture2D" uid="uid://bj7yb5ltbkkyi" path="res://Textures/UI/UI - Borders and HP/health_bar_fill.png" id="6_hmtm1"]
-[ext_resource type="Script" path="res://Code/UI/hp_bar.gd" id="7_silkt"]
+[ext_resource type="Script" path="res://Code/UI/hp_container.gd" id="7_sfjgi"]
 [ext_resource type="Theme" uid="uid://cx5h5wxtfunq8" path="res://Data/UI/Themes/main_theme.tres" id="8_6pc2o"]
 [ext_resource type="Texture2D" uid="uid://c5swat33ox754" path="res://Textures/UI/clock_back.png" id="9_20jep"]
+[ext_resource type="Script" path="res://Code/UI/r_damage_numbers.gd" id="10_4tf1v"]
 [ext_resource type="Texture2D" uid="uid://di166dp145wpf" path="res://Textures/UI/clock_hand.png" id="10_e0ish"]
 [ext_resource type="Script" path="res://Code/UI/town_ui.gd" id="10_jrapj"]
 [ext_resource type="Texture2D" uid="uid://dwgwplmnb857q" path="res://Textures/UI/boot_back.png" id="11_lle2d"]
+[ext_resource type="Script" path="res://Code/UI/r_control.gd" id="11_pmhgx"]
 [ext_resource type="Script" path="res://Code/UI/loading_screen.gd" id="11_tx6y7"]
+[ext_resource type="Script" path="res://Code/UI/end_run_screen.gd" id="11_xhcd5"]
 [ext_resource type="Script" path="res://Code/UI/RichTextEffects/rte_matrix.gd" id="13_0bd1q"]
 [ext_resource type="Script" path="res://Code/UI/pause_menu.gd" id="16_6u7vm"]
 [ext_resource type="Script" path="res://Code/UI/r_rich_text_label.gd" id="17_gfsa0"]
@@ -22,6 +25,7 @@
 script = ExtResource("13_0bd1q")
 
 [node name="Ui" type="CanvasLayer"]
+layer = 100
 script = ExtResource("1_csoys")
 
 [node name="Debug" type="Control" parent="."]
@@ -77,15 +81,24 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("5_oik8b")
 
+[node name="DamageNumbers" type="Control" parent="DungeonUI"]
+custom_minimum_size = Vector2(320, 176)
+anchors_preset = 0
+offset_right = 320.0
+offset_bottom = 176.0
+script = ExtResource("10_4tf1v")
+
 [node name="hp_container" type="Control" parent="DungeonUI"]
 custom_minimum_size = Vector2(320, 176)
 layout_mode = 2
 anchors_preset = 0
 offset_right = 70.0
 offset_bottom = 16.0
+script = ExtResource("7_sfjgi")
 metadata/_edit_lock_ = true
 
 [node name="hp_bar" type="TextureProgressBar" parent="DungeonUI/hp_container"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(45, 10)
 layout_mode = 2
 offset_left = 10.0
@@ -101,7 +114,6 @@ stretch_margin_right = 2
 stretch_margin_bottom = 2
 texture_over = ExtResource("5_nb5nh")
 texture_progress = ExtResource("6_hmtm1")
-script = ExtResource("7_silkt")
 metadata/_edit_lock_ = true
 
 [node name="hp_label" type="Label" parent="DungeonUI/hp_container/hp_bar"]
@@ -115,6 +127,58 @@ theme = ExtResource("8_6pc2o")
 text = "100/100"
 horizontal_alignment = 1
 metadata/_edit_lock_ = true
+
+[node name="EndRunScreen" type="Control" parent="DungeonUI"]
+visible = false
+custom_minimum_size = Vector2(320, 178)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("11_xhcd5")
+
+[node name="background" type="Sprite2D" parent="DungeonUI/EndRunScreen"]
+texture = ExtResource("11_lle2d")
+centered = false
+
+[node name="hb_alligner" type="HBoxContainer" parent="DungeonUI/EndRunScreen"]
+custom_minimum_size = Vector2(320, 176)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+
+[node name="spacer" type="Control" parent="DungeonUI/EndRunScreen/hb_alligner"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+script = ExtResource("11_pmhgx")
+
+[node name="vb_alligner" type="VBoxContainer" parent="DungeonUI/EndRunScreen/hb_alligner"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="spacer" type="Control" parent="DungeonUI/EndRunScreen/hb_alligner/vb_alligner"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+script = ExtResource("11_pmhgx")
+
+[node name="end_run_title" type="RichTextLabel" parent="DungeonUI/EndRunScreen/hb_alligner/vb_alligner"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("8_6pc2o")
+bbcode_enabled = true
+text = "[center][b]End Run[b]"
+script = ExtResource("17_gfsa0")
+
+[node name="spacer3" type="Control" parent="DungeonUI/EndRunScreen/hb_alligner/vb_alligner"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+script = ExtResource("11_pmhgx")
+
+[node name="spacer2" type="Control" parent="DungeonUI/EndRunScreen/hb_alligner"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+script = ExtResource("11_pmhgx")
 
 [node name="TownUi" type="Control" parent="." groups=["town_ui"]]
 visible = false

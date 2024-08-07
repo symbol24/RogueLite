@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c7soajgfualrj"]
+[gd_scene load_steps=24 format=3 uid="uid://c7soajgfualrj"]
 
 [ext_resource type="Script" path="res://Code/Characters/Player/dungeon_character.gd" id="1_wi8wb"]
 [ext_resource type="Resource" uid="uid://f30cv8yiindy" path="res://Data/Characters/Player/Main/main.tres" id="2_parfh"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cb3ysor5w21bn" path="res://Scenes/Characters/Player/StateMachine/dungeon_state_machine.tscn" id="7_rcci8"]
 [ext_resource type="Script" path="res://Code/Utilities/s_animator.gd" id="8_sfv5o"]
 [ext_resource type="PackedScene" uid="uid://oq3kbnwvxu2x" path="res://Scenes/Utilities/camera_remote.tscn" id="9_ch5b1"]
+[ext_resource type="PackedScene" uid="uid://orhusxvvcr5f" path="res://Scenes/Utilities/hit_detetction.tscn" id="9_oxksk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lv2t5"]
 radius = 5.0
@@ -259,6 +260,10 @@ _data = {
 "walk": SubResource("Animation_kjmg8")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t4ft4"]
+radius = 7.0
+height = 28.0
+
 [node name="CharacterDungeon" type="CharacterBody2D"]
 z_index = 100
 collision_layer = 2
@@ -273,11 +278,13 @@ hframes = 10
 vframes = 11
 
 [node name="move_collider" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
 visible = false
 position = Vector2(0, -14)
 shape = SubResource("CapsuleShape2D_lv2t5")
 
 [node name="Attack" parent="." instance=ExtResource("4_r63py")]
+visible = false
 
 [node name="Jump" parent="." instance=ExtResource("5_e6krj")]
 
@@ -294,5 +301,19 @@ libraries = {
 }
 script = ExtResource("8_sfv5o")
 
+[node name="hit_detetction" parent="." instance=ExtResource("9_oxksk")]
+collision_layer = 2
+collision_mask = 16
+
+[node name="hit_collider" parent="hit_detetction" index="0"]
+position = Vector2(0, -14)
+shape = SubResource("CapsuleShape2D_t4ft4")
+
 [node name="camera_remote" parent="." instance=ExtResource("9_ch5b1")]
 unique_name_in_owner = true
+
+[node name="dmg_numbers" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -32)
+
+[editable path="hit_detetction"]

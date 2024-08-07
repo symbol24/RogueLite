@@ -83,6 +83,7 @@ hframes = 10
 vframes = 11
 
 [node name="move_collider" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
 visible = false
 position = Vector2(0, -14)
 shape = SubResource("CapsuleShape2D_sea4f")

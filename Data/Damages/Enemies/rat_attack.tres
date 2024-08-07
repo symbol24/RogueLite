@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Damage" load_steps=2 format=3 uid="uid://bb15pewgpc2tp"]
+
+[ext_resource type="Script" path="res://Code/Utilities/damage.gd" id="1_mp0iu"]
+
+[resource]
+script = ExtResource("1_mp0iu")
+id = "rat_attack"
+base_value = 5.0
+types = Array[int]([0])
+crit_chance = 0.0
+crit_damage = 0.0

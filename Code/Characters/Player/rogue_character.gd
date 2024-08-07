@@ -1,10 +1,10 @@
 class_name RCharacter extends CharacterBody2D
 
-@export var character_data:MainCharacterData
+@export var character_data:RCharacterData
 
 @onready var sprite:Sprite2D = %sprite
-@onready var state_machine:RStateMachine = %state_machine
 @onready var animator:AnimationPlayer = %animator
+@onready var move_collider:CollisionShape2D = %move_collider
 
 #Debug
 var godmode := false
@@ -23,29 +23,19 @@ var grounded := true:
 		if pre_value != grounded: Signals.CharacterGrounded.emit(self)
 
 func _ready():
-	Signals.DebugToggleGodMode.connect(_toggle_god_mode)
-	Signals.DebugCharacterHit.connect(_debug_character_hit)
-	Signals.DebugAddMaxHP.connect(_debug_update_max_hp)
-	Signals.StateUpdated.connect(_update_animation_from_state)
-	Signals.UpdateCharacterState.emit(self, "idle")
 	data = character_data.duplicate()
 	data.setup_data()
-	for child in get_children(true):
-		if child.is_in_group("flip"):
-			items_to_flip.append(child)
 	if animator.is_node_ready():
+		items_to_flip = _get_flip(self)
 		Signals.CharacterReady.emit(self)
 
-func _physics_process(_delta):
-	if GM.is_playing():
-		grounded = is_on_floor_only()
-		if !grounded: _apply_gravity(_delta)
-		
-		if _get_can_move():
-			move_and_slide()
-		
-		if state_machine.can_flip:
-			_flip_items(items_to_flip, direction, sprite)
+func _get_flip(_child) -> Array:
+	var to_return := []
+	if _child.get_children().size() > 0:
+		for child in _child.get_children():
+			if child.is_in_group("flip"): to_return.append(child)
+			to_return.append_array(_get_flip(child))
+	return to_return
 
 func update_velocity(_value:float):
 	velocity.x = _value
@@ -77,8 +67,6 @@ func get_fall_gravity() -> float:
 	return maxf(((2.0 * height) / (GM.JUMP_TIME_TO_DESCENT * GM.JUMP_TIME_TO_DESCENT)), GM.MAX_FALL_VELOCITY)
 
 func _get_can_move() -> bool:
-	if state_machine:
-		return state_machine.can_move
 	return false
 
 func _update_animation_from_state(_character:RCharacter, _state:RState):
@@ -104,16 +92,8 @@ func _flip_items(_items := [], _x_vel := 0.0, _sprite:Sprite2D = null):
 func _emit_signal(_id := "", _opt1 := "", _opt2 := ""):
 	pass
 
-func _character_hit(_dmgs:Array[Damage] = []):
+func _character_hit(_owner:RCharacter = null, _dmgs:Array[Damage] = []):
 	pass
 
 func _toggle_god_mode():
 	godmode = !godmode
-
-func _debug_character_hit(_dmg:Damage):
-	if self == GM.character and _dmg:
-		_character_hit([_dmg])
-
-func _debug_update_max_hp(_value := 0.0):
-	if self == GM.character :
-		data.max_hp += _value

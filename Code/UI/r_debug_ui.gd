@@ -5,8 +5,10 @@ class_name DebugUI extends RControl
 
 var active := false
 var lines:Array[String] = []
+var prev_focus := RInput.FOCUS.GAMEPLAY
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	active = GM.is_debug
 	input_line.text_submitted.connect(_parse_test)
 	Signals.DebugPrint.connect(_debug_print)
@@ -19,12 +21,15 @@ func _process(_delta):
 			_toggle_display()
 
 func _toggle_display():
-	if !visible:
+	if !is_visible():
+		prev_focus = RInput.focus
 		Signals.UpdateInputFocus.emit(RInput.FOCUS.DEBUG)
 		input_line.text = ""
 		input_line.grab_focus()
 		show()
-	else: hide()
+	else: 
+		Signals.UpdateInputFocus.emit(prev_focus)
+		hide()
 
 func _parse_test(_value:= ""):
 	if _value:

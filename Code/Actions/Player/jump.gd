@@ -11,7 +11,7 @@ func _ready():
 	Signals.CharacterGrounded.connect(_set_landed)
 
 func _physics_process(_delta):
-	if r_owner.data is MainCharacterData and r_owner.data:
+	if action_available:
 		if max_jump_count == 0 and r_owner.data:
 			max_jump_count = r_owner.data.jump_count
 			jump_count = r_owner.data.jump_count
