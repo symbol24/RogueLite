@@ -19,12 +19,19 @@ const MAX_FALL_VELOCITY := 600.0
 var playing := true
 var character:RCharacter
 var camera:Camera2D = null
+var dungeon_run_ended := false
+
 
 #Loading
+var last_load_id := ""
+var loaded_worlds:Array[Dictionary] = []
 var world:RWorld:
 	set(_value):
-		world = _value
-		Debug.log("World is ", world.name)
+		if _value:
+			world = _value
+			Debug.log("World is ", world.name)
+		else:
+			Debug.error("Attempting to assign a null to world in GM.")
 	
 var building:RBuilding
 var building_entrance_spawn_point:String
@@ -48,11 +55,40 @@ var rng_seed := "Symbol24"
 var rng_hash = rng_seed.hash()
 var rng = RandomNumberGenerator.new()
 
+# LOADING PLAYING WORLD LOGIC
+# 1 - receiving loading signal (LoadNewWorld)
+# 2 - display loading screen: ToggleLoadingScreen
+# 3 - load world (_load_new_world)
+# 4 - load complete (_complete_load)
+# 5 - world ready signal received, set into world variable (WorldReady)
+# 6 - Character loades from world set signal (WorldSet)
+# 7 - Character ready signal sets character in variable (CharacterReady signal, character var)
+# 8 - UI ready signal spawns Camera
+# 9 - UI ready signal triggers removes loading UI and allows start of gameplay (UIReady)
+
+# LOADING BUILDING LOGIC
+# 1 - receiving loading signal (LoadBuilding)
+# 2 - display loading screen: ToggleLoadingScreen
+# 3 - load building (_load_building)
+# 4 - load complete (_complete_load_building)
+# 5 - add new building as child of world
+# 6 - Move character to building interior
+# 7 - display game
+
+# UNLOADING (exiting) BUILDING LOGIC
+# 1 - receiving unloading signal (ExitBuilding)
+# 2 - display loading screen: ToggleLoadingScreen
+# 3 - Move character to world at building exterior door
+# 4 - Delete building
+# 5 - display game
+
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	rng.set_seed(rng_hash)
 	Signals.LoadNewWorld.connect(_load_new_world)
 	Signals.CharacterReady.connect(_set_character)
+	Signals.CharacterNoMoreLives.connect(_end_run)
+	Signals.EndRunCheck.connect(_end_run_check)
 	Signals.WorldReady.connect(_set_world)
 	Signals.WorldSet.connect(_spawn_main_character)
 	Signals.UIReady.connect(_ui_ready)
@@ -65,6 +101,7 @@ func _ready():
 func _process(_delta):
 	if is_loading:
 		loading_status = ResourceLoader.load_threaded_get_status(loading, progress)
+		Debug.log("loading: ", progress[0]*100, "%")
 		if loading_status == ResourceLoader.THREAD_LOAD_LOADED:
 			if !load_complete:
 				load_complete = true
@@ -73,43 +110,23 @@ func _process(_delta):
 	if is_loading_building:
 		loading_status = ResourceLoader.load_threaded_get_status(loading_building, progress)
 		if loading_status == ResourceLoader.THREAD_LOAD_LOADED:
+			Debug.log("loading_status ", loading_status)
 			if !load_complete:
 				load_complete = true
 				_complete_load_building()
-	
-	if extra_loading:
-		loading_timer += _delta
-		if loading_timer >= loading_delay:
-			extra_loading = false
-			loading_timer = 0.0
-			_display_game()
-
-func _display_game():
-	_toggle_pause(false)
-
-func _complete_load():
-	is_loading = false
-	var new_world = ResourceLoader.load_threaded_get(loading)
-	if world:
-		world.queue_free()
-		world = null
-	if get_tree().paused: get_tree().paused = false
-	get_tree().change_scene_to_packed(new_world)
-	Debug.log("Scene set to: ", new_world)
-	load_complete = false
 
 func _toggle_pause(_value := false):
 	playing = !_value
 	if world and world is RPlayWorld:
 			Signals.TogglePauseMenu.emit(!playing)
-	get_tree().set_pause(_value)
+	get_tree().set_deferred("paused", _value)
 
 func _toggle_end_run(_value := false):
 	if world and world is RDungeon:
 		playing = !_value
-		Signals.UpdateInputFocus.emit(RInput.FOCUS.UIFOCUS)
 		Signals.ToggleEndRunMenu.emit(!playing)
-		get_tree().set_pause(_value)
+		Signals.UpdateInputFocus.emit(RInput.FOCUS.UIFOCUS)
+		get_tree().set_deferred("paused", _value)
 
 func is_playing() -> bool:
 	return playing
@@ -122,6 +139,7 @@ func _set_character(_character:RCharacter):
 
 func _set_world(_world:RWorld):
 	if _world:
+		Debug.log("Receiving _world: ", _world)
 		world = _world
 		Signals.WorldSet.emit(world)
 	else: Debug.error("GameManager World received null")
@@ -148,6 +166,8 @@ func _spawn_camera():
 func _ui_ready():
 	_spawn_camera()
 	await get_tree().create_timer(loading_delay).timeout
+	if !playing: playing = true
+	get_tree().set_deferred("paused", false)
 	Signals.ToggleLoadingScreen.emit(false)
 
 func _get_world(_id := "") -> String:
@@ -159,16 +179,52 @@ func _get_world(_id := "") -> String:
 
 func _load_new_world(_id:=""):
 	Signals.ToggleLoadingScreen.emit(true)
-	if !get_tree().paused: get_tree().paused = true
-	loading = _get_world(_id)
-	if loading:
-		Debug.log("Loading: ", loading)
-		ResourceLoader.load_threaded_request(loading)
-		is_loading = true
+	if !get_tree().paused: get_tree().set_deferred("paused", true)
+	var loaded_world = _get_loaded_world(_id)
+	if loaded_world:
+		_complete_reload(loaded_world)
+	else:
+		loading = _get_world(_id)
+		if loading:
+			last_load_id = _id
+			Debug.log("Loading: ", loading)
+			ResourceLoader.load_threaded_request(loading)
+			is_loading = true
+		else: last_load_id = ""
+
+func _complete_reload(_world):
+	#if world:
+		#world.queue_free()
+		#world = null
+	get_tree().change_scene_to_packed(_world)
+	Debug.log("reloadind", _world)
+
+func _complete_load():
+	is_loading = false
+	var new_world = ResourceLoader.load_threaded_get(loading)
+	#if world:
+		#world.queue_free()
+		#world = null
+	#if get_tree().paused: get_tree().set_deferred("paused", false)
+	get_tree().change_scene_to_packed(new_world)
+	
+	var result = {"id":last_load_id,
+				"world":new_world}
+	loaded_worlds.append(result)
+	
+	if new_world is RDungeon: dungeon_run_ended = false
+	Debug.log("Scene set to: ", new_world)
+	load_complete = false
+
+func _get_loaded_world(_id:=""):
+	for _w in loaded_worlds:
+		if _w["id"] == _id:
+			return _w["world"]
+	return null
 
 func _load_building(_path := "", _entrance := ""):
 	Signals.ToggleLoadingScreen.emit(true)
-	if !get_tree().paused: get_tree().paused = true
+	if !get_tree().paused: get_tree().set_deferred("paused", true)
 	building_entrance_spawn_point = _entrance
 	loading_building = _path
 	if loading_building:
@@ -183,18 +239,29 @@ func _complete_load_building():
 	building.global_position = Vector2(-40000, -40000)
 	character.global_position = building.spawn_point.global_position
 	load_complete = false
-	if get_tree().paused: get_tree().paused = false
+	if get_tree().paused: get_tree().set_deferred("paused", false)
 	Signals.ToggleLoadingScreen.emit(false)
 
 func _unload_building(_building:RBuilding):
 	Signals.ToggleLoadingScreen.emit(true)
-	if !get_tree().paused: get_tree().paused = true
+	playing = false
+	if !get_tree().paused: get_tree().set_deferred("paused", true)
 	if building == _building:
 		character.global_position = world.get_spawn_by_name(building_entrance_spawn_point).global_position
 		building_entrance_spawn_point = ""
 		building.queue_free.call_deferred()
 		building = null
 	await get_tree().create_timer(loading_delay).timeout
-	if get_tree().paused: get_tree().paused = false
+	if get_tree().paused: get_tree().set_deferred("paused", false)
+	playing = true
 	Signals.ToggleLoadingScreen.emit(false)
 	
+func _end_run(_data):
+	if _data == character.data:
+		dungeon_run_ended = true
+
+func _end_run_check():
+	Debug.log("dungeon_run_ended ", dungeon_run_ended)
+	if dungeon_run_ended: 
+		await get_tree().create_timer(1).timeout
+		_toggle_end_run(true)

@@ -6,6 +6,8 @@ func _ready():
 	ui_ready = true
 	
 func _process(_delta):
-	if RInput.ui_cancel:
-		Debug.log("pressed cancel")
+	if is_visible() and RInput.ui_cancel:
+		#Debug.log("pressed cancel")
+		_toggle_ui(false)
 		Signals.LoadNewWorld.emit("test_town")
+ 

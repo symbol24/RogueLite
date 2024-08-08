@@ -33,6 +33,8 @@ func _emit_signal(_id := "", _opt1 := "", _opt2 := ""):
 		"attack_ended":
 			if _opt1:
 				Signals.AttackEnded.emit(self, _opt1)
+		"end_run_check":
+			Signals.EndRunCheck.emit()
 
 func _physics_process(_delta):
 	if GM.is_playing() and !state_machine.is_state("dead"):

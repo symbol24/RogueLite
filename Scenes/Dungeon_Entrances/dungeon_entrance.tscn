@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://b4ye3vuox7yp4"]
+
+[ext_resource type="TileSet" uid="uid://bmfcsylmh250x" path="res://Data/Tilesets/debug_grey_box.tres" id="1_450i3"]
+[ext_resource type="PackedScene" uid="uid://y5s1cku6nf86" path="res://Scenes/Dungeon_Entrances/entrance_interactable.tscn" id="2_0wfco"]
+[ext_resource type="Theme" uid="uid://8vretd3mjbye" path="res://Data/Debug/display_theme.tres" id="3_arndx"]
+[ext_resource type="Resource" uid="uid://cydjrvqxxly11" path="res://Data/Worlds/Dungeons/Entrance_Data/test_dungeon.tres" id="3_jvybf"]
+[ext_resource type="Script" path="res://Code/UI/r_rich_text_label.gd" id="4_gjoyk"]
+
+[node name="DungeonEntrance" type="Node2D"]
+
+[node name="tile_map" type="TileMap" parent="."]
+tile_set = ExtResource("1_450i3")
+format = 2
+layer_0/name = "back"
+layer_0/tile_data = PackedInt32Array(-65535, 0, 3, -131071, 0, 3, -196607, 0, 3, -262143, 0, 3, -65536, 0, 3, -131072, 0, 3, -196608, 0, 3, -262144, 0, 3, -1, 0, 3, -65537, 0, 3, -131073, 0, 3, -196609, 0, 3, -2, 0, 3, -65538, 0, 3, -131074, 0, 3, -196610, 0, 3, -262146, 131072, 9, -327681, 196608, 8, -262145, 196608, 9, -393216, 0, 8, -327680, 0, 9, -327679, 65536, 9)
+layer_1/name = "door"
+layer_1/tile_data = PackedInt32Array(-131073, 1114112, 9, -65537, 1114112, 10, -1, 1114112, 11, -196608, 1179648, 9, -131072, 1179648, 10, -65536, 1179648, 11)
+
+[node name="EntranceInteractable" parent="." instance=ExtResource("2_0wfco")]
+data = ExtResource("3_jvybf")
+
+[node name="debug_building_name" type="RichTextLabel" parent="."]
+offset_left = -90.0
+offset_top = -122.0
+offset_right = 90.0
+offset_bottom = -98.0
+theme = ExtResource("3_arndx")
+theme_override_colors/default_color = Color(0.670588, 0, 0.913725, 1)
+bbcode_enabled = true
+text = "[center][b]TEST DUNGEON[/b][/center]"
+scroll_active = false
+script = ExtResource("4_gjoyk")

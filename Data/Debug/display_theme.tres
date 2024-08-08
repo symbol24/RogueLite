@@ -4,5 +4,6 @@
 
 [resource]
 RichTextLabel/colors/default_color = Color(0.674815, 0.674815, 0.674815, 1)
+RichTextLabel/font_sizes/bold_font_size = 16
 RichTextLabel/font_sizes/normal_font_size = 5
 RichTextLabel/styles/normal = ExtResource("1_kwwac")

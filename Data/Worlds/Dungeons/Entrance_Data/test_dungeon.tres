@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EntranceInteractableData" load_steps=2 format=3 uid="uid://cydjrvqxxly11"]
+
+[ext_resource type="Script" path="res://Code/Buildings/entrance_interactable.gd" id="1_o3xnn"]
+
+[resource]
+script = ExtResource("1_o3xnn")
+destination = "test_dungeon"
+currency = 1
+cost = 0

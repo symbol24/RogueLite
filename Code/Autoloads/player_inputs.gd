@@ -11,7 +11,9 @@ var attack = 0
 var attack_released = 0
 var interact = 0
 var B = 0
+var B_released = 0
 var start = 0
+var start_released = 0
 var select = 0
 var LB = 0
 var RB = 0
@@ -27,9 +29,11 @@ var ui_right_stick_left_right = 0
 var ui_right_stick_up_down = 0
 var ui_confirm = 0
 var ui_cancel = 0
+var ui_cancel_released = 0
 var ui_x = 0
 var ui_y = 0
 var ui_start = 0
+var ui_start_released = 0
 var ui_select = 0
 var ui_tab_left = 0
 var ui_tab_right = 0
@@ -77,41 +81,45 @@ func _toggle_focus(_value := FOCUS.UIFOCUS):
 	if focus == FOCUS.UIFOCUS: Debug.log("In ui focus for inputs")
 
 func _listen_to_debug():
-	toggle_debug = Input.get_action_strength("debug")
+	toggle_debug = Input.is_action_just_pressed("debug")
 
 func _listen_to_gameplay_inputs():
 	move_left_right = Input.get_axis("left", "right")
 	move_up_down = Input.get_axis("up", "down")
 	aim_left_right = Input.get_axis("aim_left", "aim_right")
 	aim_up_down = Input.get_axis("aim_up", "aim_down")
-	jump = Input.get_action_strength("jump")
-	attack = Input.get_action_strength("attack")
+	jump = Input.is_action_just_pressed("jump")
+	attack = Input.is_action_just_pressed("attack")
 	attack_released = Input.is_action_just_released("attack")
-	interact = Input.get_action_strength("interact")
-	B = Input.get_action_strength("B")
-	start = Input.get_action_strength("start")
-	select = Input.get_action_strength("select")
-	LB = Input.get_action_strength("LB")
-	RB = Input.get_action_strength("RB")
+	interact = Input.is_action_just_pressed("interact")
+	B = Input.is_action_just_pressed("B")
+	B_released = Input.is_action_just_released("B")
+	start = Input.is_action_just_pressed("start")
+	start_released = Input.is_action_just_released("start")
+	select = Input.is_action_just_pressed("select")
+	LB = Input.is_action_just_pressed("LB")
+	RB = Input.is_action_just_pressed("RB")
 	LT = Input.get_action_strength("LT")
 	LT_released = Input.is_action_just_released("LT")
 	RT = Input.get_action_strength("RT")
-	LS = Input.get_action_strength("LS")
-	RS = Input.get_action_strength("RS")
+	LS = Input.is_action_just_pressed("LS")
+	RS = Input.is_action_just_pressed("RS")
 
 func _listen_to_ui_inputs():
 	ui_left_stick_left_right = Input.get_axis("ui_left", "ui_right")
 	ui_left_stick_up_down = Input.get_axis("ui_up", "ui_down")
 	ui_right_stick_left_right = Input.get_axis("ui_aim_left", "ui_aim_right")
 	ui_right_stick_up_down = Input.get_axis("ui_aim_up", "ui_aim_down")
-	ui_confirm = Input.get_action_strength("ui_accept")
-	ui_cancel = Input.get_action_strength("ui_cancel")
-	ui_start = Input.get_action_strength("ui_start")
-	ui_select = Input.get_action_strength("ui_select")
-	ui_tab_left = Input.get_action_strength("ui_tab_left")
-	ui_tab_right = Input.get_action_strength("ui_tab_right")
-	ui_y = Input.get_action_strength("ui_y")
-	ui_x = Input.get_action_strength("ui_x")
+	ui_confirm = Input.is_action_just_pressed("ui_accept")
+	ui_cancel = Input.is_action_just_pressed("ui_cancel")
+	ui_cancel_released = Input.is_action_just_released("ui_cancel")
+	ui_start = Input.is_action_just_pressed("ui_start")
+	ui_start_released = Input.is_action_just_released("ui_start")
+	ui_select = Input.is_action_just_pressed("ui_select")
+	ui_tab_left = Input.is_action_just_pressed("ui_tab_left")
+	ui_tab_right = Input.is_action_just_pressed("ui_tab_right")
+	ui_y = Input.is_action_just_pressed("ui_y")
+	ui_x = Input.is_action_just_pressed("ui_x")
 
 func _reset_values():
 	move_left_right = 0
@@ -123,7 +131,9 @@ func _reset_values():
 	attack_released = 0
 	interact = 0
 	B = 0
+	B_released = 0
 	start = 0
+	start_released = 0
 	select = 0
 	LB = 0
 	RB = 0
@@ -139,9 +149,11 @@ func _reset_values():
 	ui_right_stick_up_down = 0
 	ui_confirm = 0
 	ui_cancel = 0
+	ui_cancel_released = 0
 	ui_x = 0
 	ui_y = 0
 	ui_start = 0
+	ui_start_released = 0
 	ui_select = 0
 	
 	toggle_debug = 0

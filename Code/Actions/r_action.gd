@@ -6,5 +6,15 @@ var action_available:bool:
 	get:
 		return GM.is_playing() and r_owner and !r_owner.state_machine.is_state("dead") and r_owner.data is RCharacterData and r_owner.data
 
+var input_timer := 0.0
+var input_delay := 0.3
+
 func _ready():
 	r_owner = get_parent() as RCharacter
+
+func _process(_delta):
+	if GM.is_playing() and !can_action:
+		input_timer += _delta
+		if input_timer >= input_delay:
+			input_timer = 0.0
+			can_action = true

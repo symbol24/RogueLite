@@ -15,15 +15,15 @@ func _physics_process(_delta):
 		if max_jump_count == 0 and r_owner.data:
 			max_jump_count = r_owner.data.jump_count
 			jump_count = r_owner.data.jump_count
-		if r_owner.data and GM.is_playing():
-			if RInput.jump:
-				jump()
+		if RInput.jump:
+			jump()
 			
-			_check_falling(r_owner.velocity.y)
-			_coyote_time(_delta)
+		_check_falling(r_owner.velocity.y)
+		_coyote_time(_delta)
 
 func jump():
 	if jump_count > 0:
+		#Debug.log("Jump count: ", jump_count)
 		landed = false
 		jump_count -= 1
 		r_owner.velocity.y = r_owner.get_jump_velocity()
@@ -39,6 +39,7 @@ func _set_landed(_character:RCharacter):
 		if r_owner.data is MainCharacterData and r_owner.data: jump_count = r_owner.data.jump_count
 		else: jump_count = 1
 		coyote_timer = 0.0
+		can_action = true
 
 func _check_falling(_y := 0.0):
 	if !landed and _y > 50.0:

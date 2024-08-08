@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://b6r7h1hpm11t8" path="res://Scenes/UI/button_icons/button_icon.tscn" id="2_l3fmh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cjg1p"]
-radius = 8.0
-height = 32.0
+radius = 13.0
+height = 46.0
 
 [node name="BuildingExit" type="Area2D"]
 collision_layer = 32
@@ -13,10 +13,10 @@ collision_mask = 2
 script = ExtResource("1_aqvc0")
 
 [node name="interact_collider" type="CollisionShape2D" parent="."]
-position = Vector2(0, -16)
+position = Vector2(0, -23)
 shape = SubResource("CapsuleShape2D_cjg1p")
 
 [node name="button_icon" parent="." instance=ExtResource("2_l3fmh")]
 unique_name_in_owner = true
 visible = false
-position = Vector2(0, -40)
+position = Vector2(0, -49)

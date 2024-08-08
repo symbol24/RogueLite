@@ -1,0 +1,739 @@
+[gd_resource type="TileSet" load_steps=71 format=3 uid="uid://bmfcsylmh250x"]
+
+[ext_resource type="Texture2D" uid="uid://bu2pjqlpfsp3f" path="res://Textures/Tilesets/Debug/debug_Tiles_grey_box.png" id="1_dmrp2"]
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_xrfcf"]
+tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 1, 131072, 0, 2, 196608, 0, 3, 1, 65536, 0, 65537, 65536, 1, 131073, 65536, 2, 196609, 65536, 3, 2, 131072, 0, 65538, 131072, 1, 131074, 131072, 2, 196610, 131072, 3, 3, 196608, 0, 65539, 196608, 1, 131075, 196608, 2, 196611, 196608, 3)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_fwn12"]
+tile_data = PackedInt32Array(0, 262144, 0, 65536, 262144, 1, 1, 327680, 0, 65537, 327680, 1)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_7x30v"]
+tile_data = PackedInt32Array(0, 327680, 4)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_8omhy"]
+tile_data = PackedInt32Array(0, 262144, 5, 65536, 262144, 6, 1, 327680, 5)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_2qh1o"]
+tile_data = PackedInt32Array(0, 393216, 5, 1, 458752, 5, 65537, 458752, 6)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_x4yqo"]
+tile_data = PackedInt32Array(0, 262144, 7, 65536, 262144, 8, 1, 327680, 7, 65537, 327680, 8, 2, 393216, 7, 3, 458752, 7)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_kuca7"]
+tile_data = PackedInt32Array(0, 262144, 9, 1, 327680, 9, 2, 393216, 9, 65538, 393216, 10, 3, 458752, 9, 65539, 458752, 10)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_4qt46"]
+tile_data = PackedInt32Array(0, 262144, 11, 1, 327680, 11)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_kwyym"]
+tile_data = PackedInt32Array(0, 393216, 11, 1, 458752, 11)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_agmp2"]
+tile_data = PackedInt32Array(0, 524288, 0, 65536, 524288, 1, 131072, 524288, 2, 196608, 524288, 3, 1, 589824, 0, 65537, 589824, 1, 131073, 589824, 2, 196609, 589824, 3, 2, 655360, 0, 65538, 655360, 1, 131074, 655360, 2, 196610, 655360, 3, 3, 720896, 0, 65539, 720896, 1, 131075, 720896, 2, 196611, 720896, 3)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_h1nks"]
+tile_data = PackedInt32Array(0, 786432, 0, 65536, 786432, 1, 1, 851968, 0, 65537, 851968, 1)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_dx14m"]
+tile_data = PackedInt32Array(0, 786432, 2)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_7qyl7"]
+tile_data = PackedInt32Array(0, 262144, 2)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_3t0dy"]
+tile_data = PackedInt32Array(65536, 524288, 5, 65537, 589824, 5, 2, 655360, 4, 65538, 655360, 5, 3, 720896, 4, 65539, 720896, 5)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_k500j"]
+tile_data = PackedInt32Array(0, 524288, 6, 65536, 524288, 7, 1, 589824, 6, 65537, 589824, 7, 65538, 655360, 7, 65539, 720896, 7)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_yb4d6"]
+tile_data = PackedInt32Array(0, 524288, 8, 65536, 524288, 9, 65537, 589824, 9)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_dx08n"]
+tile_data = PackedInt32Array(65536, 655360, 9, 1, 720896, 8, 65537, 720896, 9)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_fvc6t"]
+tile_data = PackedInt32Array(0, 524288, 10)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_w4l4n"]
+tile_data = PackedInt32Array(0, 589824, 10)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_inx2d"]
+tile_data = PackedInt32Array(0, 786432, 4)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_yl30p"]
+tile_data = PackedInt32Array(0, 851968, 4)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_802dh"]
+tile_data = PackedInt32Array(0, 786432, 5, 65536, 786432, 6, 1, 851968, 5)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_cxjwy"]
+tile_data = PackedInt32Array(0, 917504, 5, 1, 983040, 5, 65537, 983040, 6)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_vnvi4"]
+tile_data = PackedInt32Array(65536, 0, 5, 65537, 65536, 5, 2, 131072, 4, 65538, 131072, 5, 3, 196608, 4, 65539, 196608, 5)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_cweoo"]
+tile_data = PackedInt32Array(0, 786432, 7, 65536, 786432, 8, 1, 851968, 7, 65537, 851968, 8, 2, 917504, 7, 3, 983040, 7)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_6pei0"]
+tile_data = PackedInt32Array(0, 786432, 9, 1, 851968, 9, 2, 917504, 9, 65538, 917504, 10, 3, 983040, 9, 65539, 983040, 10)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_m1ayn"]
+tile_data = PackedInt32Array(0, 983040, 13, 65536, 983040, 14, 131072, 983040, 15, 196608, 983040, 16, 1, 1048576, 13, 65537, 1048576, 14, 131073, 1048576, 15, 196609, 1048576, 16, 2, 1114112, 13, 65538, 1114112, 14, 131074, 1114112, 15, 196610, 1114112, 16, 3, 1179648, 13, 65539, 1179648, 14, 131075, 1179648, 15, 196611, 1179648, 16)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_goaya"]
+tile_data = PackedInt32Array(0, 1245184, 13, 65536, 1245184, 14, 1, 1310720, 13, 65537, 1310720, 14)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_ystjq"]
+tile_data = PackedInt32Array(0, 1376256, 13)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_hh0m2"]
+tile_data = PackedInt32Array(0, 983040, 17, 65536, 983040, 18, 131072, 983040, 19, 196608, 983040, 20, 1, 1048576, 17, 65537, 1048576, 18, 131073, 1048576, 19, 196609, 1048576, 20, 2, 1114112, 17, 65538, 1114112, 18, 131074, 1114112, 19, 196610, 1114112, 20, 3, 1179648, 17, 65539, 1179648, 18, 131075, 1179648, 19, 196611, 1179648, 20)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_ywg1o"]
+tile_data = PackedInt32Array(0, 1245184, 17, 65536, 1245184, 18, 1, 1310720, 17, 65537, 1310720, 18)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_x5wfy"]
+tile_data = PackedInt32Array(0, 1376256, 17)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_b6487"]
+tile_data = PackedInt32Array(131072, 983040, 23, 196608, 983040, 24, 1, 1048576, 21, 65537, 1048576, 22, 131073, 1048576, 23, 196609, 1048576, 24, 2, 1114112, 21, 65538, 1114112, 22, 131074, 1114112, 23, 196610, 1114112, 24, 131075, 1179648, 23, 196611, 1179648, 24)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_hvdgq"]
+tile_data = PackedInt32Array(0, 1245184, 21, 65536, 1245184, 22, 1, 1310720, 21, 65537, 1310720, 22)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_xlqhs"]
+tile_data = PackedInt32Array(0, 262144, 4)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_53u71"]
+tile_data = PackedInt32Array(0, 1376256, 21)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_vet4l"]
+tile_data = PackedInt32Array(65536, 983040, 26, 1, 1048576, 25, 65537, 1048576, 26, 2, 1114112, 25, 65538, 1114112, 26, 65539, 1179648, 26)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_7ejbs"]
+tile_data = PackedInt32Array(0, 1245184, 25, 1, 1310720, 25)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_kb0n3"]
+tile_data = PackedInt32Array(0, 1376256, 25)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_4sp3p"]
+tile_data = PackedInt32Array(0, 0, 13, 1, 65536, 13)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_jg0xu"]
+tile_data = PackedInt32Array(0, 131072, 12, 65536, 131072, 13)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_j52x4"]
+tile_data = PackedInt32Array(0, 196608, 12, 65536, 196608, 13, 1, 262144, 12, 65537, 262144, 13)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_84ica"]
+tile_data = PackedInt32Array(0, 327680, 12, 65536, 327680, 13, 1, 393216, 12, 65537, 393216, 13)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_gpn44"]
+tile_data = PackedInt32Array(0, 0, 14, 65536, 0, 15)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_13bgx"]
+tile_data = PackedInt32Array(0, 65536, 14, 65536, 65536, 15, 1, 131072, 14, 65537, 131072, 15)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_1srbb"]
+tile_data = PackedInt32Array(0, 0, 6, 65536, 0, 7, 1, 65536, 6, 65537, 65536, 7, 65538, 131072, 7, 65539, 196608, 7)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_tq8ci"]
+tile_data = PackedInt32Array(0, 196608, 14, 65536, 196608, 15, 1, 262144, 14, 65537, 262144, 15)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_7ek1v"]
+tile_data = PackedInt32Array(0, 327680, 14, 65536, 327680, 15, 1, 393216, 14, 65537, 393216, 15)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_7m7jm"]
+tile_data = PackedInt32Array(0, 0, 18, 65536, 0, 19, 1, 65536, 18, 65537, 65536, 19)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_2vd8g"]
+tile_data = PackedInt32Array(0, 0, 20, 65536, 0, 21, 1, 65536, 20, 65537, 65536, 21)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_51mu8"]
+tile_data = PackedInt32Array(0, 1310720, 9, 65536, 1310720, 10, 131072, 1310720, 10, 196608, 1310720, 10, 1, 1376256, 9, 65537, 1376256, 10, 131073, 1376256, 10, 196609, 1376256, 10)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_g7pl4"]
+tile_data = PackedInt32Array(0, 1114112, 9, 65536, 1114112, 10, 131072, 1114112, 11, 196608, 1114112, 12, 1, 1179648, 9, 65537, 1179648, 10, 131073, 1179648, 11, 196609, 1179648, 12)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_onsom"]
+tile_data = PackedInt32Array(0, 1048576, 9, 65536, 1048576, 10, 131072, 1048576, 11, 196608, 1048576, 12)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_i8gvr"]
+tile_data = PackedInt32Array(0, 1048576, 5, 65536, 1048576, 6, 1, 1114112, 5, 65537, 1114112, 6)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_e5v3d"]
+tile_data = PackedInt32Array(0, 1179648, 5, 65536, 1179648, 6, 1, 1245184, 5, 65537, 1245184, 6)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_jyf2t"]
+tile_data = PackedInt32Array(0, 1310720, 8, 1, 1376256, 8)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_qokb3"]
+tile_data = PackedInt32Array(0, 0, 8, 65536, 0, 9, 65537, 65536, 9)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_jjcnd"]
+tile_data = PackedInt32Array(0, 1245184, 8)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_f8wb0"]
+tile_data = PackedInt32Array(0, 1048576, 8)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_jge6o"]
+tile_data = PackedInt32Array(0, 1114112, 7, 65536, 1114112, 8, 1, 1179648, 7, 65537, 1179648, 8)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_15kh5"]
+tile_data = PackedInt32Array(0, 589824, 13, 65536, 589824, 14, 131072, 589824, 15)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_dyen3"]
+tile_data = PackedInt32Array(0, 655360, 14, 65536, 655360, 15, 1, 720896, 14, 65537, 720896, 15)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_vakk1"]
+tile_data = PackedInt32Array(0, 655360, 13, 1, 720896, 13)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_unqr0"]
+tile_data = PackedInt32Array(0, 589824, 16)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_ibu2d"]
+tile_data = PackedInt32Array(0, 786432, 15)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_o2ko7"]
+tile_data = PackedInt32Array(65536, 131072, 9, 1, 196608, 8, 65537, 196608, 9)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_o3bha"]
+tile_data = PackedInt32Array(0, 0, 11, 1, 65536, 11)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_aviym"]
+tile_data = PackedInt32Array(0, 131072, 11, 1, 196608, 11)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4miet"]
+texture = ExtResource("1_dmrp2")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+16:0/0 = 0
+17:0/0 = 0
+18:0/0 = 0
+19:0/0 = 0
+20:0/0 = 0
+21:0/0 = 0
+24:0/0 = 0
+25:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+16:1/0 = 0
+17:1/0 = 0
+18:1/0 = 0
+19:1/0 = 0
+20:1/0 = 0
+21:1/0 = 0
+22:1/0 = 0
+23:1/0 = 0
+24:1/0 = 0
+25:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+12:2/0 = 0
+16:2/0 = 0
+17:2/0 = 0
+18:2/0 = 0
+19:2/0 = 0
+20:2/0 = 0
+22:2/0 = 0
+23:2/0 = 0
+24:2/0 = 0
+25:2/0 = 0
+0:3/0 = 0
+0:3/0/terrain_set = 0
+0:3/0/terrain = 0
+0:3/0/terrains_peering_bit/right_side = 0
+0:3/0/terrains_peering_bit/bottom_right_corner = 0
+0:3/0/terrains_peering_bit/bottom_side = 0
+0:3/0/terrains_peering_bit/bottom_left_corner = 0
+0:3/0/terrains_peering_bit/left_side = 0
+0:3/0/terrains_peering_bit/top_left_corner = 0
+0:3/0/terrains_peering_bit/top_side = 0
+0:3/0/terrains_peering_bit/top_right_corner = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+8:3/0 = 0
+8:3/0/terrain_set = 0
+8:3/0/terrain = 1
+8:3/0/terrains_peering_bit/right_side = 1
+8:3/0/terrains_peering_bit/bottom_right_corner = 1
+8:3/0/terrains_peering_bit/bottom_side = 1
+8:3/0/terrains_peering_bit/bottom_left_corner = 1
+8:3/0/terrains_peering_bit/left_side = 1
+8:3/0/terrains_peering_bit/top_left_corner = 1
+8:3/0/terrains_peering_bit/top_side = 1
+8:3/0/terrains_peering_bit/top_right_corner = 1
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+16:3/0 = 0
+17:3/0 = 0
+18:3/0 = 0
+19:3/0 = 0
+20:3/0 = 0
+21:3/0 = 0
+25:3/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+16:4/0 = 0
+17:4/0 = 0
+18:4/0 = 0
+19:4/0 = 0
+20:4/0 = 0
+21:4/0 = 0
+22:4/0 = 0
+23:4/0 = 0
+24:4/0 = 0
+25:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+14:5/0 = 0
+15:5/0 = 0
+16:5/0 = 0
+17:5/0 = 0
+18:5/0 = 0
+19:5/0 = 0
+20:5/0 = 0
+21:5/0 = 0
+22:5/0 = 0
+23:5/0 = 0
+24:5/0 = 0
+25:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+4:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+12:6/0 = 0
+15:6/0 = 0
+16:6/0 = 0
+17:6/0 = 0
+18:6/0 = 0
+19:6/0 = 0
+20:6/0 = 0
+21:6/0 = 0
+22:6/0 = 0
+23:6/0 = 0
+24:6/0 = 0
+25:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+12:7/0 = 0
+13:7/0 = 0
+14:7/0 = 0
+15:7/0 = 0
+17:7/0 = 0
+18:7/0 = 0
+20:7/0 = 0
+21:7/0 = 0
+22:7/0 = 0
+23:7/0 = 0
+25:7/0 = 0
+0:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+8:8/0 = 0
+11:8/0 = 0
+12:8/0 = 0
+13:8/0 = 0
+16:8/0 = 0
+17:8/0 = 0
+18:8/0 = 0
+19:8/0 = 0
+20:8/0 = 0
+21:8/0 = 0
+22:8/0 = 0
+23:8/0 = 0
+24:8/0 = 0
+25:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+12:9/0 = 0
+13:9/0 = 0
+14:9/0 = 0
+15:9/0 = 0
+16:9/0 = 0
+17:9/0 = 0
+18:9/0 = 0
+19:9/0 = 0
+20:9/0 = 0
+21:9/0 = 0
+22:9/0 = 0
+23:9/0 = 0
+24:9/0 = 0
+25:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+6:10/0 = 0
+7:10/0 = 0
+8:10/0 = 0
+9:10/0 = 0
+14:10/0 = 0
+15:10/0 = 0
+16:10/0 = 0
+17:10/0 = 0
+18:10/0 = 0
+19:10/0 = 0
+20:10/0 = 0
+21:10/0 = 0
+25:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+16:11/0 = 0
+17:11/0 = 0
+18:11/0 = 0
+19:11/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+5:12/0 = 0
+6:12/0 = 0
+16:12/0 = 0
+17:12/0 = 0
+18:12/0 = 0
+19:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+6:13/0 = 0
+9:13/0 = 0
+10:13/0 = 0
+11:13/0 = 0
+12:13/0 = 0
+13:13/0 = 0
+14:13/0 = 0
+15:13/0 = 0
+16:13/0 = 0
+17:13/0 = 0
+18:13/0 = 0
+19:13/0 = 0
+20:13/0 = 0
+21:13/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+4:14/0 = 0
+5:14/0 = 0
+6:14/0 = 0
+9:14/0 = 0
+10:14/0 = 0
+11:14/0 = 0
+12:14/0 = 0
+13:14/0 = 0
+14:14/0 = 0
+15:14/0 = 0
+16:14/0 = 0
+17:14/0 = 0
+18:14/0 = 0
+19:14/0 = 0
+20:14/0 = 0
+0:15/0 = 0
+1:15/0 = 0
+2:15/0 = 0
+3:15/0 = 0
+4:15/0 = 0
+5:15/0 = 0
+6:15/0 = 0
+9:15/0 = 0
+10:15/0 = 0
+11:15/0 = 0
+12:15/0 = 0
+13:15/0 = 0
+14:15/0 = 0
+15:15/0 = 0
+16:15/0 = 0
+17:15/0 = 0
+18:15/0 = 0
+0:16/0 = 0
+1:16/0 = 0
+2:16/0 = 0
+3:16/0 = 0
+4:16/0 = 0
+5:16/0 = 0
+6:16/0 = 0
+7:16/0 = 0
+8:16/0 = 0
+9:16/0 = 0
+10:16/0 = 0
+11:16/0 = 0
+12:16/0 = 0
+13:16/0 = 0
+14:16/0 = 0
+15:16/0 = 0
+16:16/0 = 0
+17:16/0 = 0
+18:16/0 = 0
+0:17/0 = 0
+1:17/0 = 0
+2:17/0 = 0
+3:17/0 = 0
+4:17/0 = 0
+5:17/0 = 0
+6:17/0 = 0
+7:17/0 = 0
+8:17/0 = 0
+15:17/0 = 0
+15:17/0/terrain_set = 0
+15:17/0/terrain = 2
+15:17/0/terrains_peering_bit/right_side = 2
+15:17/0/terrains_peering_bit/bottom_right_corner = 2
+15:17/0/terrains_peering_bit/bottom_side = 2
+15:17/0/terrains_peering_bit/bottom_left_corner = 2
+15:17/0/terrains_peering_bit/left_side = 2
+15:17/0/terrains_peering_bit/top_left_corner = 2
+15:17/0/terrains_peering_bit/top_side = 2
+15:17/0/terrains_peering_bit/top_right_corner = 2
+16:17/0 = 0
+17:17/0 = 0
+18:17/0 = 0
+19:17/0 = 0
+20:17/0 = 0
+21:17/0 = 0
+0:18/0 = 0
+1:18/0 = 0
+2:18/0 = 0
+3:18/0 = 0
+4:18/0 = 0
+5:18/0 = 0
+15:18/0 = 0
+16:18/0 = 0
+17:18/0 = 0
+18:18/0 = 0
+19:18/0 = 0
+20:18/0 = 0
+0:19/0 = 0
+1:19/0 = 0
+2:19/0 = 0
+3:19/0 = 0
+4:19/0 = 0
+5:19/0 = 0
+15:19/0 = 0
+16:19/0 = 0
+17:19/0 = 0
+18:19/0 = 0
+0:20/0 = 0
+1:20/0 = 0
+2:20/0 = 0
+3:20/0 = 0
+4:20/0 = 0
+15:20/0 = 0
+16:20/0 = 0
+17:20/0 = 0
+18:20/0 = 0
+0:21/0 = 0
+1:21/0 = 0
+2:21/0 = 0
+3:21/0 = 0
+4:21/0 = 0
+5:21/0 = 0
+6:21/0 = 0
+7:21/0 = 0
+8:21/0 = 0
+16:21/0 = 0
+17:21/0 = 0
+19:21/0 = 0
+20:21/0 = 0
+21:21/0 = 0
+0:22/0 = 0
+1:22/0 = 0
+2:22/0 = 0
+3:22/0 = 0
+4:22/0 = 0
+5:22/0 = 0
+16:22/0 = 0
+17:22/0 = 0
+19:22/0 = 0
+20:22/0 = 0
+0:23/0 = 0
+1:23/0 = 0
+2:23/0 = 0
+3:23/0 = 0
+4:23/0 = 0
+5:23/0 = 0
+6:23/0 = 0
+7:23/0 = 0
+8:23/0 = 0
+15:23/0 = 0
+16:23/0 = 0
+17:23/0 = 0
+18:23/0 = 0
+15:24/0 = 0
+16:24/0 = 0
+17:24/0 = 0
+18:24/0 = 0
+1:25/0 = 0
+16:25/0 = 0
+17:25/0 = 0
+19:25/0 = 0
+20:25/0 = 0
+21:25/0 = 0
+0:26/0 = 0
+1:26/0 = 0
+15:26/0 = 0
+16:26/0 = 0
+17:26/0 = 0
+18:26/0 = 0
+0:27/0 = 0
+1:27/0 = 0
+2:27/0 = 0
+0:28/0 = 0
+1:28/0 = 0
+
+[resource]
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "grey_box"
+terrain_set_0/terrain_0/color = Color(0.796175, 0.317374, 0.636904, 1)
+terrain_set_0/terrain_1/name = "brown_box"
+terrain_set_0/terrain_1/color = Color(0.176471, 0.878431, 0.164706, 1)
+terrain_set_0/terrain_2/name = "blue_box"
+terrain_set_0/terrain_2/color = Color(0.990951, 0.987972, 7.70092e-07, 1)
+sources/0 = SubResource("TileSetAtlasSource_4miet")
+pattern_0 = SubResource("TileMapPattern_xrfcf")
+pattern_1 = SubResource("TileMapPattern_fwn12")
+pattern_2 = SubResource("TileMapPattern_7qyl7")
+pattern_3 = SubResource("TileMapPattern_vnvi4")
+pattern_4 = SubResource("TileMapPattern_xlqhs")
+pattern_5 = SubResource("TileMapPattern_1srbb")
+pattern_6 = SubResource("TileMapPattern_qokb3")
+pattern_7 = SubResource("TileMapPattern_o2ko7")
+pattern_8 = SubResource("TileMapPattern_o3bha")
+pattern_9 = SubResource("TileMapPattern_aviym")
+pattern_10 = SubResource("TileMapPattern_7x30v")
+pattern_11 = SubResource("TileMapPattern_8omhy")
+pattern_12 = SubResource("TileMapPattern_2qh1o")
+pattern_13 = SubResource("TileMapPattern_x4yqo")
+pattern_14 = SubResource("TileMapPattern_kuca7")
+pattern_15 = SubResource("TileMapPattern_4qt46")
+pattern_16 = SubResource("TileMapPattern_kwyym")
+pattern_17 = SubResource("TileMapPattern_agmp2")
+pattern_18 = SubResource("TileMapPattern_h1nks")
+pattern_19 = SubResource("TileMapPattern_dx14m")
+pattern_20 = SubResource("TileMapPattern_3t0dy")
+pattern_21 = SubResource("TileMapPattern_k500j")
+pattern_22 = SubResource("TileMapPattern_yb4d6")
+pattern_23 = SubResource("TileMapPattern_dx08n")
+pattern_24 = SubResource("TileMapPattern_fvc6t")
+pattern_25 = SubResource("TileMapPattern_w4l4n")
+pattern_26 = SubResource("TileMapPattern_inx2d")
+pattern_27 = SubResource("TileMapPattern_yl30p")
+pattern_28 = SubResource("TileMapPattern_802dh")
+pattern_29 = SubResource("TileMapPattern_cxjwy")
+pattern_30 = SubResource("TileMapPattern_cweoo")
+pattern_31 = SubResource("TileMapPattern_6pei0")
+pattern_32 = SubResource("TileMapPattern_m1ayn")
+pattern_33 = SubResource("TileMapPattern_goaya")
+pattern_34 = SubResource("TileMapPattern_ystjq")
+pattern_35 = SubResource("TileMapPattern_hh0m2")
+pattern_36 = SubResource("TileMapPattern_ywg1o")
+pattern_37 = SubResource("TileMapPattern_x5wfy")
+pattern_38 = SubResource("TileMapPattern_b6487")
+pattern_39 = SubResource("TileMapPattern_hvdgq")
+pattern_40 = SubResource("TileMapPattern_53u71")
+pattern_41 = SubResource("TileMapPattern_vet4l")
+pattern_42 = SubResource("TileMapPattern_7ejbs")
+pattern_43 = SubResource("TileMapPattern_kb0n3")
+pattern_44 = SubResource("TileMapPattern_4sp3p")
+pattern_45 = SubResource("TileMapPattern_jg0xu")
+pattern_46 = SubResource("TileMapPattern_j52x4")
+pattern_47 = SubResource("TileMapPattern_84ica")
+pattern_48 = SubResource("TileMapPattern_gpn44")
+pattern_49 = SubResource("TileMapPattern_13bgx")
+pattern_50 = SubResource("TileMapPattern_tq8ci")
+pattern_51 = SubResource("TileMapPattern_7ek1v")
+pattern_52 = SubResource("TileMapPattern_7m7jm")
+pattern_53 = SubResource("TileMapPattern_2vd8g")
+pattern_54 = SubResource("TileMapPattern_51mu8")
+pattern_55 = SubResource("TileMapPattern_g7pl4")
+pattern_56 = SubResource("TileMapPattern_onsom")
+pattern_57 = SubResource("TileMapPattern_i8gvr")
+pattern_58 = SubResource("TileMapPattern_e5v3d")
+pattern_59 = SubResource("TileMapPattern_jyf2t")
+pattern_60 = SubResource("TileMapPattern_jjcnd")
+pattern_61 = SubResource("TileMapPattern_f8wb0")
+pattern_62 = SubResource("TileMapPattern_jge6o")
+pattern_63 = SubResource("TileMapPattern_15kh5")
+pattern_64 = SubResource("TileMapPattern_dyen3")
+pattern_65 = SubResource("TileMapPattern_vakk1")
+pattern_66 = SubResource("TileMapPattern_unqr0")
+pattern_67 = SubResource("TileMapPattern_ibu2d")

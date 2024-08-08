@@ -4,8 +4,9 @@ var spawn_points:Array[SpawnPoint] = []
 
 func _ready():
 	spawn_points = _setup_spawn_points()
-	Signals.WorldReady.emit(self)
 	Signals.UpdateInputFocus.emit(RInput.FOCUS.GAMEPLAY)
+	await get_tree().create_timer(1).timeout
+	Signals.WorldReady.emit(self)
 	
 func _setup_spawn_points() -> Array[SpawnPoint]:
 	var temp = get_tree().get_nodes_in_group("spawnpoint")

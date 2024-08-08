@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BuildingInteractableData" load_steps=2 format=3 uid="uid://m8w5do8efjpx"]
 
-[ext_resource type="Script" path="res://Code/Buildings/building_interactable.gd" id="1_wcncp"]
+[ext_resource type="Script" path="res://Code/Buildings/entrance_interactable.gd" id="1_wcncp"]
 
 [resource]
 script = ExtResource("1_wcncp")

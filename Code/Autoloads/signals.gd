@@ -14,6 +14,7 @@ signal CharacterSet(data)
 signal WorldSet(world)
 signal TogglePause(value)
 signal ToggleEndRun(value)
+signal EndRunCheck()
 
 #Worlds
 signal WorldReady(world)
@@ -24,7 +25,7 @@ signal CharacterGrounded(character)
 signal HPUpdated(character, difference)
 signal MaxHPUpdated(character, new_max_hp)
 signal CharacterDead(character)
-signal CharacterNoMoreLive(character)
+signal CharacterNoMoreLives(character)
 signal AttackReceived(target, damages)
 signal ToggleHitCollider(_owner, disabled)
 

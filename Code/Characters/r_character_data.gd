@@ -44,7 +44,7 @@ var current_lives:int = 1:
 		current_lives = value
 		if current_lives == 0:
 			is_dead = true
-			Signals.CharacterNoMoreLive.emit(self)
+			Signals.CharacterNoMoreLives.emit(self)
 
 func setup_data(_name := ""):
 	id += _name

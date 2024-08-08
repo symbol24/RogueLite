@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://y5s1cku6nf86"]
+
+[ext_resource type="Script" path="res://Code/Dungeon_Entrances/dungeon_entrance_interactable.gd" id="1_ganbw"]
+[ext_resource type="PackedScene" uid="uid://b6r7h1hpm11t8" path="res://Scenes/UI/button_icons/button_icon.tscn" id="2_lplc8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lmbea"]
+resource_local_to_scene = true
+radius = 13.0
+height = 46.0
+
+[node name="EntranceInteractable" type="Area2D"]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("1_ganbw")
+
+[node name="interact_collider" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -23)
+shape = SubResource("CapsuleShape2D_lmbea")
+
+[node name="button_icon" parent="." instance=ExtResource("2_lplc8")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, -49)

@@ -17,7 +17,7 @@ func interact(_player_currencies:Dictionary) -> Dictionary:
 	match cost["currency"]:
 		GM.CURRENCIES.NOTHING:
 			Debug.log("triggering load to building")
-			Signals.LoadBuilding.emit(data.building_path, get_parent().spawn_point.name)
+			Signals.LoadBuilding.emit(data.destination, get_parent().spawn_point.name)
 			return {"result":true}
 		_:
 			pass

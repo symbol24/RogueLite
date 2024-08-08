@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bpdxgddiw4vup"]
+[gd_scene load_steps=23 format=3 uid="uid://bpdxgddiw4vup"]
 
 [ext_resource type="Script" path="res://Code/UI/r_ui.gd" id="1_csoys"]
 [ext_resource type="Script" path="res://Code/UI/r_debug_ui.gd" id="2_hu0gv"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://Code/UI/loading_screen.gd" id="11_tx6y7"]
 [ext_resource type="Script" path="res://Code/UI/end_run_screen.gd" id="11_xhcd5"]
 [ext_resource type="Script" path="res://Code/UI/RichTextEffects/rte_matrix.gd" id="13_0bd1q"]
+[ext_resource type="PackedScene" uid="uid://b6r7h1hpm11t8" path="res://Scenes/UI/button_icons/button_icon.tscn" id="13_j7odl"]
 [ext_resource type="Script" path="res://Code/UI/pause_menu.gd" id="16_6u7vm"]
 [ext_resource type="Script" path="res://Code/UI/r_rich_text_label.gd" id="17_gfsa0"]
 
@@ -140,6 +141,25 @@ script = ExtResource("11_xhcd5")
 texture = ExtResource("11_lle2d")
 centered = false
 
+[node name="back_button" parent="DungeonUI/EndRunScreen" instance=ExtResource("13_j7odl")]
+position = Vector2(241, 162)
+
+[node name="sprite" parent="DungeonUI/EndRunScreen/back_button" index="0"]
+frame = 5
+
+[node name="EndRunBackRT" type="RichTextLabel" parent="DungeonUI/EndRunScreen"]
+custom_minimum_size = Vector2(20, 8)
+layout_mode = 0
+offset_left = 254.0
+offset_top = 152.0
+offset_right = 354.0
+offset_bottom = 160.0
+theme = ExtResource("8_6pc2o")
+bbcode_enabled = true
+text = "Return to Town"
+scroll_active = false
+script = ExtResource("17_gfsa0")
+
 [node name="hb_alligner" type="HBoxContainer" parent="DungeonUI/EndRunScreen"]
 custom_minimum_size = Vector2(320, 176)
 layout_mode = 0
@@ -205,8 +225,52 @@ texture = ExtResource("9_20jep")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_e0ish")
 
+[node name="PauseMenu" type="Control" parent="."]
+process_mode = 3
+visible = false
+custom_minimum_size = Vector2(320, 176)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 320.0
+offset_bottom = 176.0
+script = ExtResource("16_6u7vm")
+
+[node name="background_sprite" type="Sprite2D" parent="PauseMenu"]
+texture = ExtResource("11_lle2d")
+centered = false
+
+[node name="pause_title" type="RichTextLabel" parent="PauseMenu"]
+custom_minimum_size = Vector2(320, 12)
+layout_mode = 0
+offset_top = 20.0
+offset_right = 320.0
+offset_bottom = 32.0
+theme = ExtResource("8_6pc2o")
+bbcode_enabled = true
+text = "[center][b]Pause Menu[/b][/center]"
+script = ExtResource("17_gfsa0")
+
+[node name="y_button" parent="PauseMenu" instance=ExtResource("13_j7odl")]
+unique_name_in_owner = true
+position = Vector2(225, 156)
+
+[node name="exit_label" type="RichTextLabel" parent="PauseMenu"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 8)
+layout_mode = 0
+offset_left = 238.0
+offset_top = 146.0
+offset_right = 338.0
+offset_bottom = 154.0
+theme = ExtResource("8_6pc2o")
+bbcode_enabled = true
+text = "Escape to Town"
+scroll_active = false
+script = ExtResource("17_gfsa0")
+
 [node name="LoadingScreen" type="Control" parent="."]
 visible = false
+z_index = 1000
 custom_minimum_size = Vector2(320, 176)
 layout_mode = 3
 anchors_preset = 0
@@ -233,27 +297,4 @@ threaded = true
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="PauseMenu" type="Control" parent="."]
-process_mode = 3
-visible = false
-custom_minimum_size = Vector2(320, 176)
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("16_6u7vm")
-
-[node name="background_sprite" type="Sprite2D" parent="PauseMenu"]
-texture = ExtResource("11_lle2d")
-centered = false
-
-[node name="pause_title" type="RichTextLabel" parent="PauseMenu"]
-custom_minimum_size = Vector2(320, 12)
-layout_mode = 0
-offset_top = 20.0
-offset_right = 320.0
-offset_bottom = 32.0
-theme = ExtResource("8_6pc2o")
-bbcode_enabled = true
-text = "[center][b]Pause Menu[/b][/center]"
-script = ExtResource("17_gfsa0")
+[editable path="DungeonUI/EndRunScreen/back_button"]
