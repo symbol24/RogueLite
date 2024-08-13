@@ -17,7 +17,7 @@ func _ready():
 	
 func _update_starting_max(_data:RCharacterData):
 	if _data is MainCharacterData:
-		Debug.log("hp: ", _data.current_hp, "/", _data.max_hp)
+		#Debug.log("hp: ", _data.current_hp, "/", _data.max_hp)
 		start_max = _data.max_hp
 		last_max = _data.max_hp
 		hp_bar.value = _data.percent_hp
@@ -36,5 +36,3 @@ func _update_max_hp(_data:RCharacterData, _new_max):
 		hp_label.text = str(_data.current_hp) + "/" + str(_data.max_hp)
 		hp_label.position.x = (hp_bar.size.x - hp_label.size.x)/2
 		last_max = _data.max_hp
-		
-	

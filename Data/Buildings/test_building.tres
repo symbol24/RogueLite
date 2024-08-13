@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="BuildingInteractableData" load_steps=2 format=3 uid="uid://m8w5do8efjpx"]
+[gd_resource type="Resource" script_class="EntranceInteractableData" load_steps=2 format=3 uid="uid://m8w5do8efjpx"]
 
 [ext_resource type="Script" path="res://Code/Buildings/entrance_interactable.gd" id="1_wcncp"]
 
 [resource]
 script = ExtResource("1_wcncp")
-building_path = "res://Scenes/Buildings/r_building_inside.tscn"
+destination = "res://Scenes/Buildings/r_building_inside.tscn"
 currency = 1
 cost = 0

@@ -1,11 +1,14 @@
 class_name RPlayWorld extends RWorld
 
+const ITEM_MANAGER = preload("res://Scenes/Items/item_manager.tscn")
+
 var spawn_points:Array[SpawnPoint] = []
 
 func _ready():
 	spawn_points = _setup_spawn_points()
 	Signals.UpdateInputFocus.emit(RInput.FOCUS.GAMEPLAY)
 	await get_tree().create_timer(1).timeout
+	_setup_item_manager(ITEM_MANAGER)
 	Signals.WorldReady.emit(self)
 	
 func _setup_spawn_points() -> Array[SpawnPoint]:
@@ -44,3 +47,8 @@ func get_spawn_by_name(_name := "") -> SpawnPoint:
 			return each
 	Debug.error("Spawn point ", _name, " not found in ", name)
 	return get_start_spawnpoint()
+
+func _setup_item_manager(_preload):
+	var new_item_manager = _preload.instantiate()
+	add_child.call_deferred(new_item_manager)
+	Signals.SetItemManager.emit(new_item_manager)

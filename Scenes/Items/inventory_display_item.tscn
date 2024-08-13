@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjobqo41nsdo5"]
+
+[ext_resource type="Script" path="res://Code/Items/inventory_display_item.gd" id="1_cwd3m"]
+[ext_resource type="PackedScene" uid="uid://cve04cts183qh" path="res://Scenes/Items/Textures/item_texture.tscn" id="1_k2peg"]
+[ext_resource type="Theme" uid="uid://cx5h5wxtfunq8" path="res://Data/UI/Themes/main_theme.tres" id="2_0rjkf"]
+[ext_resource type="Script" path="res://Code/UI/r_rich_text_label.gd" id="3_rguso"]
+
+[node name="InventoryDisplayItem" type="Control"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -300.0
+offset_bottom = -156.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cwd3m")
+
+[node name="shadow" parent="." instance=ExtResource("1_k2peg")]
+unique_name_in_owner = true
+visible = false
+modulate = Color(0, 0, 0, 0.537255)
+position = Vector2(11, 11)
+
+[node name="ItemTexture" parent="." instance=ExtResource("1_k2peg")]
+unique_name_in_owner = true
+position = Vector2(10, 10)
+
+[node name="count" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(10, 7)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 11.0
+offset_right = 20.0
+offset_bottom = 18.0
+theme = ExtResource("2_0rjkf")
+theme_override_colors/default_color = Color(1.15514e-06, 0.58192, 0.722878, 1)
+theme_override_colors/font_outline_color = Color(0.834614, 0.834614, 0.834614, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/normal_font_size = 6
+bbcode_enabled = true
+text = "99"
+scroll_active = false
+script = ExtResource("3_rguso")

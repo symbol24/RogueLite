@@ -1,6 +1,23 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cx5h5wxtfunq8"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://cx5h5wxtfunq8"]
 
 [ext_resource type="FontFile" uid="uid://cwgexrmk5lpqw" path="res://Data/Fonts/MinimalPixel v2.ttf" id="1_s4agq"]
+[ext_resource type="StyleBox" uid="uid://co8ayx2hyvwbe" path="res://Data/UI/Themes/Styles/tab_container_box_flat.tres" id="2_p6jxa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r4k61"]
+bg_color = Color(0.109804, 0.109804, 0.109804, 0.560784)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h77xm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lq4wc"]
+bg_color = Color(0.899814, 0.427697, 0.507907, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ndox"]
+bg_color = Color(0.341143, 0.615945, 0.90783, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_trwjf"]
+bg_color = Color(0.111197, 0.111197, 0.111197, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o6j3r"]
 
 [resource]
 Button/font_sizes/font_size = 10
@@ -12,3 +29,16 @@ RichTextLabel/font_sizes/bold_font_size = 12
 RichTextLabel/font_sizes/normal_font_size = 7
 RichTextLabel/fonts/bold_font = ExtResource("1_s4agq")
 RichTextLabel/fonts/normal_font = ExtResource("1_s4agq")
+TabContainer/constants/icon_max_width = 0
+TabContainer/constants/icon_separation = 0
+TabContainer/constants/outline_size = 0
+TabContainer/constants/side_margin = 0
+TabContainer/font_sizes/font_size = 5
+TabContainer/fonts/font = ExtResource("1_s4agq")
+TabContainer/styles/panel = ExtResource("2_p6jxa")
+TabContainer/styles/tab_disabled = SubResource("StyleBoxFlat_r4k61")
+TabContainer/styles/tab_focus = SubResource("StyleBoxFlat_h77xm")
+TabContainer/styles/tab_hovered = SubResource("StyleBoxFlat_lq4wc")
+TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_8ndox")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_trwjf")
+TabContainer/styles/tabbar_background = SubResource("StyleBoxEmpty_o6j3r")

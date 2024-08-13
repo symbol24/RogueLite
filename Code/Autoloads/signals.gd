@@ -6,6 +6,10 @@ func _ready():
 #Generic
 signal ClassReady(_name)
 
+#Player Data
+signal Save()
+signal Load()
+
 #GameManger
 signal LoadNewWorld(id)
 signal LoadBuilding(path, entrance)
@@ -18,6 +22,7 @@ signal EndRunCheck()
 
 #Worlds
 signal WorldReady(world)
+signal SetItemManager(item_manager)
 
 #R Character
 signal CharacterReady(character)
@@ -38,6 +43,11 @@ signal ToggleAttackCollider(attack_name, is_enabled)
 signal StateUpdated(character, state)
 signal UpdateCharacterState(character, state_id)
 
+#inventory
+signal AddItem(item)
+signal AdditemToInventoryUi(dict)
+signal UpdateCountOfitemInUi(dict)
+
 #UI
 signal UpdateInputFocus(focus)
 signal ToggleDungeonUI(value)
@@ -49,6 +59,13 @@ signal TogglePauseMenu(value)
 signal ToggleEndRunMenu(value)
 signal DmgNmbRepool(dmgnumber)
 signal DisplayDmgNumber(value, damage_type, is_critical, marker2D)
+signal GrabInventoryFocus(tab)
+signal InventoryPagesDone()
+signal PauseMenuTabFocus(tab)
+signal ActiveInventorySquare(slot)
+signal MoveItemToNewParent(item, slot_id)
+signal SetHoverOnSquare(slot_id)
+signal RemoveHoverOnSquare(slot_id)
 
 #Debug
 signal DebugPrint(text)
@@ -58,3 +75,4 @@ signal DebugToggleGodMode()
 signal DebugCharacterHit(damage)
 signal DebugAddMaxHP(value)
 signal DebugEndRun(value)
+signal DebugAddRandomItem()

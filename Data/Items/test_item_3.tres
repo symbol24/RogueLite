@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://c6tmmif476s05"]
+
+[ext_resource type="Script" path="res://Code/Items/Data/item_data.gd" id="1_plw63"]
+[ext_resource type="PackedScene" uid="uid://cve04cts183qh" path="res://Scenes/Items/Textures/item_texture.tscn" id="2_gwhdj"]
+
+[resource]
+script = ExtResource("1_plw63")
+id = 2
+texture = ExtResource("2_gwhdj")
+can_stack = true

@@ -16,7 +16,7 @@ func interact(_player_currencies:Dictionary) -> Dictionary:
 	var cost = data.get_cost()
 	match cost["currency"]:
 		GM.CURRENCIES.NOTHING:
-			Debug.log("triggering exit building")
+			#Debug.log("triggering exit building")
 			Signals.ExitBuilding.emit(get_parent())
 			return {"result":true}
 		_:

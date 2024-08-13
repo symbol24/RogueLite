@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bpdxgddiw4vup"]
+[gd_scene load_steps=25 format=3 uid="uid://bpdxgddiw4vup"]
 
 [ext_resource type="Script" path="res://Code/UI/r_ui.gd" id="1_csoys"]
 [ext_resource type="Script" path="res://Code/UI/r_debug_ui.gd" id="2_hu0gv"]
@@ -21,6 +21,8 @@
 [ext_resource type="PackedScene" uid="uid://b6r7h1hpm11t8" path="res://Scenes/UI/button_icons/button_icon.tscn" id="13_j7odl"]
 [ext_resource type="Script" path="res://Code/UI/pause_menu.gd" id="16_6u7vm"]
 [ext_resource type="Script" path="res://Code/UI/r_rich_text_label.gd" id="17_gfsa0"]
+[ext_resource type="Script" path="res://Code/UI/pause_menu_inventory.gd" id="20_swyt4"]
+[ext_resource type="Script" path="res://Code/UI/pause_menu_settings.gd" id="21_buj8p"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_kpfai"]
 script = ExtResource("13_0bd1q")
@@ -239,34 +241,125 @@ script = ExtResource("16_6u7vm")
 texture = ExtResource("11_lle2d")
 centered = false
 
-[node name="pause_title" type="RichTextLabel" parent="PauseMenu"]
-custom_minimum_size = Vector2(320, 12)
-layout_mode = 0
-offset_top = 20.0
-offset_right = 320.0
-offset_bottom = 32.0
-theme = ExtResource("8_6pc2o")
-bbcode_enabled = true
-text = "[center][b]Pause Menu[/b][/center]"
-script = ExtResource("17_gfsa0")
-
 [node name="y_button" parent="PauseMenu" instance=ExtResource("13_j7odl")]
 unique_name_in_owner = true
-position = Vector2(225, 156)
+z_index = 10
+position = Vector2(225, 168)
 
 [node name="exit_label" type="RichTextLabel" parent="PauseMenu"]
 unique_name_in_owner = true
+z_index = 10
 custom_minimum_size = Vector2(100, 8)
 layout_mode = 0
 offset_left = 238.0
-offset_top = 146.0
+offset_top = 158.0
 offset_right = 338.0
-offset_bottom = 154.0
+offset_bottom = 166.0
 theme = ExtResource("8_6pc2o")
 bbcode_enabled = true
 text = "Escape to Town"
 scroll_active = false
 script = ExtResource("17_gfsa0")
+
+[node name="hbox" type="HBoxContainer" parent="PauseMenu"]
+custom_minimum_size = Vector2(320, 176)
+layout_mode = 0
+offset_right = 328.0
+offset_bottom = 176.0
+theme_override_constants/separation = 0
+
+[node name="spacer" type="Control" parent="PauseMenu/hbox"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+
+[node name="vbox" type="VBoxContainer" parent="PauseMenu/hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="spacer" type="Control" parent="PauseMenu/hbox/vbox"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="sub_menues" type="TabContainer" parent="PauseMenu/hbox/vbox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("8_6pc2o")
+tab_alignment = 1
+
+[node name="Inventory" type="Control" parent="PauseMenu/hbox/vbox/sub_menues"]
+layout_mode = 2
+script = ExtResource("20_swyt4")
+tab_name = "inventory"
+tab_id = 0
+
+[node name="hb_inventory" type="HBoxContainer" parent="PauseMenu/hbox/vbox/sub_menues/Inventory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="spacer2" type="Control" parent="PauseMenu/hbox/vbox/sub_menues/Inventory/hb_inventory"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="vbox_inventory" type="VBoxContainer" parent="PauseMenu/hbox/vbox/sub_menues/Inventory/hb_inventory"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="spacer2" type="Control" parent="PauseMenu/hbox/vbox/sub_menues/Inventory/hb_inventory/vbox_inventory"]
+custom_minimum_size = Vector2(40, 10)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/hbox/vbox/sub_menues/Inventory/hb_inventory/vbox_inventory"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="inventory_tab_container" type="TabContainer" parent="PauseMenu/hbox/vbox/sub_menues/Inventory/hb_inventory/vbox_inventory/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tabs_visible = false
+all_tabs_in_front = true
+tab_focus_mode = 0
+
+[node name="spacer2" type="Control" parent="PauseMenu/hbox/vbox/sub_menues/Inventory/hb_inventory/vbox_inventory/HBoxContainer"]
+custom_minimum_size = Vector2(5, 10)
+layout_mode = 2
+
+[node name="Gear" type="Control" parent="PauseMenu/hbox/vbox/sub_menues/Inventory/hb_inventory/vbox_inventory/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="spacer" type="Control" parent="PauseMenu/hbox/vbox/sub_menues/Inventory/hb_inventory/vbox_inventory"]
+custom_minimum_size = Vector2(40, 10)
+layout_mode = 2
+
+[node name="spacer" type="Control" parent="PauseMenu/hbox/vbox/sub_menues/Inventory/hb_inventory"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="Settings" type="Control" parent="PauseMenu/hbox/vbox/sub_menues"]
+visible = false
+layout_mode = 2
+script = ExtResource("21_buj8p")
+tab_name = "pause_settings"
+tab_id = 1
+
+[node name="spacer2" type="Control" parent="PauseMenu/hbox/vbox"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="spacer2" type="Control" parent="PauseMenu/hbox"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
 
 [node name="LoadingScreen" type="Control" parent="."]
 visible = false

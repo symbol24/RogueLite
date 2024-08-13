@@ -29,7 +29,7 @@ var world:RWorld:
 	set(_value):
 		if _value:
 			world = _value
-			Debug.log("World is ", world.name)
+			#Debug.log("World is ", world.name)
 		else:
 			Debug.error("Attempting to assign a null to world in GM.")
 	
@@ -46,6 +46,9 @@ var ui_ready := false
 var extra_loading := false
 var loading_timer := 0.0
 var loading_delay := 1.0
+
+#items
+var item_manager:ItemManager
 
 #build info
 var is_debug := true
@@ -97,11 +100,12 @@ func _ready():
 	Signals.LoadBuilding.connect(_load_building)
 	Signals.ExitBuilding.connect(_unload_building)
 	Signals.DebugEndRun.connect(_toggle_end_run)
+	Signals.SetItemManager.connect(_set_item_manager)
 
 func _process(_delta):
 	if is_loading:
 		loading_status = ResourceLoader.load_threaded_get_status(loading, progress)
-		Debug.log("loading: ", progress[0]*100, "%")
+		#Debug.log("loading world: ", progress[0]*100, "%")
 		if loading_status == ResourceLoader.THREAD_LOAD_LOADED:
 			if !load_complete:
 				load_complete = true
@@ -109,8 +113,8 @@ func _process(_delta):
 	
 	if is_loading_building:
 		loading_status = ResourceLoader.load_threaded_get_status(loading_building, progress)
+		#Debug.log("loading building: ", progress[0]*100, "%")
 		if loading_status == ResourceLoader.THREAD_LOAD_LOADED:
-			Debug.log("loading_status ", loading_status)
 			if !load_complete:
 				load_complete = true
 				_complete_load_building()
@@ -139,7 +143,7 @@ func _set_character(_character:RCharacter):
 
 func _set_world(_world:RWorld):
 	if _world:
-		Debug.log("Receiving _world: ", _world)
+		#Debug.log("Receiving _world: ", _world)
 		world = _world
 		Signals.WorldSet.emit(world)
 	else: Debug.error("GameManager World received null")
@@ -187,7 +191,7 @@ func _load_new_world(_id:=""):
 		loading = _get_world(_id)
 		if loading:
 			last_load_id = _id
-			Debug.log("Loading: ", loading)
+			#Debug.log("Loading: ", loading)
 			ResourceLoader.load_threaded_request(loading)
 			is_loading = true
 		else: last_load_id = ""
@@ -197,15 +201,11 @@ func _complete_reload(_world):
 		#world.queue_free()
 		#world = null
 	get_tree().change_scene_to_packed(_world)
-	Debug.log("reloadind", _world)
+	#Debug.log("reloadind", _world)
 
 func _complete_load():
 	is_loading = false
 	var new_world = ResourceLoader.load_threaded_get(loading)
-	#if world:
-		#world.queue_free()
-		#world = null
-	#if get_tree().paused: get_tree().set_deferred("paused", false)
 	get_tree().change_scene_to_packed(new_world)
 	
 	var result = {"id":last_load_id,
@@ -213,7 +213,7 @@ func _complete_load():
 	loaded_worlds.append(result)
 	
 	if new_world is RDungeon: dungeon_run_ended = false
-	Debug.log("Scene set to: ", new_world)
+	#Debug.log("Scene set to: ", new_world)
 	load_complete = false
 
 func _get_loaded_world(_id:=""):
@@ -261,7 +261,12 @@ func _end_run(_data):
 		dungeon_run_ended = true
 
 func _end_run_check():
-	Debug.log("dungeon_run_ended ", dungeon_run_ended)
+	#Debug.log("dungeon_run_ended ", dungeon_run_ended)
 	if dungeon_run_ended: 
 		await get_tree().create_timer(1).timeout
 		_toggle_end_run(true)
+
+func _set_item_manager(_item_manager:ItemManager):
+	if _item_manager:
+		if item_manager != null: item_manager.queue_free.call_deferred()
+		item_manager = _item_manager

@@ -11,7 +11,7 @@ func interact(_player_currencies:Dictionary) -> Dictionary:
 	var cost = data.get_cost()
 	match cost["currency"]:
 		GM.CURRENCIES.NOTHING:
-			Debug.log("triggering load to dungeon")
+			#Debug.log("triggering load to dungeon")
 			Signals.LoadNewWorld.emit(data.destination)
 			return {"result":true}
 		_:

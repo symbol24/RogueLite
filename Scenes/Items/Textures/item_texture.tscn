@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cve04cts183qh"]
+
+[ext_resource type="TileSet" uid="uid://bmfcsylmh250x" path="res://Data/Tilesets/debug_grey_box.tres" id="1_81a03"]
+[ext_resource type="Script" path="res://Code/Items/item_texture.gd" id="1_xx11g"]
+
+[node name="ItemTexture" type="Node2D"]
+script = ExtResource("1_xx11g")
+
+[node name="tile_map" type="TileMap" parent="."]
+position = Vector2(-8, 6)
+tile_set = ExtResource("1_81a03")
+format = 2
+layer_0/tile_data = PackedInt32Array(-65536, 589824, 16)

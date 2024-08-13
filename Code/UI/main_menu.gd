@@ -2,9 +2,13 @@ extends RMenuWorld
 
 @onready var town:Button = %town
 @onready var dungeon:Button = %dungeon
+@onready var save_button:Button = %save
+@onready var load_button:Button = %load
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	save_button.pressed.connect(_save)
+	load_button.pressed.connect(_load)
 	town.pressed.connect(_town)
 	dungeon.pressed.connect(_dungeon)
 	Signals.UIReady.emit()
@@ -15,3 +19,9 @@ func _town():
 
 func _dungeon():
 	Signals.LoadNewWorld.emit("test_dungeon")
+
+func _save():
+	Signals.Save.emit()
+
+func _load():
+	Signals.Load.emit()

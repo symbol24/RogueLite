@@ -10,7 +10,8 @@ var commands:Array[String] = [
 							"!addmaxhp",
 							"!quit",
 							"!DisplayUi",
-							"!load"
+							"!load",
+							"!addrandomitem"
 							]
 
 func stringify(_value1 = "", _value2 = "", _value3 = "", _value4 = "", _value5 = "", _value6 = "", _value7 = "", _value8 = "", _value9 = "", _value10 = "", _value11 = "", _value12 = "", _value13 = "", _value14 = "", _value15 = "", _value16 = "", _value17 = "", _value18 = "", _value19 = "", _value20 = "") -> String:
@@ -92,5 +93,7 @@ func do_command(_inputs:Array[String] = []):
 				Signals.LoadNewWorld.emit(_inputs[0])
 			if !sent:
 				Debug.log("Load requires a world id. Example: !load test_town")
+		"!addrandomitem":
+			Signals.DebugAddRandomItem.emit()
 		_:
 			Debug.log("Command unrecognized")

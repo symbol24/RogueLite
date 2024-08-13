@@ -37,6 +37,10 @@ var ui_start_released = 0
 var ui_select = 0
 var ui_tab_left = 0
 var ui_tab_right = 0
+var ui_sub_tab_left = 0
+var ui_sub_tab_right = 0
+var ui_mouse_left = 0
+var ui_mouse_left_released = 0
 
 var toggle_debug = 0
 
@@ -118,8 +122,12 @@ func _listen_to_ui_inputs():
 	ui_select = Input.is_action_just_pressed("ui_select")
 	ui_tab_left = Input.is_action_just_pressed("ui_tab_left")
 	ui_tab_right = Input.is_action_just_pressed("ui_tab_right")
+	ui_sub_tab_left = Input.is_action_just_pressed("ui_sub_tab_left")
+	ui_sub_tab_right = Input.is_action_just_pressed("ui_sub_tab_right")
 	ui_y = Input.is_action_just_pressed("ui_y")
 	ui_x = Input.is_action_just_pressed("ui_x")
+	ui_mouse_left = Input.is_action_just_pressed("ui_mouse_left")
+	ui_mouse_left_released = Input.is_action_just_released("ui_mouse_left")
 
 func _reset_values():
 	move_left_right = 0
@@ -155,6 +163,12 @@ func _reset_values():
 	ui_start = 0
 	ui_start_released = 0
 	ui_select = 0
+	ui_tab_left = 0
+	ui_tab_right = 0
+	ui_sub_tab_left = 0
+	ui_sub_tab_right = 0
+	ui_mouse_left = 0
+	ui_mouse_left_released = 0
 	
 	toggle_debug = 0
 

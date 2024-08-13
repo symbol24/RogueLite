@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://gu6kxxpu6hm"]
+
+[ext_resource type="Script" path="res://Code/UI/inventory_page.gd" id="1_miopb"]
+[ext_resource type="Script" path="res://Code/UI/r_grid_container.gd" id="2_bar51"]
+
+[node name="InventoryPage" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_miopb")
+
+[node name="grid" type="GridContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 5
+script = ExtResource("2_bar51")
+rows = 3
