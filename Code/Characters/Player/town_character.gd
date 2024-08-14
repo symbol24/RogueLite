@@ -11,6 +11,7 @@ func _ready():
 	if animator.is_node_ready():
 		items_to_flip = _get_flip(self)
 		Signals.CharacterReady.emit(self)
+		Signals.UpdateAllCurrencies.emit()
 
 func _physics_process(_delta):
 	if GM.is_playing():

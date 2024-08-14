@@ -15,7 +15,7 @@
 [ext_resource type="Resource" uid="uid://cvn4j7f2l622b" path="res://Data/Characters/Player/States/attack.tres" id="11_pw6gc"]
 [ext_resource type="PackedScene" uid="uid://bj3vbm3bjados" path="res://Scenes/Characters/Player/Actions/attack.tscn" id="13_v8aob"]
 [ext_resource type="AnimationLibrary" uid="uid://crgal3hqjoxp8" path="res://Data/Animations/dungeon_animations.res" id="15_5pkir"]
-[ext_resource type="Script" path="res://Code/Utilities/s_animator.gd" id="15_xk32d"]
+[ext_resource type="Script" path="res://Code/Utilities/r_animator.gd" id="15_xk32d"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_svv6o"]
 radius = 5.0

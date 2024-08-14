@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="REnemeyData" load_steps=2 format=3 uid="uid://bkcvd884oic06"]
+[gd_resource type="Resource" script_class="REnemeyData" load_steps=3 format=3 uid="uid://bkcvd884oic06"]
 
+[ext_resource type="Resource" uid="uid://3vklsv4qfvff" path="res://Data/Loot/Tables/test_rat.tres" id="1_enypu"]
 [ext_resource type="Script" path="res://Code/Enemies/r_enemy_data.gd" id="1_paism"]
 
 [resource]
 script = ExtResource("1_paism")
 attack_distance = 1000.0
+loot_table = ExtResource("1_enypu")
 id = "rat_enemy"
 speed = 100.0
 jump_height = 100.0

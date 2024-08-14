@@ -1,8 +1,10 @@
 class_name REnemy extends RCharacter
 
 @onready var dmg_marker:Marker2D = %dmg_numbers
+@onready var loot_spawn:Marker2D = %loot_spawn
 
-var target:DungeonCharater
+
+var target:DungeonCharacter
 var distance_to_target := 0.0
 
 func _ready():
@@ -31,7 +33,7 @@ func _physics_process(_delta):
 		#if state_machine.can_flip:
 			#_flip_items(items_to_flip, direction, sprite)
 
-func _get_distance_to_target(_target:DungeonCharater) -> float:
+func _get_distance_to_target(_target:DungeonCharacter) -> float:
 	return global_position.distance_squared_to(_target.global_position)
 
 func _character_hit(_owner:RCharacter = null, _dmgs:Array[Damage] = []):
@@ -46,3 +48,14 @@ func _death(_data:RCharacterData):
 		_update_animation("death")
 		move_collider.set_deferred("disabled", true)
 		Signals.ToggleHitCollider.emit(self, true)
+
+func _emit_signal(_id := "", _opt1 := "", _opt2 := ""):
+	match _id:
+		"spawn_loot":
+			if loot_spawn != null:
+				Signals.SpawnLoot.emit(data.loot_table, loot_spawn.global_position)
+		_:
+			pass
+
+func end_death():
+	queue_free.call_deferred()

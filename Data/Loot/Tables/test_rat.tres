@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="MonsterLootTable" load_steps=8 format=3 uid="uid://3vklsv4qfvff"]
+
+[ext_resource type="Resource" uid="uid://73kf20r777ke" path="res://Data/Items/test_item_1.tres" id="1_8n2x0"]
+[ext_resource type="Resource" uid="uid://d4dgtjv2r2fbv" path="res://Data/Items/Currencies/gold_data.tres" id="1_t286a"]
+[ext_resource type="Script" path="res://Code/Loot/monster_loot_table.gd" id="1_wjvwt"]
+[ext_resource type="Resource" uid="uid://tqpnpcnsxq75" path="res://Data/Items/test_item_2.tres" id="2_q7j5f"]
+[ext_resource type="Resource" uid="uid://c6tmmif476s05" path="res://Data/Items/test_item_3.tres" id="3_livl4"]
+[ext_resource type="Resource" uid="uid://y5y1hw2ydmx3" path="res://Data/Items/test_item_4.tres" id="3_sn0fp"]
+[ext_resource type="Resource" uid="uid://ccntxbkfs5rdq" path="res://Data/Items/test_item_5.tres" id="4_phi3p"]
+
+[resource]
+script = ExtResource("1_wjvwt")
+currencies = [{
+"currency": ExtResource("1_t286a"),
+"max": 3,
+"min": 1
+}]
+id = "test_rat"
+list = Array[Array]([[{
+"item": ExtResource("1_8n2x0"),
+"weight": 1
+}, {
+"item": ExtResource("3_sn0fp"),
+"weight": 2
+}, {
+"item": ExtResource("4_phi3p"),
+"weight": 3
+}], [{
+"item": ExtResource("2_q7j5f"),
+"weight": 2
+}, {
+"item": ExtResource("3_livl4"),
+"weight": 2
+}]])

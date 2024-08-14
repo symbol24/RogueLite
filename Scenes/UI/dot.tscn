@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbkxahv1k5y5c"]
+
+[ext_resource type="Script" path="res://Code/UI/dot.gd" id="1_xanly"]
+[ext_resource type="PackedScene" uid="uid://b6r7h1hpm11t8" path="res://Scenes/UI/button_icons/button_icon.tscn" id="2_6rg3w"]
+
+[node name="dot" type="Control"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+script = ExtResource("1_xanly")
+
+[node name="normal" parent="." instance=ExtResource("2_6rg3w")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, 10)
+scale = Vector2(0.7, 0.7)
+
+[node name="sprite" parent="normal" index="0"]
+frame = 714
+
+[node name="highlight" parent="." instance=ExtResource("2_6rg3w")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, 10)
+scale = Vector2(0.7, 0.7)
+
+[node name="sprite" parent="highlight" index="0"]
+frame = 714
+
+[editable path="normal"]
+[editable path="highlight"]

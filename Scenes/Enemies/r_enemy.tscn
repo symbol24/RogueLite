@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cm023u3c1vjio"]
 
 [ext_resource type="Script" path="res://Code/Enemies/r_enemy.gd" id="1_haqcm"]
-[ext_resource type="Script" path="res://Code/Utilities/s_animator.gd" id="2_4jhr5"]
+[ext_resource type="Script" path="res://Code/Utilities/r_animator.gd" id="2_4jhr5"]
 
 [node name="REnemy" type="CharacterBody2D"]
 script = ExtResource("1_haqcm")

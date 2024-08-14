@@ -51,3 +51,13 @@ offset_right = 202.0
 offset_bottom = 143.0
 theme = ExtResource("2_xnbp1")
 text = "Load"
+
+[node name="delete" type="Button" parent="Main_menu"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 119.0
+offset_top = 151.0
+offset_right = 189.0
+offset_bottom = 169.0
+theme = ExtResource("2_xnbp1")
+text = "Delete Save"

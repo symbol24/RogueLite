@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c7soajgfualrj"]
+[gd_scene load_steps=26 format=3 uid="uid://c7soajgfualrj"]
 
 [ext_resource type="Script" path="res://Code/Characters/Player/dungeon_character.gd" id="1_wi8wb"]
 [ext_resource type="Resource" uid="uid://f30cv8yiindy" path="res://Data/Characters/Player/Main/main.tres" id="2_parfh"]
@@ -7,13 +7,20 @@
 [ext_resource type="PackedScene" uid="uid://biigovwg63m17" path="res://Scenes/Characters/Player/Actions/jump.tscn" id="5_e6krj"]
 [ext_resource type="PackedScene" uid="uid://iapl7pc0s30h" path="res://Scenes/Characters/Player/Actions/move.tscn" id="6_lbd67"]
 [ext_resource type="PackedScene" uid="uid://cb3ysor5w21bn" path="res://Scenes/Characters/Player/StateMachine/dungeon_state_machine.tscn" id="7_rcci8"]
-[ext_resource type="Script" path="res://Code/Utilities/s_animator.gd" id="8_sfv5o"]
 [ext_resource type="PackedScene" uid="uid://oq3kbnwvxu2x" path="res://Scenes/Utilities/camera_remote.tscn" id="9_ch5b1"]
 [ext_resource type="PackedScene" uid="uid://orhusxvvcr5f" path="res://Scenes/Utilities/hit_detetction.tscn" id="9_oxksk"]
+[ext_resource type="Script" path="res://Code/Utilities/r_animator.gd" id="11_84psg"]
+[ext_resource type="Script" path="res://Code/Characters/Player/collector.gd" id="11_n1vxx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lv2t5"]
 radius = 5.0
 height = 28.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t4ft4"]
+radius = 7.0
+height = 28.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nu7bg"]
 
 [sub_resource type="Animation" id="Animation_p3m1b"]
 length = 0.001
@@ -274,10 +281,6 @@ _data = {
 "walk": SubResource("Animation_kjmg8")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t4ft4"]
-radius = 7.0
-height = 28.0
-
 [node name="CharacterDungeon" type="CharacterBody2D"]
 z_index = 100
 collision_layer = 2
@@ -307,15 +310,8 @@ visible = false
 [node name="state_machine" parent="." instance=ExtResource("7_rcci8")]
 unique_name_in_owner = true
 
-[node name="animator" type="AnimationPlayer" parent="."]
-unique_name_in_owner = true
-root_node = NodePath("../state_machine")
-libraries = {
-"": SubResource("AnimationLibrary_0xnee")
-}
-script = ExtResource("8_sfv5o")
-
 [node name="hit_detetction" parent="." instance=ExtResource("9_oxksk")]
+visible = false
 collision_layer = 2
 collision_mask = 16
 
@@ -329,5 +325,23 @@ unique_name_in_owner = true
 [node name="dmg_numbers" type="Marker2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, -32)
+
+[node name="collector" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 64
+script = ExtResource("11_n1vxx")
+
+[node name="collector_collider" type="CollisionShape2D" parent="collector"]
+position = Vector2(0, -15)
+shape = SubResource("CapsuleShape2D_nu7bg")
+debug_color = Color(0.490435, 0.566857, 0.405208, 0.42)
+
+[node name="animator" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("../state_machine")
+libraries = {
+"": SubResource("AnimationLibrary_0xnee")
+}
+script = ExtResource("11_84psg")
 
 [editable path="hit_detetction"]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwsdw6mor6y8j"]
+
+[ext_resource type="Script" path="res://Code/Loot/lootable.gd" id="1_whkug"]
+[ext_resource type="Script" path="res://Code/Utilities/r_area2d.gd" id="2_tjvhb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3opi8"]
+radius = 7.07107
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ur2y"]
+
+[node name="Lootable" type="RigidBody2D"]
+collision_layer = 64
+script = ExtResource("1_whkug")
+
+[node name="object_collider" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_3opi8")
+
+[node name="collectible_area" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 2
+script = ExtResource("2_tjvhb")
+
+[node name="collectible_collider" type="CollisionShape2D" parent="collectible_area"]
+shape = SubResource("CircleShape2D_6ur2y")

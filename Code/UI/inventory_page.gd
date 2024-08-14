@@ -38,7 +38,7 @@ func build_grid(_rows := 1, _columns := 1, page_id := 0):
 			slot_id += 1
 		squares.append(line)
 
-func fill_items(_items:Array, _page_min := 0, _page_max := 0):
+func fill_items(_items:Array, _page_min := 0, _page_max := 0) -> bool:
 	if manager == null and GM.item_manager != null: manager = GM.item_manager
 	if manager != null:
 		if !squares.is_empty():
@@ -50,6 +50,11 @@ func fill_items(_items:Array, _page_min := 0, _page_max := 0):
 			if item.has("slot") and item.has("item_id"):
 				if item["slot"] >= _page_min and item["slot"] <= _page_max:
 					add_item(item)
+		return true
+	else: 
+		Debug.warning("manager is still null!")
+		return false
+		
 
 func get_slot_by_id(_slot_id := -1) -> InventorySquare:
 	if _slot_id != -1:

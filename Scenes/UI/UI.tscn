@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bpdxgddiw4vup"]
+[gd_scene load_steps=28 format=3 uid="uid://bpdxgddiw4vup"]
 
 [ext_resource type="Script" path="res://Code/UI/r_ui.gd" id="1_csoys"]
 [ext_resource type="Script" path="res://Code/UI/r_debug_ui.gd" id="2_hu0gv"]
@@ -23,6 +23,9 @@
 [ext_resource type="Script" path="res://Code/UI/r_rich_text_label.gd" id="17_gfsa0"]
 [ext_resource type="Script" path="res://Code/UI/pause_menu_inventory.gd" id="20_swyt4"]
 [ext_resource type="Script" path="res://Code/UI/pause_menu_settings.gd" id="21_buj8p"]
+[ext_resource type="Script" path="res://Code/UI/pause_menu_inventory_tabs.gd" id="21_wilu1"]
+[ext_resource type="Script" path="res://Code/UI/pause_menu_currencies.gd" id="23_cje5b"]
+[ext_resource type="PackedScene" uid="uid://b2t3gvsaw64i8" path="res://Scenes/Items/Textures/item_texture_coin.tscn" id="24_4x6k0"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_kpfai"]
 script = ExtResource("13_0bd1q")
@@ -264,7 +267,7 @@ script = ExtResource("17_gfsa0")
 [node name="hbox" type="HBoxContainer" parent="PauseMenu"]
 custom_minimum_size = Vector2(320, 176)
 layout_mode = 0
-offset_right = 328.0
+offset_right = 320.0
 offset_bottom = 176.0
 theme_override_constants/separation = 0
 
@@ -321,7 +324,11 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="inventory_tab_container" type="TabContainer" parent="PauseMenu/hbox/vbox/sub_menues/Inventory/hb_inventory/vbox_inventory/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/hbox/vbox/sub_menues/Inventory/hb_inventory/vbox_inventory/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="inventory_tab_container" type="TabContainer" parent="PauseMenu/hbox/vbox/sub_menues/Inventory/hb_inventory/vbox_inventory/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -329,6 +336,51 @@ size_flags_vertical = 3
 tabs_visible = false
 all_tabs_in_front = true
 tab_focus_mode = 0
+
+[node name="inventory_tabs" type="HBoxContainer" parent="PauseMenu/hbox/vbox/sub_menues/Inventory/hb_inventory/vbox_inventory/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+script = ExtResource("21_wilu1")
+
+[node name="spacer" type="Control" parent="PauseMenu/hbox/vbox/sub_menues/Inventory/hb_inventory/vbox_inventory/HBoxContainer/VBoxContainer/inventory_tabs"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+script = ExtResource("11_pmhgx")
+
+[node name="button_left" type="Control" parent="PauseMenu/hbox/vbox/sub_menues/Inventory/hb_inventory/vbox_inventory/HBoxContainer/VBoxContainer/inventory_tabs"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+script = ExtResource("11_pmhgx")
+
+[node name="ButtonIcon" parent="PauseMenu/hbox/vbox/sub_menues/Inventory/hb_inventory/vbox_inventory/HBoxContainer/VBoxContainer/inventory_tabs/button_left" instance=ExtResource("13_j7odl")]
+position = Vector2(10, 10)
+scale = Vector2(0.7, 0.7)
+
+[node name="sprite" parent="PauseMenu/hbox/vbox/sub_menues/Inventory/hb_inventory/vbox_inventory/HBoxContainer/VBoxContainer/inventory_tabs/button_left/ButtonIcon" index="0"]
+frame = 585
+
+[node name="dots" type="HBoxContainer" parent="PauseMenu/hbox/vbox/sub_menues/Inventory/hb_inventory/vbox_inventory/HBoxContainer/VBoxContainer/inventory_tabs"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="button_right" type="Control" parent="PauseMenu/hbox/vbox/sub_menues/Inventory/hb_inventory/vbox_inventory/HBoxContainer/VBoxContainer/inventory_tabs"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+script = ExtResource("11_pmhgx")
+
+[node name="ButtonIcon" parent="PauseMenu/hbox/vbox/sub_menues/Inventory/hb_inventory/vbox_inventory/HBoxContainer/VBoxContainer/inventory_tabs/button_right" instance=ExtResource("13_j7odl")]
+position = Vector2(10, 10)
+scale = Vector2(0.7, 0.7)
+
+[node name="sprite" parent="PauseMenu/hbox/vbox/sub_menues/Inventory/hb_inventory/vbox_inventory/HBoxContainer/VBoxContainer/inventory_tabs/button_right/ButtonIcon" index="0"]
+frame = 586
+
+[node name="spacer2" type="Control" parent="PauseMenu/hbox/vbox/sub_menues/Inventory/hb_inventory/vbox_inventory/HBoxContainer/VBoxContainer/inventory_tabs"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+script = ExtResource("11_pmhgx")
 
 [node name="spacer2" type="Control" parent="PauseMenu/hbox/vbox/sub_menues/Inventory/hb_inventory/vbox_inventory/HBoxContainer"]
 custom_minimum_size = Vector2(5, 10)
@@ -361,6 +413,29 @@ layout_mode = 2
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 
+[node name="Currencies" type="Control" parent="PauseMenu"]
+custom_minimum_size = Vector2(320, 176)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("23_cje5b")
+
+[node name="ItemTexture" parent="PauseMenu/Currencies" instance=ExtResource("24_4x6k0")]
+position = Vector2(46, 160)
+
+[node name="gold" type="RichTextLabel" parent="PauseMenu/Currencies"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 7)
+layout_mode = 0
+offset_left = 55.0
+offset_top = 157.0
+offset_right = 75.0
+offset_bottom = 164.0
+theme = ExtResource("8_6pc2o")
+bbcode_enabled = true
+text = "0"
+script = ExtResource("17_gfsa0")
+
 [node name="LoadingScreen" type="Control" parent="."]
 visible = false
 z_index = 1000
@@ -391,3 +466,5 @@ deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
 [editable path="DungeonUI/EndRunScreen/back_button"]
+[editable path="PauseMenu/hbox/vbox/sub_menues/Inventory/hb_inventory/vbox_inventory/HBoxContainer/VBoxContainer/inventory_tabs/button_left/ButtonIcon"]
+[editable path="PauseMenu/hbox/vbox/sub_menues/Inventory/hb_inventory/vbox_inventory/HBoxContainer/VBoxContainer/inventory_tabs/button_right/ButtonIcon"]

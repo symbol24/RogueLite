@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cvtsu65bm68p7" path="res://Textures/character/Player Template/Player Spritesheet.png" id="2_2p038"]
 [ext_resource type="PackedScene" uid="uid://b4l8w2tk2icqe" path="res://Scenes/Characters/Player/StateMachine/town_state_machine.tscn" id="2_b8bml"]
 [ext_resource type="Resource" uid="uid://f30cv8yiindy" path="res://Data/Characters/Player/Main/main.tres" id="2_qq0df"]
-[ext_resource type="Script" path="res://Code/Utilities/s_animator.gd" id="5_tiech"]
+[ext_resource type="Script" path="res://Code/Utilities/r_animator.gd" id="5_tiech"]
 [ext_resource type="PackedScene" uid="uid://oq3kbnwvxu2x" path="res://Scenes/Utilities/camera_remote.tscn" id="7_dhyrm"]
 [ext_resource type="PackedScene" uid="uid://ceojig7lsy1xq" path="res://Scenes/Characters/Player/Actions/interact.tscn" id="8_bf1ao"]
 

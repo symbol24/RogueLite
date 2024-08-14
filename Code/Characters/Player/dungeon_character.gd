@@ -1,4 +1,4 @@
-class_name DungeonCharater extends RCharacter
+class_name DungeonCharacter extends RCharacter
 
 @onready var camera_remote:RRemoteTransform2D = %camera_remote
 @onready var state_machine:RStateMachine = %state_machine
@@ -19,6 +19,7 @@ func _ready():
 	if animator.is_node_ready():
 		items_to_flip = _get_flip(self)
 		Signals.CharacterReady.emit(self)
+		Signals.UpdateAllCurrencies.emit()
 		#Debug.log("Character ", name, " ready.")
 
 func _emit_signal(_id := "", _opt1 := "", _opt2 := ""):

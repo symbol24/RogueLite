@@ -9,8 +9,8 @@
 
 [resource]
 script = ExtResource("1_a7wvi")
-id = ""
-list = Array[Dictionary]([{
+id = "all_items"
+list = Array[Array]([[{
 "item": ExtResource("1_7ynii")
 }, {
 "item": ExtResource("2_glyvd")
@@ -20,4 +20,4 @@ list = Array[Dictionary]([{
 "item": ExtResource("4_q46o6")
 }, {
 "item": ExtResource("5_ekh5n")
-}])
+}]])

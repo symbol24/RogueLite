@@ -48,7 +48,10 @@ var loading_timer := 0.0
 var loading_delay := 1.0
 
 #items
-var item_manager:ItemManager
+var item_manager:ItemManager:
+	set(_value):
+		item_manager = _value
+		if item_manager != null: Signals.ItemManagerIsSet.emit(item_manager)
 
 #build info
 var is_debug := true

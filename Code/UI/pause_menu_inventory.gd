@@ -3,6 +3,7 @@ class_name PauseMenuInventory extends SubPauseMenu
 const INVENTORY_PAGE = preload("res://Scenes/UI/inventory_page.tscn")
 
 @onready var inventory_tab_container:TabContainer = %inventory_tab_container
+@onready var inventory_tabs = %inventory_tabs
 
 var pages := []
 var current_tab := 0:
@@ -16,10 +17,14 @@ var current_tab := 0:
 var active_slot:InventorySquare
 var item_grabbed:InventoryDisplayItem
 
+var character:MainCharacterData = null
+var manager:ItemManager = null
+
 func _ready():
 	super()
 	Signals.GrabInventoryFocus.connect(_grab_inventory_focus)
-	Signals.CharacterSet.connect(_build_inventory_pages)
+	Signals.CharacterSet.connect(_set_cm)
+	Signals.ItemManagerIsSet.connect(_set_cm)
 	Signals.ActiveInventorySquare.connect(_set_active_slot)
 	Signals.MoveItemToNewParent.connect(_move_item)
 	Signals.AdditemToInventoryUi.connect(_add_item_to_inventory_ui)
@@ -49,7 +54,7 @@ func _grab():
 				active_slot.release(item_grabbed)
 				item_grabbed = null
 
-func _build_inventory_pages(_data):
+func _build_inventory_pages(_character):
 	if pages.is_empty():
 		for x in PlayerData.data.inventory_page_count:
 			var page = INVENTORY_PAGE.instantiate()
@@ -59,13 +64,23 @@ func _build_inventory_pages(_data):
 			page.build_grid(PlayerData.data.inventory_rows, PlayerData.data.inventory_columns, x)
 			pages.append(page)
 		Signals.InventoryPagesDone.emit()
+		_fill_items(manager)
+		
+		if pages.size() > 1: 
+			inventory_tabs.show()
+			inventory_tabs.add_dots(pages.size())
+		else: inventory_tabs.hide()
+
+func _fill_items(_manager:ItemManager):
+	if _manager != null:
 		var x := 0
 		for page in pages:
 			page.fill_items(PlayerData.data.inventory, PlayerData.data.slots_per_page * x, (PlayerData.data.slots_per_page * (x+1)) - 1,)
 			x += 1
 
 func _grab_inventory_focus(_tab := current_tab):
-	pages[_tab].grab_first_focus()
+	if !pages.is_empty():
+		pages[_tab].grab_first_focus()
 
 func _set_active_slot(_value:InventorySquare = null):
 	if _value != null:
@@ -89,7 +104,8 @@ func _update_count(_dict := {}):
 	var page = _get_page_from_slot_id(_dict["slot"])
 	if page != null:
 		var slot = page.get_slot_by_id(_dict["slot"])
-		slot.item.set_stack(_dict["count"])
+		if slot.item != null:
+			slot.item.set_stack(_dict["count"])
 
 func _get_page_from_slot_id(_slot := -1) -> InventoryPage:
 	if _slot > -1:
@@ -100,3 +116,15 @@ func _get_page_from_slot_id(_slot := -1) -> InventoryPage:
 						return page
 		return null
 	return null
+
+func _set_cm(_value = null):
+	if _value != null:
+		if _value is MainCharacterData:
+			character = _value
+			#Debug.log("Set character: ", character.id)
+		elif _value is ItemManager:
+			manager = _value
+			#Debug.log("Set manager: ", manager.name)
+		
+		if character != null and manager != null:
+			_build_inventory_pages(character)

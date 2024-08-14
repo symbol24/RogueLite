@@ -9,6 +9,8 @@ signal ClassReady(_name)
 #Player Data
 signal Save()
 signal Load()
+signal DeleteSave()
+signal UpdateAllCurrencies()
 
 #GameManger
 signal LoadNewWorld(id)
@@ -19,6 +21,7 @@ signal WorldSet(world)
 signal TogglePause(value)
 signal ToggleEndRun(value)
 signal EndRunCheck()
+signal ItemManagerIsSet(manager)
 
 #Worlds
 signal WorldReady(world)
@@ -48,6 +51,10 @@ signal AddItem(item)
 signal AdditemToInventoryUi(dict)
 signal UpdateCountOfitemInUi(dict)
 
+#loot
+signal Collect(target, item)
+signal SpawnLoot(loot_table, _position)
+
 #UI
 signal UpdateInputFocus(focus)
 signal ToggleDungeonUI(value)
@@ -66,6 +73,7 @@ signal ActiveInventorySquare(slot)
 signal MoveItemToNewParent(item, slot_id)
 signal SetHoverOnSquare(slot_id)
 signal RemoveHoverOnSquare(slot_id)
+signal PauseMenuInventoryToggleDot(id)
 
 #Debug
 signal DebugPrint(text)
