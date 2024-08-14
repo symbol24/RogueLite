@@ -9,7 +9,10 @@ func _ready():
 func _area_entered(_area):
 	if _area.get_parent() is Collectible:
 		if PlayerData.check_if_can_collect(_area.get_parent().data, _area.get_parent().amount):
-			_area.get_parent().collect(r_owner.data)
+			var result = _area.get_parent().collect()
+			if result.has("item") and result.has("amount"):
+				Debug.log("Is result item an itemdata? ", result["item"] is ItemData)
+				Signals.Collect.emit(r_owner.data, result["item"], result["amount"])
 		else: 
 			Signals.DisplayError.emit("inventory_full")
 			Debug.error("Invetory full")

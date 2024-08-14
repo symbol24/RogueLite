@@ -12,21 +12,22 @@ script = ExtResource("1_xanly")
 
 [node name="normal" parent="." instance=ExtResource("2_6rg3w")]
 unique_name_in_owner = true
-visible = false
-position = Vector2(0, 10)
+position = Vector2(6, 6)
 scale = Vector2(0.7, 0.7)
 
 [node name="sprite" parent="normal" index="0"]
+position = Vector2(0, 0)
 frame = 714
 
 [node name="highlight" parent="." instance=ExtResource("2_6rg3w")]
 unique_name_in_owner = true
 visible = false
-position = Vector2(0, 10)
+position = Vector2(6, 6)
 scale = Vector2(0.7, 0.7)
 
 [node name="sprite" parent="highlight" index="0"]
-frame = 714
+position = Vector2(0, 0)
+frame = 680
 
 [editable path="normal"]
 [editable path="highlight"]

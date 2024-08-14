@@ -10,3 +10,6 @@ func add_dots(_amount := 0):
 			var dot = DOTUI.instantiate()
 			dots.add_child.call_deferred(dot)
 			dot.id = x
+			await dot.ready
+			if x == 0:
+				dot._toggle_highlight(0)

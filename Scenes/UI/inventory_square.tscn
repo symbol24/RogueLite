@@ -15,8 +15,10 @@ grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 2
 script = ExtResource("1_t7myr")
+disabled_color = Color(1, 1, 1, 0)
 
 [node name="background" type="NinePatchRect" parent="."]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 0
 offset_right = 10.0

@@ -9,20 +9,20 @@ func get_loot() -> Array:
 	var result := []
 	var temp = list.duplicate(true)
 	for table in temp:
-		Debug.log("table: ", table)
+		#Debug.log("table: ", table)
 		if table.size() > 1:
 			var total := 0
 			for item in table:
 				total += item["weight"]
 				item["weight"] = total
 			
-			Debug.log("table post weight: ", table)
+			#Debug.log("table post weight: ", table)
 			var added := false
 			var choice = GM.rng.randi_range(0, total)
-			Debug.log("Choice: ", choice)
+			#Debug.log("Choice: ", choice)
 			for item in table:
 				if !added and item["weight"] <= choice:
-					Debug.log("adding item: ", item["item"].item_name)
+					#Debug.log("adding item: ", item["item"].item_name)
 					result.append(item["item"])
 					added = true
 		elif table.size() == 1:

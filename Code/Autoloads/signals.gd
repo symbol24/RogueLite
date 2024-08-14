@@ -52,7 +52,7 @@ signal AdditemToInventoryUi(dict)
 signal UpdateCountOfitemInUi(dict)
 
 #loot
-signal Collect(target, item)
+signal Collect(target, item, amount)
 signal SpawnLoot(loot_table, _position)
 
 #UI

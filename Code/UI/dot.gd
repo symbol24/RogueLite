@@ -9,6 +9,7 @@ func _ready():
 	Signals.PauseMenuInventoryToggleDot.connect(_toggle_highlight)
 
 func _toggle_highlight(_id := 0):
+	#Debug.log("dot id: ", id, " and _id: ", _id)
 	if _id == id:
 		highlight.show()
 		normal.hide()

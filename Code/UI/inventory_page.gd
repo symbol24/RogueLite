@@ -3,6 +3,9 @@ class_name InventoryPage extends RControl
 const INVENTORY_SQUARE = preload("res://Scenes/UI/inventory_square.tscn")
 const INVENTORY_DISPLAY_ITEM = preload("res://Scenes/Items/inventory_display_item.tscn")
 
+const ROWS := 4
+const COLUMNS := 4
+
 @onready var grid:GridContainer = %grid
 
 var in_focus := false
@@ -23,22 +26,27 @@ func _ready():
 	Signals.SetHoverOnSquare.connect(grab_hover_by_id)
 	Signals.RemoveHoverOnSquare.connect(release_hover_by_id)
 
-func build_grid(_rows := 1, _columns := 1, page_id := 0):
-	grid.columns = _columns
+func build_grid(_page_id := 0, _square_amount := 0):
+	#Debug.log("_page_id := ", _page_id, ", _square_amount := ", _square_amount)
+	grid.columns = COLUMNS
 	var slot_id := 0
-	for x in _rows:
+	var square_count := _square_amount
+	for x in ROWS:
 		var line:Array = []
-		for y in _columns:
+		for y in COLUMNS:
 			var square = INVENTORY_SQUARE.instantiate()
 			grid.add_child.call_deferred(square)
 			#Debug.log("Setting slot_id: ", slot_id)
 			square.set_meta("slot_id", slot_id)
 			line.append(square)
-			square.name = "square_" + str(page_id) + "_" + str(x) + "_" + str(y)
+			square.name = "square_" + str(_page_id) + "_" + str(x) + "_" + str(y)
 			slot_id += 1
+			if square_count <= 0:
+				square.disable()
+			square_count -= 1
 		squares.append(line)
 
-func fill_items(_items:Array, _page_min := 0, _page_max := 0) -> bool:
+func fill_items(_items:Array, _page_id := 0) -> bool:
 	if manager == null and GM.item_manager != null: manager = GM.item_manager
 	if manager != null:
 		if !squares.is_empty():
@@ -48,7 +56,7 @@ func fill_items(_items:Array, _page_min := 0, _page_max := 0) -> bool:
 						each.remove_item()
 		for item in _items:
 			if item.has("slot") and item.has("item_id"):
-				if item["slot"] >= _page_min and item["slot"] <= _page_max:
+				if item["slot"] >= (ROWS * COLUMNS * _page_id) and item["slot"] <= (ROWS * COLUMNS * (_page_id+1))-1:
 					add_item(item)
 		return true
 	else: 

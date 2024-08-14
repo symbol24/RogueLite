@@ -1,8 +1,6 @@
 class_name PlayerSaveData extends Resource
 
-const INVENTORY_BASE_SIZE := 16
-const ROWS := 4
-const COLUMNS := 4
+const INVENTORY_BASE_SIZE := 8
 
 @export var save_count := 0
 @export var rng_seed := ""
@@ -17,10 +15,7 @@ const COLUMNS := 4
 @export var inventory_size:int = INVENTORY_BASE_SIZE
 @export var inventory_page_count := 1:
 	get:
-		return inventory_size % INVENTORY_BASE_SIZE
-@export var slots_per_page := 16:
-	get:
-		return ROWS * COLUMNS
+		return inventory_size / INVENTORY_BASE_SIZE
 
 func get_save_dict() -> Dictionary:
 	save_count += 1

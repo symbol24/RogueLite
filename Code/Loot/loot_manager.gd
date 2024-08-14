@@ -11,7 +11,7 @@ func _ready():
 func _spawn_loot(_table:LootTable = null, _pos := Vector2.ZERO):
 	if _table != null and _pos != Vector2.ZERO:
 		var loot = _table.get_loot()
-		Debug.log("loot:", loot)
+		#Debug.log("loot:", loot)
 		for item in loot:
 			var new_loot = LOOTABLE.instantiate() as Lootable
 			GM.world.add_child.call_deferred(new_loot)

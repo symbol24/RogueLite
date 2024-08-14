@@ -1,9 +1,13 @@
 class_name InventorySquare extends RControl
 
+@export var disabled_color:Color
+
+@onready var background = %background
 @onready var highlight = %highlight
 @onready var hover = %hover
 
 var item:InventoryDisplayItem
+var is_disabled := false
 
 func _ready():
 	focus_entered.connect(_focus_entered)
@@ -12,7 +16,7 @@ func _ready():
 	mouse_exited.connect(_mouse_exited)
 
 func grab() -> InventoryDisplayItem:
-	if item != null: 
+	if !is_disabled and item != null: 
 		var temp = item
 		item = null
 		return temp
@@ -55,3 +59,8 @@ func remove_item():
 		remove_child.call_deferred(item)
 		item.queue_free.call_deferred()
 		item = null
+
+func disable():
+	is_disabled = true
+	set_deferred("modulate", disabled_color)
+	set_deferred("focus_mode", 0)
