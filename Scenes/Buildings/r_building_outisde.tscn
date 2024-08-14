@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://bmfcsylmh250x" path="res://Data/Tilesets/debug_grey_box.tres" id="2_2papb"]
 [ext_resource type="PackedScene" uid="uid://ccxumj5vwpj6l" path="res://Scenes/Buildings/Interactables/building_entrance.tscn" id="2_on86o"]
 [ext_resource type="Resource" uid="uid://m8w5do8efjpx" path="res://Data/Buildings/test_building.tres" id="4_t15g7"]
-[ext_resource type="PackedScene" uid="uid://lbgkvfv4ujdn" path="res://Scenes/UI/button_icons/spawn_point.tscn" id="5_3t03f"]
+[ext_resource type="PackedScene" uid="uid://lbgkvfv4ujdn" path="res://Scenes/Utilities/spawn_point.tscn" id="5_3t03f"]
 [ext_resource type="Theme" uid="uid://8vretd3mjbye" path="res://Data/Debug/display_theme.tres" id="6_xuoeu"]
 [ext_resource type="Script" path="res://Code/UI/r_rich_text_label.gd" id="7_xb7m5"]
 

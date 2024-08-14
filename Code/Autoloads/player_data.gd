@@ -5,6 +5,8 @@ const FILE = "game.save"
 const JSONTHING = "VVRASG#$f2"
 
 var data:PlayerSaveData
+var collect_timer:SceneTreeTimer
+
 
 func _ready():
 	Signals.Save.connect(_save)
@@ -16,7 +18,7 @@ func _ready():
 func _load():
 	if not FileAccess.file_exists(FOLDER+FILE):
 		Debug.log("creating new SAVE file")
-		_save()
+		Signals.Save.emit()
 		return {"result": "Missing save file"}
 	var save_file
 	if GM.is_debug: save_file = FileAccess.open(FOLDER+FILE, FileAccess.READ)
@@ -68,3 +70,32 @@ func _collect(_data:MainCharacterData = null, _item_data:ItemData = null, _amoun
 	Debug.log("Received data: ", _data.id, " and item: ", _item_data.item_name, " for amount: ", _amount)
 	if _data is MainCharacterData and _item_data != null:
 		data.add_item_to_inventory(_item_data, _amount)
+		_save_delay(5.0)
+
+func _save_delay(_value := 5.0):
+	if collect_timer != null and collect_timer.time_left > 0.0:
+		collect_timer.time_left = _value
+	else:
+		collect_timer = get_tree().create_timer(_value)
+		if !collect_timer.is_connected("timeout", _save_timer_timeout):
+			collect_timer.timeout.connect(_save_timer_timeout)
+
+func _save_timer_timeout():
+	Signals.Save.emit()
+
+func check_if_can_collect(_item:ItemData = null, _amount := 1) -> bool:
+	if _item != null:
+		var can_add := false
+		if _item.can_stack:
+			var result = data._check_if_present_in_array(data.inventory, _item)
+			for each in  result:
+				if each["count"] < 99-_amount: 
+					can_add = true
+					break
+		
+		if !can_add:
+			if data.inventory.size() < data.inventory_size-1:
+				can_add = true
+		
+		return can_add
+	return false

@@ -1,6 +1,7 @@
 extends Node
 
 enum CURRENCIES {GOLD = 0, NOTHING = 1}
+enum ITEMRARITY {COMMON = 1, UNCOMMON = 2, RARE = 3, EXQUISITE = 4, LEGENDARY = 5}
 
 const WORLDS = [
 				{"id":"test_town", "path":"res://Scenes/Worlds/test_town.tscn"},

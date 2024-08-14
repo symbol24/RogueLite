@@ -75,6 +75,9 @@ signal SetHoverOnSquare(slot_id)
 signal RemoveHoverOnSquare(slot_id)
 signal PauseMenuInventoryToggleDot(id)
 
+#Error management
+signal DisplayError(id)
+
 #Debug
 signal DebugPrint(text)
 signal DebugError(text)

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Code/Worlds/r_building.gd" id="1_swg76"]
 [ext_resource type="TileSet" uid="uid://bmfcsylmh250x" path="res://Data/Tilesets/debug_grey_box.tres" id="2_kur32"]
-[ext_resource type="PackedScene" uid="uid://lbgkvfv4ujdn" path="res://Scenes/UI/button_icons/spawn_point.tscn" id="3_n4ep2"]
+[ext_resource type="PackedScene" uid="uid://lbgkvfv4ujdn" path="res://Scenes/Utilities/spawn_point.tscn" id="3_n4ep2"]
 [ext_resource type="PackedScene" uid="uid://g1fo3405gqal" path="res://Scenes/Buildings/Interactables/building_exit.tscn" id="4_vxema"]
 [ext_resource type="Resource" uid="uid://m8w5do8efjpx" path="res://Data/Buildings/test_building.tres" id="5_4fnyb"]
 

@@ -7,7 +7,8 @@
 script = ExtResource("1_wvuc8")
 
 [node name="tile_map" type="TileMap" parent="."]
-position = Vector2(-16, 17)
+position = Vector2(-4, 4)
+scale = Vector2(0.25, 0.25)
 tile_set = ExtResource("2_lgr7v")
 format = 2
 layer_0/tile_data = PackedInt32Array(-65536, 655360, 15, -131072, 655360, 14, -131071, 720896, 14, -65535, 720896, 15)

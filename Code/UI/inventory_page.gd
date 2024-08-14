@@ -80,10 +80,9 @@ func release_hover_by_id(_slot_id := -1):
 func add_item(_item := {}):
 	var slot = get_slot_by_id(_item["slot"])
 	var item_data = manager.get_item(_item["item_id"])
-	var item_texture = item_data.texture.instantiate() as ItemTexture
 	var display_item = INVENTORY_DISPLAY_ITEM.instantiate() as InventoryDisplayItem
 	slot.add_item.call_deferred(display_item)
 	await display_item.ready
 	display_item.set_display_item_name("display_item_"+str(_item["slot"]))
 	display_item.set_stack(_item["count"])
-	display_item.set_textures(item_texture)
+	display_item.set_textures(item_data.texture.instantiate() as ItemTexture)

@@ -7,7 +7,8 @@
 script = ExtResource("1_ua5ga")
 
 [node name="tile_map" type="TileMap" parent="."]
-position = Vector2(-14, 10)
+position = Vector2(-7, 5)
+scale = Vector2(0.5, 0.5)
 tile_set = ExtResource("2_owtnm")
 format = 2
 layer_0/tile_data = PackedInt32Array(-65536, 655360, 13, -65535, 720896, 13)

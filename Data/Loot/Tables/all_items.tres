@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="LootTable" load_steps=7 format=3 uid="uid://qv3njgjjg4le"]
+[gd_resource type="Resource" script_class="LootTable" load_steps=9 format=3 uid="uid://qv3njgjjg4le"]
 
 [ext_resource type="Resource" uid="uid://73kf20r777ke" path="res://Data/Items/test_item_1.tres" id="1_7ynii"]
 [ext_resource type="Script" path="res://Code/Loot/r_loot_table.gd" id="1_a7wvi"]
+[ext_resource type="Resource" uid="uid://d4dgtjv2r2fbv" path="res://Data/Items/Currencies/gold_data.tres" id="1_xlwvn"]
 [ext_resource type="Resource" uid="uid://tqpnpcnsxq75" path="res://Data/Items/test_item_2.tres" id="2_glyvd"]
+[ext_resource type="Resource" uid="uid://di13qon8p7lb5" path="res://Data/Items/MonsterMeat/rat_meat.tres" id="2_ufv8o"]
 [ext_resource type="Resource" uid="uid://c6tmmif476s05" path="res://Data/Items/test_item_3.tres" id="3_tvwv5"]
 [ext_resource type="Resource" uid="uid://y5y1hw2ydmx3" path="res://Data/Items/test_item_4.tres" id="4_q46o6"]
 [ext_resource type="Resource" uid="uid://ccntxbkfs5rdq" path="res://Data/Items/test_item_5.tres" id="5_ekh5n"]
@@ -11,6 +13,10 @@
 script = ExtResource("1_a7wvi")
 id = "all_items"
 list = Array[Array]([[{
+"item": ExtResource("1_xlwvn")
+}, {
+"item": ExtResource("2_ufv8o")
+}, {
 "item": ExtResource("1_7ynii")
 }, {
 "item": ExtResource("2_glyvd")

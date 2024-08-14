@@ -11,12 +11,11 @@ const ALL_ITEMS = preload("res://Data/Loot/Tables/all_items.tres")
 		ALL_ITEMS.list.clear()
 		var all = load_all_from_folder(ITEM_FOLDER)
 		#print(all)
-		var id := 0
 		var new_list:Array = []
-		for each in all:
-			each.id = id
+		for each:ItemData in all:
+			if each.id != hash(each.item_name):
+				each.id = hash(each.item_name)
 			ResourceSaver.save(each)
-			id += 1
 			new_list.append({"item":each})
 		ALL_ITEMS.list.append(new_list)
 		var result = ResourceSaver.save(ALL_ITEMS)
@@ -36,9 +35,17 @@ func get_item(_id: int) -> ItemData:
 
 func load_all_from_folder(_folder) -> Array:
 	var to_return:Array =[]
-	for file in DirAccess.get_files_at(_folder):
+	var dir = DirAccess.open(_folder)
+	var subs = dir.get_directories()
+	var files
+	for sub in subs:
+		files = DirAccess.get_files_at(_folder+"/"+sub)
+		for file in files:
+			if file.get_extension() == "tres":
+				to_return.append(load(_folder+"/"+sub+"/"+file))
+	files = DirAccess.get_files_at(_folder)
+	for file in files:
 		if file.get_extension() == "tres":
-			#var to_insta = load(_folder+file)
 			to_return.append(load(_folder+file))
 	return to_return
 

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Code/Worlds/r_dungeon.gd" id="1_37ys7"]
 [ext_resource type="TileSet" uid="uid://bmfcsylmh250x" path="res://Data/Tilesets/debug_grey_box.tres" id="2_8n6oi"]
 [ext_resource type="PackedScene" uid="uid://dvodbfubytheh" path="res://Scenes/Enemies/rat_enemy.tscn" id="4_e2syr"]
-[ext_resource type="PackedScene" uid="uid://lbgkvfv4ujdn" path="res://Scenes/UI/button_icons/spawn_point.tscn" id="4_t4nve"]
+[ext_resource type="PackedScene" uid="uid://lbgkvfv4ujdn" path="res://Scenes/Utilities/spawn_point.tscn" id="4_t4nve"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8axws"]
 size = Vector2(1216, 64)

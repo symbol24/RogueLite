@@ -53,6 +53,7 @@ func _emit_signal(_id := "", _opt1 := "", _opt2 := ""):
 	match _id:
 		"spawn_loot":
 			if loot_spawn != null:
+				#Debug.log("Sending loot table: ", data.loot_table.id)
 				Signals.SpawnLoot.emit(data.loot_table, loot_spawn.global_position)
 		_:
 			pass

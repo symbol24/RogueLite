@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Code/Worlds/r_town.gd" id="1_ypnnw"]
 [ext_resource type="TileSet" uid="uid://bmfcsylmh250x" path="res://Data/Tilesets/debug_grey_box.tres" id="2_eymqr"]
-[ext_resource type="PackedScene" uid="uid://lbgkvfv4ujdn" path="res://Scenes/UI/button_icons/spawn_point.tscn" id="3_apxx5"]
+[ext_resource type="PackedScene" uid="uid://lbgkvfv4ujdn" path="res://Scenes/Utilities/spawn_point.tscn" id="3_apxx5"]
 [ext_resource type="PackedScene" uid="uid://dsj8oya47dyqm" path="res://Scenes/Buildings/r_building_outisde.tscn" id="4_ftotk"]
 [ext_resource type="PackedScene" uid="uid://bootsiurdtxli" path="res://Scenes/Buildings/main_tavern_exterior.tscn" id="5_nawwa"]
 [ext_resource type="PackedScene" uid="uid://b4ye3vuox7yp4" path="res://Scenes/Dungeon_Entrances/dungeon_entrance.tscn" id="6_08tu6"]

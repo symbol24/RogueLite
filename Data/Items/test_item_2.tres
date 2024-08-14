@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_vophg")
-id = 1
+id = 3783848772
 item_name = "test_item_2"
 texture = ExtResource("2_l6piv")
 can_stack = false

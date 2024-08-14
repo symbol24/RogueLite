@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="MonsterLootTable" load_steps=8 format=3 uid="uid://3vklsv4qfvff"]
+[gd_resource type="Resource" script_class="MonsterLootTable" load_steps=9 format=3 uid="uid://3vklsv4qfvff"]
 
 [ext_resource type="Resource" uid="uid://73kf20r777ke" path="res://Data/Items/test_item_1.tres" id="1_8n2x0"]
 [ext_resource type="Resource" uid="uid://d4dgtjv2r2fbv" path="res://Data/Items/Currencies/gold_data.tres" id="1_t286a"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://c6tmmif476s05" path="res://Data/Items/test_item_3.tres" id="3_livl4"]
 [ext_resource type="Resource" uid="uid://y5y1hw2ydmx3" path="res://Data/Items/test_item_4.tres" id="3_sn0fp"]
 [ext_resource type="Resource" uid="uid://ccntxbkfs5rdq" path="res://Data/Items/test_item_5.tres" id="4_phi3p"]
+[ext_resource type="Resource" uid="uid://di13qon8p7lb5" path="res://Data/Items/MonsterMeat/rat_meat.tres" id="7_h00gv"]
 
 [resource]
 script = ExtResource("1_wjvwt")
@@ -31,4 +32,7 @@ list = Array[Array]([[{
 }, {
 "item": ExtResource("3_livl4"),
 "weight": 2
+}], [{
+"item": ExtResource("7_h00gv"),
+"weight": 1
 }]])

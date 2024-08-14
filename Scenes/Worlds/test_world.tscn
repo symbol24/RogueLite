@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Code/Worlds/r_world.gd" id="1_71idh"]
 [ext_resource type="Script" path="res://Code/Utilities/r_camera.gd" id="1_rupqb"]
 [ext_resource type="TileSet" uid="uid://dfokbtjwvntbu" path="res://Data/Tilesets/forest_test.tres" id="2_k0m4f"]
-[ext_resource type="PackedScene" uid="uid://lbgkvfv4ujdn" path="res://Scenes/UI/button_icons/spawn_point.tscn" id="3_vweik"]
+[ext_resource type="PackedScene" uid="uid://lbgkvfv4ujdn" path="res://Scenes/Utilities/spawn_point.tscn" id="3_vweik"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eam6a"]
 size = Vector2(560, 62)

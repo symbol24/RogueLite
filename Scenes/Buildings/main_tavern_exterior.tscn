@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Code/Buildings/r_building_outisde.gd" id="1_h3xg7"]
 [ext_resource type="TileSet" uid="uid://bmfcsylmh250x" path="res://Data/Tilesets/debug_grey_box.tres" id="2_hqaux"]
-[ext_resource type="PackedScene" uid="uid://lbgkvfv4ujdn" path="res://Scenes/UI/button_icons/spawn_point.tscn" id="3_2sxwo"]
+[ext_resource type="PackedScene" uid="uid://lbgkvfv4ujdn" path="res://Scenes/Utilities/spawn_point.tscn" id="3_2sxwo"]
 [ext_resource type="PackedScene" uid="uid://ccxumj5vwpj6l" path="res://Scenes/Buildings/Interactables/building_entrance.tscn" id="4_3b5vj"]
 [ext_resource type="Resource" uid="uid://5wnebbj6cjwq" path="res://Data/Buildings/main_tavern.tres" id="5_l43kq"]
 [ext_resource type="Theme" uid="uid://8vretd3mjbye" path="res://Data/Debug/display_theme.tres" id="6_m8ffq"]

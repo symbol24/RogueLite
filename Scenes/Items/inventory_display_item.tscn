@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bjobqo41nsdo5"]
 
 [ext_resource type="Script" path="res://Code/Items/inventory_display_item.gd" id="1_cwd3m"]
-[ext_resource type="PackedScene" uid="uid://cve04cts183qh" path="res://Scenes/Items/Textures/item_texture.tscn" id="1_k2peg"]
 [ext_resource type="Theme" uid="uid://cx5h5wxtfunq8" path="res://Data/UI/Themes/main_theme.tres" id="2_0rjkf"]
+[ext_resource type="Script" path="res://Code/UI/r_control.gd" id="2_t5d66"]
 [ext_resource type="Script" path="res://Code/UI/r_rich_text_label.gd" id="3_rguso"]
 
 [node name="InventoryDisplayItem" type="Control"]
@@ -17,24 +17,22 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cwd3m")
 
-[node name="shadow" parent="." instance=ExtResource("1_k2peg")]
+[node name="item_display" type="Control" parent="."]
 unique_name_in_owner = true
-visible = false
-modulate = Color(0, 0, 0, 0.537255)
-position = Vector2(11, 11)
-
-[node name="ItemTexture" parent="." instance=ExtResource("1_k2peg")]
-unique_name_in_owner = true
-position = Vector2(10, 10)
+custom_minimum_size = Vector2(20, 20)
+anchors_preset = 0
+offset_right = 20.0
+offset_bottom = 20.0
+script = ExtResource("2_t5d66")
 
 [node name="count" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(10, 7)
 layout_mode = 0
-offset_left = 10.0
+offset_left = 12.0
 offset_top = 11.0
-offset_right = 20.0
+offset_right = 22.0
 offset_bottom = 18.0
 theme = ExtResource("2_0rjkf")
 theme_override_colors/default_color = Color(1.15514e-06, 0.58192, 0.722878, 1)

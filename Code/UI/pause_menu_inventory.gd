@@ -61,7 +61,7 @@ func _build_inventory_pages(_character):
 			inventory_tab_container.add_child.call_deferred(page)
 			await page.ready
 			page.name = "inventory_page_" + str(x)
-			page.build_grid(PlayerData.data.inventory_rows, PlayerData.data.inventory_columns, x)
+			page.build_grid(PlayerData.data.ROWS, PlayerData.data.COLUMNS, x)
 			pages.append(page)
 		Signals.InventoryPagesDone.emit()
 		_fill_items(manager)

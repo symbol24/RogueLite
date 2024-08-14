@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_2p6pk")
 currency_type = 0
-id = 0
+id = 2090299659
 item_name = "gold"
 texture = ExtResource("2_glmpd")
 can_stack = true
