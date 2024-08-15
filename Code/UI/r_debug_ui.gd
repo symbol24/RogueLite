@@ -8,6 +8,7 @@ var lines:Array[String] = []
 var prev_focus := RInput.FOCUS.GAMEPLAY
 
 func _ready():
+	super()
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	active = GM.is_debug
 	input_line.text_submitted.connect(_parse_test)

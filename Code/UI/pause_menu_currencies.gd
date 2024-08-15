@@ -3,6 +3,7 @@ extends RControl
 @onready var gold:RRichTextLabel = %gold
 
 func _ready():
+	super()
 	Signals.UpdateAllCurrencies.connect(_update_all_currencies)
 
 func _update_all_currencies():

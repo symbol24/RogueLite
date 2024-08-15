@@ -1,12 +1,15 @@
-[gd_scene load_steps=26 format=3 uid="uid://c7soajgfualrj"]
+[gd_scene load_steps=34 format=3 uid="uid://c7soajgfualrj"]
 
 [ext_resource type="Script" path="res://Code/Characters/Player/dungeon_character.gd" id="1_wi8wb"]
-[ext_resource type="Resource" uid="uid://f30cv8yiindy" path="res://Data/Characters/Player/Main/main.tres" id="2_parfh"]
+[ext_resource type="Resource" uid="uid://f30cv8yiindy" path="res://Data/Characters/Player/Main/main.tres" id="2_0nbou"]
 [ext_resource type="Texture2D" uid="uid://cvtsu65bm68p7" path="res://Textures/character/Player Template/Player Spritesheet.png" id="3_p6wjx"]
 [ext_resource type="PackedScene" uid="uid://bj3vbm3bjados" path="res://Scenes/Characters/Player/Actions/attack.tscn" id="4_r63py"]
 [ext_resource type="PackedScene" uid="uid://biigovwg63m17" path="res://Scenes/Characters/Player/Actions/jump.tscn" id="5_e6krj"]
 [ext_resource type="PackedScene" uid="uid://iapl7pc0s30h" path="res://Scenes/Characters/Player/Actions/move.tscn" id="6_lbd67"]
 [ext_resource type="PackedScene" uid="uid://cb3ysor5w21bn" path="res://Scenes/Characters/Player/StateMachine/dungeon_state_machine.tscn" id="7_rcci8"]
+[ext_resource type="Script" path="res://Code/Characters/Player/StateMachine/r_state.gd" id="7_s3u1e"]
+[ext_resource type="Resource" uid="uid://cvn4j7f2l622b" path="res://Data/Characters/Player/States/attack.tres" id="8_0qnyl"]
+[ext_resource type="Resource" uid="uid://w8my5xycdikp" path="res://Data/Characters/Player/States/hard_land.tres" id="9_8rb2q"]
 [ext_resource type="PackedScene" uid="uid://oq3kbnwvxu2x" path="res://Scenes/Utilities/camera_remote.tscn" id="9_ch5b1"]
 [ext_resource type="PackedScene" uid="uid://orhusxvvcr5f" path="res://Scenes/Utilities/hit_detetction.tscn" id="9_oxksk"]
 [ext_resource type="Script" path="res://Code/Utilities/r_animator.gd" id="11_84psg"]
@@ -15,6 +18,66 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lv2t5"]
 radius = 5.0
 height = 28.0
+
+[sub_resource type="Resource" id="Resource_doc3x"]
+resource_local_to_scene = true
+script = ExtResource("7_s3u1e")
+id = "fall"
+can_move = true
+can_jump = false
+can_be_hit = true
+can_die = true
+can_flip = true
+can_interact = false
+animation = "fall"
+
+[sub_resource type="Resource" id="Resource_aih2m"]
+resource_local_to_scene = true
+script = ExtResource("7_s3u1e")
+id = "idle"
+can_move = true
+can_jump = true
+can_be_hit = true
+can_die = true
+can_flip = true
+can_interact = true
+animation = "idle"
+
+[sub_resource type="Resource" id="Resource_v1vcq"]
+resource_local_to_scene = true
+script = ExtResource("7_s3u1e")
+id = "jump"
+can_move = true
+can_jump = false
+can_be_hit = true
+can_die = true
+can_flip = true
+can_interact = false
+animation = "jump"
+
+[sub_resource type="Resource" id="Resource_1y8o4"]
+resource_local_to_scene = true
+script = ExtResource("7_s3u1e")
+id = "walk"
+can_move = true
+can_jump = true
+can_be_hit = true
+can_die = true
+can_flip = true
+can_interact = true
+animation = "walk"
+
+[sub_resource type="Resource" id="Resource_b1kwc"]
+resource_local_to_scene = true
+script = ExtResource("7_s3u1e")
+id = "dead"
+can_move = false
+can_jump = false
+can_be_hit = false
+can_die = false
+can_flip = false
+can_interact = false
+animation = "death"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t4ft4"]
 radius = 7.0
@@ -251,7 +314,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_kjmg8"]
-resource_name = "walk"
+resource_name = "walk_"
 length = 0.6
 loop_mode = 1
 tracks/0/type = "value"
@@ -278,14 +341,14 @@ _data = {
 "sword_attack_02": SubResource("Animation_dpage"),
 "transitionfall": SubResource("Animation_fc52a"),
 "transitionjump": SubResource("Animation_qtr1a"),
-"walk": SubResource("Animation_kjmg8")
+"walk_": SubResource("Animation_kjmg8")
 }
 
 [node name="CharacterDungeon" type="CharacterBody2D"]
 z_index = 100
 collision_layer = 2
 script = ExtResource("1_wi8wb")
-character_data = ExtResource("2_parfh")
+character_data = ExtResource("2_0nbou")
 
 [node name="sprite" type="Sprite2D" parent="." groups=["flip"]]
 unique_name_in_owner = true
@@ -309,6 +372,7 @@ visible = false
 
 [node name="state_machine" parent="." instance=ExtResource("7_rcci8")]
 unique_name_in_owner = true
+states = Array[ExtResource("7_s3u1e")]([SubResource("Resource_doc3x"), SubResource("Resource_aih2m"), SubResource("Resource_v1vcq"), SubResource("Resource_1y8o4"), ExtResource("8_0qnyl"), SubResource("Resource_b1kwc"), ExtResource("9_8rb2q")])
 
 [node name="hit_detetction" parent="." instance=ExtResource("9_oxksk")]
 visible = false

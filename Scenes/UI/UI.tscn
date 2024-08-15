@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bpdxgddiw4vup"]
+[gd_scene load_steps=35 format=3 uid="uid://bpdxgddiw4vup"]
 
 [ext_resource type="Script" path="res://Code/UI/r_ui.gd" id="1_csoys"]
 [ext_resource type="Script" path="res://Code/UI/r_debug_ui.gd" id="2_hu0gv"]
@@ -29,6 +29,7 @@
 [ext_resource type="Script" path="res://Code/UI/save_ui.gd" id="27_10ent"]
 [ext_resource type="Texture2D" uid="uid://b25mqxhmpd8t4" path="res://Textures/UI/save_icon.png" id="28_m2n76"]
 [ext_resource type="Script" path="res://Code/Utilities/r_animator.gd" id="29_o7stm"]
+[ext_resource type="Script" path="res://Code/UI/popups.gd" id="30_neygc"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_kpfai"]
 script = ExtResource("13_0bd1q")
@@ -102,11 +103,11 @@ script = ExtResource("1_csoys")
 visible = false
 top_level = true
 z_index = 4096
-custom_minimum_size = Vector2(320, 176)
+custom_minimum_size = Vector2(320, 180)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 320.0
+offset_bottom = 180.0
 script = ExtResource("2_hu0gv")
 metadata/_edit_lock_ = true
 
@@ -144,11 +145,11 @@ drag_and_drop_selection_enabled = false
 
 [node name="DungeonUI" type="Control" parent="." groups=["dungeon_ui"]]
 visible = false
-custom_minimum_size = Vector2(320, 176)
+custom_minimum_size = Vector2(320, 180)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 320.0
+offset_bottom = 180.0
 script = ExtResource("5_oik8b")
 
 [node name="DamageNumbers" type="Control" parent="DungeonUI"]
@@ -271,11 +272,11 @@ script = ExtResource("11_pmhgx")
 
 [node name="TownUi" type="Control" parent="." groups=["town_ui"]]
 visible = false
-custom_minimum_size = Vector2(320, 176)
+custom_minimum_size = Vector2(320, 180)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 320.0
+offset_bottom = 180.0
 script = ExtResource("10_jrapj")
 
 [node name="Clock" type="Control" parent="TownUi"]
@@ -297,11 +298,11 @@ texture = ExtResource("10_e0ish")
 [node name="PauseMenu" type="Control" parent="."]
 process_mode = 3
 visible = false
-custom_minimum_size = Vector2(320, 176)
+custom_minimum_size = Vector2(320, 180)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 320.0
-offset_bottom = 176.0
+offset_bottom = 180.0
 script = ExtResource("16_6u7vm")
 
 [node name="background_sprite" type="Sprite2D" parent="PauseMenu"]
@@ -354,12 +355,14 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("8_6pc2o")
 tab_alignment = 1
+current_tab = 0
 
 [node name="Inventory" type="Control" parent="PauseMenu/hbox/vbox/sub_menues"]
 layout_mode = 2
 script = ExtResource("20_swyt4")
 tab_name = "inventory"
 tab_id = 0
+metadata/_tab_index = 0
 
 [node name="hb_inventory" type="HBoxContainer" parent="PauseMenu/hbox/vbox/sub_menues/Inventory"]
 layout_mode = 1
@@ -468,6 +471,7 @@ layout_mode = 2
 script = ExtResource("21_buj8p")
 tab_name = "pause_settings"
 tab_id = 1
+metadata/_tab_index = 1
 
 [node name="spacer2" type="Control" parent="PauseMenu/hbox/vbox"]
 custom_minimum_size = Vector2(0, 30)
@@ -503,11 +507,11 @@ script = ExtResource("17_gfsa0")
 [node name="LoadingScreen" type="Control" parent="."]
 visible = false
 z_index = 1000
-custom_minimum_size = Vector2(320, 176)
+custom_minimum_size = Vector2(320, 180)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 320.0
+offset_bottom = 180.0
 script = ExtResource("11_tx6y7")
 
 [node name="BootBack" type="Sprite2D" parent="LoadingScreen"]
@@ -532,11 +536,11 @@ drag_and_drop_selection_enabled = false
 [node name="SaveUi" type="Control" parent="."]
 process_mode = 3
 visible = false
-custom_minimum_size = Vector2(320, 176)
+custom_minimum_size = Vector2(320, 180)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 320.0
+offset_bottom = 180.0
 script = ExtResource("27_10ent")
 
 [node name="SaveIcon" type="Sprite2D" parent="SaveUi"]
@@ -550,6 +554,143 @@ libraries = {
 }
 script = ExtResource("29_o7stm")
 
+[node name="Popups" type="Control" parent="."]
+process_mode = 3
+visible = false
+custom_minimum_size = Vector2(320, 180)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 320.0
+offset_bottom = 180.0
+script = ExtResource("30_neygc")
+warning_color = Color(1, 0.782934, 0.401216, 1)
+error_color = Color(0.604741, 0.0945607, 2.40654e-07, 1)
+
+[node name="text_only_popup" type="Control" parent="Popups"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(160, 40)
+anchors_preset = 0
+offset_left = 80.0
+offset_top = 20.0
+offset_right = 240.0
+offset_bottom = 60.0
+
+[node name="text_only_popup_text" type="RichTextLabel" parent="Popups/text_only_popup"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 40)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("8_6pc2o")
+bbcode_enabled = true
+text = "[b]Text only popup[/b]"
+scroll_active = false
+script = ExtResource("17_gfsa0")
+
+[node name="big_popup" type="Control" parent="Popups"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(160, 90)
+anchors_preset = 0
+offset_left = 80.0
+offset_top = 45.0
+offset_right = 240.0
+offset_bottom = 135.0
+
+[node name="background" type="ColorRect" parent="Popups/big_popup"]
+custom_minimum_size = Vector2(160, 90)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.109804, 0.109804, 0.109804, 0.682353)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Popups/big_popup"]
+custom_minimum_size = Vector2(120, 70)
+layout_mode = 0
+offset_left = 20.0
+offset_top = 5.0
+offset_right = 140.0
+offset_bottom = 75.0
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Popups/big_popup/VBoxContainer"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+
+[node name="color_box" type="ColorRect" parent="Popups/big_popup/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="popup_title" type="RichTextLabel" parent="Popups/big_popup/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("8_6pc2o")
+bbcode_enabled = true
+text = "[center][b]title[/b][/center]"
+scroll_active = false
+script = ExtResource("17_gfsa0")
+
+[node name="popup_text" type="RichTextLabel" parent="Popups/big_popup/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("8_6pc2o")
+bbcode_enabled = true
+text = "text"
+scroll_active = false
+script = ExtResource("17_gfsa0")
+
+[node name="Cancel_text" type="RichTextLabel" parent="Popups/big_popup"]
+custom_minimum_size = Vector2(30, 7)
+layout_mode = 0
+offset_left = 129.0
+offset_top = 77.0
+offset_right = 159.0
+offset_bottom = 84.0
+theme = ExtResource("8_6pc2o")
+text = "Cancel"
+scroll_active = false
+script = ExtResource("17_gfsa0")
+
+[node name="B_button" parent="Popups/big_popup" instance=ExtResource("13_j7odl")]
+
+[node name="sprite" parent="Popups/big_popup/B_button" index="0"]
+position = Vector2(123, 80)
+scale = Vector2(0.6, 0.6)
+frame = 5
+
+[node name="confirm_text" type="RichTextLabel" parent="Popups/big_popup"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(30, 7)
+layout_mode = 0
+offset_left = 88.0
+offset_top = 77.0
+offset_right = 118.0
+offset_bottom = 84.0
+theme = ExtResource("8_6pc2o")
+text = "Confirm"
+scroll_active = false
+script = ExtResource("17_gfsa0")
+
+[node name="A_button" parent="Popups/big_popup" instance=ExtResource("13_j7odl")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-41, 0)
+
+[node name="sprite" parent="Popups/big_popup/A_button" index="0"]
+position = Vector2(123, 80)
+scale = Vector2(0.6, 0.6)
+frame = 4
+
 [editable path="DungeonUI/EndRunScreen/back_button"]
 [editable path="PauseMenu/hbox/vbox/sub_menues/Inventory/hb_inventory/vbox_inventory/HBoxContainer/VBoxContainer/inventory_tabs/button_left/ButtonIcon"]
 [editable path="PauseMenu/hbox/vbox/sub_menues/Inventory/hb_inventory/vbox_inventory/HBoxContainer/VBoxContainer/inventory_tabs/button_right/ButtonIcon"]
+[editable path="Popups/big_popup/B_button"]
+[editable path="Popups/big_popup/A_button"]

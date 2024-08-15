@@ -15,17 +15,18 @@ var current_tab := 0:
 var max_tabs := 0
 
 func _ready():
+	super()
 	Signals.TogglePauseMenu.connect(_toggle_ui)
 	max_tabs = sub_menues.get_tab_count()
 
 func _process(_delta):
 	if !is_visible() and GM.is_playing() and RInput.start:
 		Signals.UpdateInputFocus.emit(RInput.FOCUS.UIFOCUS)
-		Signals.TogglePause.emit(true)
+		Signals.TogglePause.emit(GM.PAUSETYPE.FULL)
 		
 	if is_visible() and !GM.is_playing() and (RInput.ui_cancel or RInput.ui_start):
 		Signals.UpdateInputFocus.emit(RInput.FOCUS.GAMEPLAY)
-		Signals.TogglePause.emit(false)
+		Signals.TogglePause.emit(GM.PAUSETYPE.FULL)
 		
 	if is_visible() and !GM.is_playing() and GM.world is RDungeon and RInput.ui_y:
 		_toggle_ui(false)

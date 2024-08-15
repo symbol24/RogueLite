@@ -8,7 +8,6 @@ const COLUMNS := 4
 
 @onready var grid:GridContainer = %grid
 
-var in_focus := false
 var grid_pos := Vector2i.ZERO:
 	set(_value):
 		grid_pos = _value
@@ -21,6 +20,7 @@ var squares:Array[Array] = []
 var manager:ItemManager
 
 func _ready():
+	super()
 	name = "inventory_page"
 	if GM.item_manager != null: manager = GM.item_manager
 	Signals.SetHoverOnSquare.connect(grab_hover_by_id)

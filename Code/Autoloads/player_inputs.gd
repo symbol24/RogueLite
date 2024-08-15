@@ -46,10 +46,11 @@ var toggle_debug = 0
 
 var focus := FOCUS.UIFOCUS:
 	set(_value):
+		previous_focus = focus
 		focus = _value
 		#Debug.log("Focus updated to ", _get_focus_as_string(focus))
-var focused_on_ui := false
-var focused_on_debug := false
+var previous_focus := FOCUS.UIFOCUS
+
 var allow_player_input := true :
 	get: return allow_player_input
 	set(value):
@@ -82,7 +83,7 @@ func _toggle_player_input():
 func _toggle_focus(_value := FOCUS.UIFOCUS):
 	_reset_values()
 	focus = _value
-	if focus == FOCUS.UIFOCUS: Debug.log("In ui focus for inputs")
+	#if focus == FOCUS.UIFOCUS: Debug.log("In ui focus for inputs")
 
 func _listen_to_debug():
 	toggle_debug = Input.is_action_just_pressed("debug")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cg1am2xvadc37"]
+[gd_scene load_steps=18 format=3 uid="uid://cg1am2xvadc37"]
 
 [ext_resource type="Script" path="res://Code/Characters/Player/town_character.gd" id="1_0ad2t"]
 [ext_resource type="PackedScene" uid="uid://iapl7pc0s30h" path="res://Scenes/Characters/Player/Actions/move.tscn" id="2_1laym"]
@@ -6,12 +6,38 @@
 [ext_resource type="PackedScene" uid="uid://b4l8w2tk2icqe" path="res://Scenes/Characters/Player/StateMachine/town_state_machine.tscn" id="2_b8bml"]
 [ext_resource type="Resource" uid="uid://f30cv8yiindy" path="res://Data/Characters/Player/Main/main.tres" id="2_qq0df"]
 [ext_resource type="Script" path="res://Code/Utilities/r_animator.gd" id="5_tiech"]
+[ext_resource type="Script" path="res://Code/Characters/Player/StateMachine/r_state.gd" id="6_qjecm"]
 [ext_resource type="PackedScene" uid="uid://oq3kbnwvxu2x" path="res://Scenes/Utilities/camera_remote.tscn" id="7_dhyrm"]
+[ext_resource type="Resource" uid="uid://j71dsiltwbpj" path="res://Data/Characters/Player/States/mini_game.tres" id="7_ocfxc"]
 [ext_resource type="PackedScene" uid="uid://ceojig7lsy1xq" path="res://Scenes/Characters/Player/Actions/interact.tscn" id="8_bf1ao"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sea4f"]
 radius = 5.0
 height = 28.0
+
+[sub_resource type="Resource" id="Resource_qfm0t"]
+resource_local_to_scene = true
+script = ExtResource("6_qjecm")
+id = "idle"
+can_move = true
+can_jump = true
+can_be_hit = true
+can_die = true
+can_flip = true
+can_interact = true
+animation = "idle"
+
+[sub_resource type="Resource" id="Resource_o6x1n"]
+resource_local_to_scene = true
+script = ExtResource("6_qjecm")
+id = "walk"
+can_move = true
+can_jump = true
+can_be_hit = true
+can_die = true
+can_flip = true
+can_interact = true
+animation = "walk"
 
 [sub_resource type="Animation" id="Animation_teu28"]
 length = 0.001
@@ -92,6 +118,7 @@ shape = SubResource("CapsuleShape2D_sea4f")
 
 [node name="state_machine" parent="." instance=ExtResource("2_b8bml")]
 unique_name_in_owner = true
+states = Array[ExtResource("6_qjecm")]([SubResource("Resource_qfm0t"), ExtResource("7_ocfxc"), SubResource("Resource_o6x1n")])
 
 [node name="animator" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

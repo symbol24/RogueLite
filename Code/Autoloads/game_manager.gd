@@ -2,6 +2,7 @@ extends Node
 
 enum CURRENCIES {GOLD = 0, NOTHING = 1}
 enum ITEMRARITY {COMMON = 1, UNCOMMON = 2, RARE = 3, EXQUISITE = 4, LEGENDARY = 5}
+enum PAUSETYPE {FULL = 0, NOMENU = 1}
 
 const WORLDS = [
 				{"id":"test_town", "path":"res://Scenes/Worlds/test_town.tscn"},
@@ -18,10 +19,10 @@ const JUMP_TIME_TO_DESCENT := 0.4
 const MAX_FALL_VELOCITY := 600.0
 
 var playing := true
+var previous_pause_type := PAUSETYPE.FULL
 var character:RCharacter
 var camera:Camera2D = null
 var dungeon_run_ended := false
-
 
 #Loading
 var last_load_id := ""
@@ -123,11 +124,18 @@ func _process(_delta):
 				load_complete = true
 				_complete_load_building()
 
-func _toggle_pause(_value := false):
-	playing = !_value
-	if world and world is RPlayWorld:
+func _toggle_pause(_value := PAUSETYPE.FULL):
+	match _value:
+		PAUSETYPE.FULL:
+			playing = !playing
 			Signals.TogglePauseMenu.emit(!playing)
-	get_tree().set_deferred("paused", _value)
+			get_tree().set_deferred("paused", !playing)
+		PAUSETYPE.NOMENU:
+			playing = !playing
+			get_tree().set_deferred("paused", !playing)
+		_:
+			pass
+	previous_pause_type = _value
 
 func _toggle_end_run(_value := false):
 	if world and world is RDungeon:
@@ -138,6 +146,9 @@ func _toggle_end_run(_value := false):
 
 func is_playing() -> bool:
 	return playing
+
+func is_paused_with_menu() -> bool:
+	return previous_pause_type == PAUSETYPE.FULL
 
 func _set_character(_character:RCharacter):
 	if _character:

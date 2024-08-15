@@ -6,6 +6,7 @@ var timer := 0.0
 var delay := 5.0
 
 func _ready():
+	super()
 	Signals.Save.connect(_toggle_ui)
 
 func _process(_delta):

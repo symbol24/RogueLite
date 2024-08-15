@@ -3,8 +3,6 @@ class_name DOT extends RControl
 @onready var normal = %normal
 @onready var highlight = %highlight
 
-var id := 0
-
 func _ready():
 	Signals.PauseMenuInventoryToggleDot.connect(_toggle_highlight)
 

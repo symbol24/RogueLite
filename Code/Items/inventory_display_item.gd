@@ -13,6 +13,7 @@ var item_texture:ItemTexture
 var shadow:ItemTexture
 
 func _ready():
+	super()
 	mouse_entered.connect(_mouse_entered)
 	mouse_exited.connect(_mouse_exited)
 

@@ -5,6 +5,7 @@ func _ready():
 
 #Generic
 signal ClassReady(_name)
+signal UpdateInputFocus(focus)
 
 #Player Data
 signal Save()
@@ -50,13 +51,15 @@ signal UpdateCharacterState(character, state_id)
 signal AddItem(item)
 signal AdditemToInventoryUi(dict)
 signal UpdateCountOfitemInUi(dict)
+signal InventoryFull(error_id)
 
 #loot
 signal Collect(target, item, amount)
 signal SpawnLoot(loot_table, _position)
 
 #UI
-signal UpdateInputFocus(focus)
+signal UiFocusUpdated(id)
+signal ToggleUiFocus(id)
 signal ToggleDungeonUI(value)
 signal ToggleTownUI(value)
 signal ToggleLoadingScreen(value)
@@ -77,6 +80,9 @@ signal PauseMenuInventoryToggleDot(id)
 
 #Error management
 signal DisplayError(id)
+signal DisplayPopup(id, type)
+signal PopupCancelled(id)
+signal ConfirmPopup(id)
 
 #Debug
 signal DebugPrint(text)

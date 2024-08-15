@@ -44,11 +44,11 @@ func update_direction(_value := 0.0):
 	direction = _value
 
 func _apply_gravity(_delta := 0.0):
-	velocity.y += get_gravity() * _delta
+	velocity.y += _get_gravity() * _delta
 	if velocity.y > 0.0:
 		last_y = velocity.y
 
-func get_gravity() -> float:
+func _get_gravity() -> float:
 	return get_jump_gravity() if velocity.y < 0.0 else get_fall_gravity()
 	
 func get_jump_velocity() -> float:

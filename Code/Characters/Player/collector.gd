@@ -14,5 +14,5 @@ func _area_entered(_area):
 				Debug.log("Is result item an itemdata? ", result["item"] is ItemData)
 				Signals.Collect.emit(r_owner.data, result["item"], result["amount"])
 		else: 
-			Signals.DisplayError.emit("inventory_full")
+			Signals.DisplayPopup.emit("inventory_full", PopupManager.TYPE.TEXT)
 			Debug.error("Invetory full")

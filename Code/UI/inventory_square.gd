@@ -10,6 +10,7 @@ var item:InventoryDisplayItem
 var is_disabled := false
 
 func _ready():
+	super()
 	focus_entered.connect(_focus_entered)
 	focus_exited.connect(_focus_exited)
 	mouse_entered.connect(_mouse_entered)

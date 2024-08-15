@@ -11,7 +11,9 @@ var commands:Array[String] = [
 							"!quit",
 							"!DisplayUi",
 							"!load",
-							"!addrandomitem"
+							"!addrandomitem",
+							"!popup",
+							"!textpopup"
 							]
 
 func stringify(_value1 = "", _value2 = "", _value3 = "", _value4 = "", _value5 = "", _value6 = "", _value7 = "", _value8 = "", _value9 = "", _value10 = "", _value11 = "", _value12 = "", _value13 = "", _value14 = "", _value15 = "", _value16 = "", _value17 = "", _value18 = "", _value19 = "", _value20 = "") -> String:
@@ -95,5 +97,23 @@ func do_command(_inputs:Array[String] = []):
 				Debug.log("Load requires a world id. Example: !load test_town")
 		"!addrandomitem":
 			Signals.DebugAddRandomItem.emit()
+		"!popup":
+			var sent := false
+			if !_inputs.is_empty() and _inputs[0]:
+				var type := PopupManager.TYPE.NORMAL
+				if _inputs.size() > 1:
+					if _inputs[1] == "warning": type = PopupManager.TYPE.WARNING
+					elif _inputs[1] == "error": type = PopupManager.TYPE.ERROR
+				Signals.DisplayPopup.emit(_inputs[0], type)
+				sent = true
+			if !sent:
+				Debug.log("popup requires an id and type (error, warning). Example: !popup id_here error")
+		"!textpopup":
+			var sent := false
+			if !_inputs.is_empty() and _inputs[0]:
+				Signals.DisplayPopup.emit(_inputs[0], PopupManager.TYPE.TEXT)
+				sent = true
+			if !sent:
+				Debug.log("textpopup requires an id. Example: !textpopup id_here")
 		_:
 			Debug.log("Command unrecognized")
