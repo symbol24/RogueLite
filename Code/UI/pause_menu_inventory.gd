@@ -14,7 +14,7 @@ var current_tab := 0:
 		inventory_tab_container.set_deferred("current_tab", current_tab)
 		_grab_inventory_focus(current_tab)
 		Signals.PauseMenuInventoryToggleDot.emit(current_tab)
-		Debug.log("Invetory page is ", current_tab)
+		#Debug.log("Invetory page is ", current_tab)
 var active_slot:InventorySquare
 var item_grabbed:InventoryDisplayItem
 
@@ -44,14 +44,14 @@ func _process(_delta):
 
 func _grab():
 	if active_slot != null:
-		Debug.log("active_slot ", active_slot)
+		#Debug.log("active_slot ", active_slot)
 		if item_grabbed == null: 
 			item_grabbed = active_slot.grab()
 			if item_grabbed != null: Debug.log(item_grabbed.name, " grabbed")
 			else: Debug.log("No item to grab.")
 		else:
 			if item_grabbed != null:
-				Debug.log("Releasing item ", item_grabbed.name, " in slot ", active_slot.name)
+				#Debug.log("Releasing item ", item_grabbed.name, " in slot ", active_slot.name)
 				active_slot.release(item_grabbed)
 				item_grabbed = null
 

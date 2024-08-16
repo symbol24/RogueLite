@@ -121,7 +121,7 @@ func _hide_big_popup() -> void:
 		Signals.TogglePause.emit(GM.PAUSETYPE.NOMENU)
 
 func _display_text_only_popup(_id := "") -> void:
-	Debug.log("Receiving DisplayTextPopup with id: ", _id)
+	#Debug.log("Receiving DisplayTextPopup with id: ", _id)
 	var text := "[b]"
 	
 	match _id:

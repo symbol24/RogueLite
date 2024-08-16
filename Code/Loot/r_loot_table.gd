@@ -36,7 +36,7 @@ func _check_if_max_reached(_item_dict := {}, _chosen:Array[Dictionary] = []) -> 
 		return max_reached
 	if !_item_dict.is_empty():
 		for each in _chosen:
-			Debug.log("each: ", "each['spawn_count'] < _item_dict['spawn_max'] ", each["spawn_count"], " < ", _item_dict["spawn_max"])
+			#Debug.log("each: ", "each['spawn_count'] < _item_dict['spawn_max'] ", each["spawn_count"], " < ", _item_dict["spawn_max"])
 			if each.has("spawn_count") and _item_dict["item"] == each["item"] and each["spawn_count"] < _item_dict["spawn_max"]:
 				max_reached = true
 				break

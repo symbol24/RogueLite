@@ -27,7 +27,7 @@ func release(_item:InventoryDisplayItem = null):
 	if item == null and _item != null:
 		_item.get_parent().remove_child(_item)
 		add_item(_item)
-		Debug.log("item ", _item, " released")
+		#Debug.log("item ", _item, " released")
 	elif item != null and _item != null:
 		var temp = item
 		item = null

@@ -15,7 +15,7 @@ var grid_pos := Vector2i.ZERO:
 		elif grid_pos.x < 0: grid_pos.x = squares.size() - 1
 		if grid_pos.y >= squares[0].size(): grid_pos.y = 0
 		elif grid_pos.y < 0: grid_pos.x = squares[0].size() - 1
-		Debug.log("grid_pos ", grid_pos)
+		#Debug.log("grid_pos ", grid_pos)
 var squares:Array[Array] = []
 var manager:ItemManager
 

@@ -6,7 +6,7 @@ const INVENTORY_BASE_SIZE := 8
 @export var rng_seed := ""
 @export var rng_hash := ""
 
-@export var currencies := {"gold":0}
+@export var currencies := {}
 ## Inventory format: {"slot":1, "item_id":1, "count":1}
 @export var inventory:Array = []
 ## stash format: {"slot":1, "item_id":1, "count":1}
@@ -80,28 +80,25 @@ func _check_if_present_in_array(_array:Array = [], _item:ItemData = null) -> Arr
 func _get_first_avail_slot() -> int:
 	var temp = inventory.duplicate()
 	temp.sort_custom(func(a, b): return a["slot"] < b["slot"])
-	Debug.log(temp)
+	#Debug.log(temp)
 	var slot := 0
 	for each in temp:
 		if slot == each["slot"]:
 			slot += 1
 		elif slot < each["slot"]:
 			break
-	Debug.log("returning slot: ", slot)
+	#Debug.log("returning slot: ", slot)
 	return slot
 
 func _add_to_currencies(_data:CurrencyData = null, _amount := 1):
 	if _data != null:
 		var updated := false
-		match _data.currency_type:
-			GM.CURRENCIES.GOLD:
-				if currencies.has("gold"):
-					currencies["gold"] += _amount
-				else:
-					currencies["gold"] = _amount
-				updated = true
-			_:
-				pass
+		if currencies.has(str(_data.currency_type)):
+			currencies[str(_data.currency_type)] += _amount
+			updated = true
+		else:
+			currencies[str(_data.currency_type)] = _amount
+			updated = true
 		if updated: 
-			Debug.log("Currencies updated: ", currencies)
+			#Debug.log("Currencies updated: ", currencies)
 			Signals.UpdateAllCurrencies.emit()
