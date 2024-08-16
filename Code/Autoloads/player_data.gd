@@ -3,6 +3,7 @@ extends Node
 const FOLDER = "user://save/"
 const FILE = "game.save"
 const JSONTHING = "VVRASG#$f2"
+const MAXSTACK = 99
 
 var data:PlayerSaveData
 var collect_timer:SceneTreeTimer
@@ -86,17 +87,20 @@ func _save_timer_timeout():
 func check_if_can_collect(_item:ItemData = null, _amount := 1) -> bool:
 	if _item != null:
 		if _item is CurrencyData: return true
-		var can_add := false
+		
+		if data.inventory.size() == data.inventory_size:
+			if !_item.can_stack: return false
+			
 		if _item.can_stack:
 			var result = data._check_if_present_in_array(data.inventory, _item)
 			for each in  result:
-				if each["count"] < 99-_amount: 
-					can_add = true
-					break
-		
-		if !can_add:
+				if each["count"] < MAXSTACK-_amount:
+					return true
 			if data.inventory.size() < data.inventory_size:
-				can_add = true
+				return true
+
+		if data.inventory.size() < data.inventory_size:
+			return true
 		
-		return can_add
+		return false
 	return false
