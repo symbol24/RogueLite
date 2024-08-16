@@ -14,8 +14,9 @@ func _area_exited(_area):
 		y_button.hide()
 
 func interact(_player_currencies:Dictionary) -> Dictionary:
-	if active and can_interact:
+	if active:
 		var cost = data.get_cost()
+		Debug.log("interacting with cheeest")
 		match cost["currency"]:
 			GM.CURRENCIES.NOTHING:
 				open.show()
