@@ -11,7 +11,7 @@ func _area_entered(_area):
 		if PlayerData.check_if_can_collect(_area.get_parent().data, _area.get_parent().amount):
 			var result = _area.get_parent().collect()
 			if result.has("item") and result.has("amount"):
-				Debug.log("Is result item an itemdata? ", result["item"] is ItemData)
+				#Debug.log("Is result item an itemdata? ", result["item"] is ItemData)
 				Signals.Collect.emit(r_owner.data, result["item"], result["amount"])
 		else: 
 			Signals.DisplayPopup.emit("inventory_full", PopupManager.TYPE.TEXT)

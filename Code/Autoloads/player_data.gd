@@ -67,7 +67,7 @@ func _add_item(_item:ItemData = null, _amount := 1):
 		data.add_item_to_inventory(_item, _amount)
 
 func _collect(_data:MainCharacterData = null, _item_data:ItemData = null, _amount := 1):
-	Debug.log("Received data: ", _data.id, " and item: ", _item_data.item_name, " for amount: ", _amount)
+	#Debug.log("Received data: ", _data.id, " and item: ", _item_data.item_name, " for amount: ", _amount)
 	if _data is MainCharacterData and _item_data != null:
 		data.add_item_to_inventory(_item_data, _amount)
 		_save_delay(5.0)

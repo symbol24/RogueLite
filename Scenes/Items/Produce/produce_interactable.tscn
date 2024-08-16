@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp4xoku7bho5q"]
+
+[ext_resource type="Script" path="res://Code/Items/Produce/produce_interactable.gd" id="1_kuvx5"]
+
+[node name="ProduceInteractable" type="Area2D"]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("1_kuvx5")
+
+[node name="collider" type="CollisionShape2D" parent="."]

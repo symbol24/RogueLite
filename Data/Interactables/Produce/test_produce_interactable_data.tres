@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ProduceInteractableData" load_steps=3 format=3 uid="uid://tjdp1xah7pef"]
+
+[ext_resource type="Resource" uid="uid://bqdxh7comjw6f" path="res://Data/Items/Produce/test_produce_item_data.tres" id="1_gojy8"]
+[ext_resource type="Script" path="res://Code/Items/Produce/produce_interactable_data.gd" id="2_ylow1"]
+
+[resource]
+script = ExtResource("2_ylow1")
+produce_item_data = ExtResource("1_gojy8")
+currency = 1
+cost = 0

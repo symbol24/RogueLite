@@ -1,4 +1,4 @@
-class_name MonsterLootTable extends LootTable
+class_name DungeonLootTable extends LootTable
 
 @export var currencies:Array = [{"currency": preload("res://Data/Items/Currencies/gold_data.tres"), "min":1, "max":3}]
 

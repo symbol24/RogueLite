@@ -55,7 +55,8 @@ signal InventoryFull(error_id)
 
 #loot
 signal Collect(target, item, amount)
-signal SpawnLoot(loot_table, _position)
+signal SpawnFromLootTable(loot_table, _position, amount)
+signal SpawnOneItem(item, _position)
 
 #UI
 signal UiFocusUpdated(id)

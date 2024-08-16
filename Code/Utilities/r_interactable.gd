@@ -5,7 +5,7 @@ class_name RInteractable extends RArea2D
 var active := true
 var can_interact := false
 
-func _ready():
+func _ready() -> void:
 	area_entered.connect(_area_entered)
 	area_exited.connect(_area_exited)
 	

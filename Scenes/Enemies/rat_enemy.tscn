@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dvodbfubytheh"]
+[gd_scene load_steps=25 format=3 uid="uid://dvodbfubytheh"]
 
 [ext_resource type="Script" path="res://Code/Enemies/r_enemy.gd" id="1_s4dim"]
 [ext_resource type="Resource" uid="uid://bkcvd884oic06" path="res://Data/Enemies/rat_enemy.tres" id="2_gcoco"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://fc7p0wtwlx8v" path="res://Textures/Enemies/Rat/Rat_Run.png" id="5_d0uwt"]
 [ext_resource type="Texture2D" uid="uid://ds27h6jweb7xm" path="res://Textures/Enemies/Rat/Rat_Attack.png" id="6_urdyk"]
 [ext_resource type="Texture2D" uid="uid://b87ertn13vclq" path="res://Textures/Enemies/Rat/Rat_Ability.png" id="7_7q57q"]
+[ext_resource type="Script" path="res://Code/Utilities/damage.gd" id="7_jdu8e"]
 [ext_resource type="Texture2D" uid="uid://cjm5a8271vn8i" path="res://Textures/Enemies/Rat/Rat_Death_FX.png" id="8_hqxj1"]
 [ext_resource type="Texture2D" uid="uid://cpqu2lmm1tvuf" path="res://Textures/Enemies/Rat/Rat_Death.png" id="9_kc1dc"]
 [ext_resource type="PackedScene" uid="uid://orhusxvvcr5f" path="res://Scenes/Utilities/hit_detetction.tscn" id="11_mjabk"]
@@ -627,7 +628,7 @@ collision_layer = 16
 collision_mask = 2
 script = ExtResource("12_efsbc")
 id = "rat_attack"
-damages = Array[Resource("res://Code/Utilities/damage.gd")]([ExtResource("13_3cagi")])
+damages = Array[ExtResource("7_jdu8e")]([ExtResource("13_3cagi")])
 
 [node name="attack_collider" type="CollisionShape2D" parent="attacks/rat_attack"]
 position = Vector2(7, -5)
@@ -645,7 +646,7 @@ root_node = NodePath("../move_collider")
 libraries = {
 "": SubResource("AnimationLibrary_gtsdq")
 }
-autoplay = "attack_01"
+autoplay = "idle"
 script = ExtResource("2_xtvxb")
 
 [editable path="hit_detetction"]

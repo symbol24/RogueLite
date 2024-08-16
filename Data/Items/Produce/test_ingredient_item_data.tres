@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ProduceItemData" load_steps=3 format=3 uid="uid://bq3loudom3k1b"]
+
+[ext_resource type="Script" path="res://Code/Items/Produce/produce_item_data.gd" id="1_krkvv"]
+[ext_resource type="PackedScene" uid="uid://c6qmm3qb0gfle" path="res://Scenes/Items/Produce/Textures/item_texture_test_ingredient.tscn" id="2_usnj5"]
+
+[resource]
+script = ExtResource("1_krkvv")
+id = 1205351885
+item_name = "test_ingredient"
+texture = ExtResource("2_usnj5")
+can_stack = true

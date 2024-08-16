@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="DungeonLootTable" load_steps=7 format=3 uid="uid://xjc3w6scg7su"]
+
+[ext_resource type="Script" path="res://Code/Loot/dungeon_loot_table.gd" id="1_548h3"]
+[ext_resource type="Resource" uid="uid://d4dgtjv2r2fbv" path="res://Data/Items/Currencies/gold_data.tres" id="1_dtd01"]
+[ext_resource type="Resource" uid="uid://bq3loudom3k1b" path="res://Data/Items/Produce/test_ingredient_item_data.tres" id="1_tcgou"]
+[ext_resource type="Resource" uid="uid://y5y1hw2ydmx3" path="res://Data/Items/test_item_4.tres" id="2_ifaq2"]
+[ext_resource type="Resource" uid="uid://ccntxbkfs5rdq" path="res://Data/Items/test_item_5.tres" id="3_iiq2p"]
+[ext_resource type="Resource" uid="uid://73kf20r777ke" path="res://Data/Items/test_item_1.tres" id="4_10arh"]
+
+[resource]
+script = ExtResource("1_548h3")
+currencies = [{
+"currency": ExtResource("1_dtd01"),
+"max": 5,
+"min": 2
+}]
+id = "test_chest_loot_table"
+list = Array[Dictionary]([{
+"item": ExtResource("1_tcgou"),
+"spawn_max": 1,
+"weight": 100
+}, {
+"item": ExtResource("2_ifaq2"),
+"spawn_max": -1,
+"weight": 5
+}, {
+"item": ExtResource("3_iiq2p"),
+"spawn_max": -1,
+"weight": 5
+}, {
+"item": ExtResource("4_10arh"),
+"spawn_max": -1,
+"weight": 5
+}])

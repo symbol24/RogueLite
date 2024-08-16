@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DungeonInteractableData" load_steps=3 format=3 uid="uid://c3vmolu551p2f"]
+
+[ext_resource type="Resource" uid="uid://xjc3w6scg7su" path="res://Data/Loot/Tables/test_chest_loot_table.tres" id="1_ib5do"]
+[ext_resource type="Script" path="res://Code/Items/Data/dungeon_interactable_data.gd" id="1_uofmt"]
+
+[resource]
+script = ExtResource("1_uofmt")
+loot_amount_dict = {
+"max": 5,
+"min": 1
+}
+loot_table = ExtResource("1_ib5do")
+currency = 1
+cost = 0

@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://bc0ll7u8plkt7"]
+
+[ext_resource type="Script" path="res://Code/Items/dungeon_item_interactable.gd" id="1_ckkj5"]
+[ext_resource type="Resource" uid="uid://c3vmolu551p2f" path="res://Data/Interactables/DungeonItems/Test/test_chest_interactable_data.tres" id="2_jitow"]
+[ext_resource type="TileSet" uid="uid://bmfcsylmh250x" path="res://Data/Tilesets/debug_grey_box.tres" id="2_v7tlg"]
+[ext_resource type="PackedScene" uid="uid://b6r7h1hpm11t8" path="res://Scenes/UI/button_icons/button_icon.tscn" id="3_go2mm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lc6a6"]
+size = Vector2(42, 20)
+
+[node name="TestChest" type="Area2D"]
+collision_layer = 32
+collision_mask = 2
+script = ExtResource("1_ckkj5")
+data = ExtResource("2_jitow")
+
+[node name="closed" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+position = Vector2(-16, 0)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 254, 255, 0, 0, 16, 0, 5, 0, 0, 0, 0, 0, 255, 255, 0, 0, 16, 0, 6, 0, 0, 0, 1, 0, 254, 255, 0, 0, 17, 0, 5, 0, 0, 0, 1, 0, 255, 255, 0, 0, 17, 0, 6, 0, 0, 0)
+tile_set = ExtResource("2_v7tlg")
+
+[node name="open" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-16, 0)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 254, 255, 0, 0, 18, 0, 5, 0, 0, 0, 0, 0, 255, 255, 0, 0, 18, 0, 6, 0, 0, 0, 1, 0, 254, 255, 0, 0, 19, 0, 5, 0, 0, 0, 1, 0, 255, 255, 0, 0, 19, 0, 6, 0, 0, 0)
+tile_set = ExtResource("2_v7tlg")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_lc6a6")
+
+[node name="y_button" parent="." instance=ExtResource("3_go2mm")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-1, -40)
+
+[node name="loot_point" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -15)

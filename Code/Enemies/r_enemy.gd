@@ -54,7 +54,7 @@ func _emit_signal(_id := "", _opt1 := "", _opt2 := ""):
 		"spawn_loot":
 			if loot_spawn != null:
 				#Debug.log("Sending loot table: ", data.loot_table.id)
-				Signals.SpawnLoot.emit(data.loot_table, loot_spawn.global_position)
+				Signals.SpawnFromLootTable.emit(data.loot_table, loot_spawn.global_position, GM.rng.randi_range(1, 5))
 		_:
 			pass
 

@@ -1,0 +1,3 @@
+class_name ProduceInteractableData extends InteractableData
+
+@export var produce_item_data:ProduceItemData

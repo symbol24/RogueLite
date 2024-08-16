@@ -48,7 +48,7 @@ func add_item_to_inventory(_item:ItemData = null, _amount := 1):
 				if !result.is_empty():
 					if _item.can_stack:
 						var added := false
-						Debug.log("Adding count to item")
+						#Debug.log("Adding count to item")
 						for each in  result:
 							if each["count"] < 99-_amount: 
 								each["count"] += _amount
@@ -56,13 +56,13 @@ func add_item_to_inventory(_item:ItemData = null, _amount := 1):
 								added = true
 								break
 						if !added:
-							Debug.log("Adding duplicate item")
+							#Debug.log("Adding duplicate item")
 							var slot = _get_first_avail_slot()
 							var new_item := {"slot":slot, "item_id":_item.id, "count":_amount}
 							inventory.append(new_item)
 							Signals.AdditemToInventoryUi.emit(new_item)
 				else:
-					Debug.log("Adding new item")
+					#Debug.log("Adding new item")
 					var slot = _get_first_avail_slot()
 					var new_item := {"slot":slot, "item_id":_item.id, "count":_amount}
 					inventory.append(new_item)

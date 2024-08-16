@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_toamb")
-rating = 1
+rarity = 1
 id = 4049607698
 item_name = "rat_meat"
 texture = ExtResource("2_idgyx")
