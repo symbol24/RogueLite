@@ -15,4 +15,4 @@ func _area_entered(_area):
 				Signals.Collect.emit(r_owner.data, result["item"], result["amount"])
 		else: 
 			Signals.DisplayPopup.emit("inventory_full", PopupManager.TYPE.TEXT)
-			Debug.error("Invetory full")
+			Debug.warning("Inventory full")

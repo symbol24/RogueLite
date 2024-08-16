@@ -85,6 +85,7 @@ func _save_timer_timeout():
 
 func check_if_can_collect(_item:ItemData = null, _amount := 1) -> bool:
 	if _item != null:
+		if _item is CurrencyData: return true
 		var can_add := false
 		if _item.can_stack:
 			var result = data._check_if_present_in_array(data.inventory, _item)
@@ -94,7 +95,7 @@ func check_if_can_collect(_item:ItemData = null, _amount := 1) -> bool:
 					break
 		
 		if !can_add:
-			if data.inventory.size() < data.inventory_size-1:
+			if data.inventory.size() < data.inventory_size:
 				can_add = true
 		
 		return can_add
