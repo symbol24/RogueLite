@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LootTable" load_steps=3 format=3 uid="uid://db85gfwn7xfdf"]
+
+[ext_resource type="Script" path="res://Code/Loot/r_loot_table.gd" id="1_stj5m"]
+[ext_resource type="Resource" uid="uid://bqdxh7comjw6f" path="res://Data/Items/Produce/test_produce_item_data.tres" id="1_uqm6p"]
+
+[resource]
+script = ExtResource("1_stj5m")
+id = "test_produce_loot_table"
+list = Array[Dictionary]([{
+"item": ExtResource("1_uqm6p"),
+"spawn_max": -1,
+"weight": 100
+}])

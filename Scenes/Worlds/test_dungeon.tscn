@@ -4,8 +4,8 @@
 [ext_resource type="TileSet" uid="uid://bmfcsylmh250x" path="res://Data/Tilesets/debug_grey_box.tres" id="2_8n6oi"]
 [ext_resource type="PackedScene" uid="uid://dvodbfubytheh" path="res://Scenes/Enemies/rat_enemy.tscn" id="4_e2syr"]
 [ext_resource type="PackedScene" uid="uid://lbgkvfv4ujdn" path="res://Scenes/Utilities/spawn_point.tscn" id="4_t4nve"]
-[ext_resource type="PackedScene" uid="uid://dakdg1a3e5x6g" path="res://Scenes/Items/Produce/produce_item.tscn" id="5_5d3b1"]
 [ext_resource type="PackedScene" uid="uid://bc0ll7u8plkt7" path="res://Scenes/Items/test_chest.tscn" id="6_40p50"]
+[ext_resource type="PackedScene" uid="uid://dp4xoku7bho5q" path="res://Scenes/Items/Produce/produce_interactable.tscn" id="6_jsv45"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8axws"]
 size = Vector2(1216, 64)
@@ -33,8 +33,8 @@ start = true
 [node name="RatEnemy" parent="." instance=ExtResource("4_e2syr")]
 position = Vector2(215, 144)
 
-[node name="ProduceItem" parent="." instance=ExtResource("5_5d3b1")]
-position = Vector2(-142, 144)
-
 [node name="TestChest" parent="." instance=ExtResource("6_40p50")]
 position = Vector2(-33, 144)
+
+[node name="ProduceInteractable" parent="." instance=ExtResource("6_jsv45")]
+position = Vector2(31, 144)

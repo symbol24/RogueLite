@@ -1,21 +1,15 @@
 class_name ProduceInteractable extends RInteractable
 
-var parent:ProduceItem
-
-func _ready() -> void:
-	super()
-	parent = get_parent() as ProduceItem
+@onready var highlight: Sprite2D = %highlight
+@onready var spawn_point: Marker2D = %spawn_point
 
 func interact(_player_currencies:Dictionary) -> Dictionary:
 	#Debug.log("Pressing interact")
 	var cost = data.get_cost()
 	match cost["currency"]:
 		GM.CURRENCIES.NOTHING:
-			#Debug.log("triggering load to dungeon")
-			if parent != null:
-				parent.hide()
-				parent.spawn_produce(data.produce_item_data)
-				parent.queue_free.call_deferred()
+			hide()
+			Signals.SpawnFromLootTable.emit(data.loot_table, spawn_point.global_position, data.amount)
 			return {"result":true}
 		_:
 			pass
@@ -23,9 +17,9 @@ func interact(_player_currencies:Dictionary) -> Dictionary:
 			"reason":"Error in cost or player"}
 	
 func _area_entered(_area):
-	if parent != null:
-		parent.toggle_highlight(true)
+	if active and !highlight.is_visible():
+		highlight.show()
 	
 func _area_exited(_area):
-	if parent != null:
-		parent.toggle_highlight(false)
+	if highlight.is_visible():
+		highlight.hide()
