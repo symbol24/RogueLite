@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bpdxgddiw4vup"]
+[gd_scene load_steps=38 format=3 uid="uid://bpdxgddiw4vup"]
 
 [ext_resource type="Script" path="res://Code/UI/r_ui.gd" id="1_csoys"]
 [ext_resource type="Script" path="res://Code/UI/r_debug_ui.gd" id="2_hu0gv"]
@@ -26,7 +26,10 @@
 [ext_resource type="Script" path="res://Code/UI/pause_menu_inventory_tabs.gd" id="21_wilu1"]
 [ext_resource type="Script" path="res://Code/UI/pause_menu_currencies.gd" id="23_cje5b"]
 [ext_resource type="PackedScene" uid="uid://b2t3gvsaw64i8" path="res://Scenes/Items/Textures/item_texture_coin.tscn" id="24_4x6k0"]
+[ext_resource type="Texture2D" uid="uid://681juyuik5w6" path="res://Textures/Items/debug_keys_1.png" id="25_3o78b"]
+[ext_resource type="Texture2D" uid="uid://dafhvg0oe7r5d" path="res://Textures/Items/debug_keys_2.png" id="26_1e7eb"]
 [ext_resource type="Script" path="res://Code/UI/save_ui.gd" id="27_10ent"]
+[ext_resource type="Texture2D" uid="uid://lkuepliycf5y" path="res://Textures/Items/debug_keys_3.png" id="27_mfsdy"]
 [ext_resource type="Texture2D" uid="uid://b25mqxhmpd8t4" path="res://Textures/UI/save_icon.png" id="28_m2n76"]
 [ext_resource type="Script" path="res://Code/Utilities/r_animator.gd" id="29_o7stm"]
 [ext_resource type="Script" path="res://Code/UI/popups.gd" id="30_neygc"]
@@ -491,13 +494,64 @@ script = ExtResource("23_cje5b")
 [node name="ItemTexture" parent="PauseMenu/Currencies" instance=ExtResource("24_4x6k0")]
 position = Vector2(46, 160)
 
+[node name="key1_sprite" type="Sprite2D" parent="PauseMenu/Currencies"]
+position = Vector2(90, 160)
+texture = ExtResource("25_3o78b")
+
+[node name="key2_sprite" type="Sprite2D" parent="PauseMenu/Currencies"]
+position = Vector2(130, 160)
+texture = ExtResource("26_1e7eb")
+
+[node name="key3_sprite" type="Sprite2D" parent="PauseMenu/Currencies"]
+position = Vector2(170, 160)
+texture = ExtResource("27_mfsdy")
+
 [node name="gold" type="RichTextLabel" parent="PauseMenu/Currencies"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(20, 7)
 layout_mode = 0
-offset_left = 55.0
+offset_left = 52.0
 offset_top = 157.0
-offset_right = 75.0
+offset_right = 72.0
+offset_bottom = 164.0
+theme = ExtResource("8_6pc2o")
+bbcode_enabled = true
+text = "0"
+script = ExtResource("17_gfsa0")
+
+[node name="key1" type="RichTextLabel" parent="PauseMenu/Currencies"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 7)
+layout_mode = 0
+offset_left = 100.0
+offset_top = 157.0
+offset_right = 120.0
+offset_bottom = 164.0
+theme = ExtResource("8_6pc2o")
+bbcode_enabled = true
+text = "0"
+script = ExtResource("17_gfsa0")
+
+[node name="key2" type="RichTextLabel" parent="PauseMenu/Currencies"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 7)
+layout_mode = 0
+offset_left = 140.0
+offset_top = 157.0
+offset_right = 160.0
+offset_bottom = 164.0
+theme = ExtResource("8_6pc2o")
+bbcode_enabled = true
+text = "0"
+script = ExtResource("17_gfsa0")
+
+[node name="key3" type="RichTextLabel" parent="PauseMenu/Currencies"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 7)
+layout_mode = 0
+offset_left = 180.0
+offset_top = 157.0
+offset_right = 200.0
 offset_bottom = 164.0
 theme = ExtResource("8_6pc2o")
 bbcode_enabled = true
