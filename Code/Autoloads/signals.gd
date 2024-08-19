@@ -7,6 +7,9 @@ func _ready():
 signal ClassReady(_name)
 signal UpdateInputFocus(focus)
 
+#Controls
+signal ControllerTypeUpdated(type)
+
 #Player Data
 signal Save()
 signal Load()
