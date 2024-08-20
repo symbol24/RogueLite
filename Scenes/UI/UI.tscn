@@ -1,6 +1,7 @@
-[gd_scene load_steps=38 format=3 uid="uid://bpdxgddiw4vup"]
+[gd_scene load_steps=39 format=3 uid="uid://bpdxgddiw4vup"]
 
 [ext_resource type="Script" path="res://Code/UI/r_ui.gd" id="1_csoys"]
+[ext_resource type="Resource" uid="uid://c556mnlta4ek5" path="res://Data/UI/Buttons/IconData/gamepad_cross_map.tres" id="2_1ccvt"]
 [ext_resource type="Script" path="res://Code/UI/r_debug_ui.gd" id="2_hu0gv"]
 [ext_resource type="Theme" uid="uid://8vretd3mjbye" path="res://Data/Debug/display_theme.tres" id="3_pa1ep"]
 [ext_resource type="Theme" uid="uid://bvrtxil1545kj" path="res://Data/Debug/input_theme.tres" id="4_b1jwd"]
@@ -101,6 +102,7 @@ _data = {
 [node name="Ui" type="CanvasLayer"]
 layer = 100
 script = ExtResource("1_csoys")
+gamepad_cross_mapping = ExtResource("2_1ccvt")
 
 [node name="Debug" type="Control" parent="."]
 visible = false

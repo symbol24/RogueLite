@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ButtonData" load_steps=2 format=3 uid="uid://d487p66iadwp"]
+
+[ext_resource type="Script" path="res://Code/UI/button_data.gd" id="1_pbagk"]
+
+[resource]
+script = ExtResource("1_pbagk")
+action = "jump"

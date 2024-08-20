@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://pxnvcafqxidf"]
+[gd_scene load_steps=5 format=3 uid="uid://pxnvcafqxidf"]
 
 [ext_resource type="Script" path="res://Code/UI/main_menu.gd" id="1_ifvjl"]
 [ext_resource type="Theme" uid="uid://cx5h5wxtfunq8" path="res://Data/UI/Themes/main_theme.tres" id="2_xnbp1"]
+[ext_resource type="PackedScene" uid="uid://dk4x50b8punld" path="res://Scenes/UI/buttons/button_swapping.tscn" id="3_mu0fi"]
+[ext_resource type="Resource" uid="uid://d487p66iadwp" path="res://Data/UI/Buttons/jump.tres" id="4_hxxc0"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_ifvjl")
@@ -61,3 +63,10 @@ offset_right = 189.0
 offset_bottom = 169.0
 theme = ExtResource("2_xnbp1")
 text = "Delete Save"
+
+[node name="ButtonSwapping" parent="." instance=ExtResource("3_mu0fi")]
+offset_left = 148.0
+offset_top = 47.0
+offset_right = 148.0
+offset_bottom = 47.0
+data = ExtResource("4_hxxc0")

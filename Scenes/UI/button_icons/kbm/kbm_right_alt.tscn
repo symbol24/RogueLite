@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfrtqjcc75ykb"]
+
+[ext_resource type="Texture2D" uid="uid://c6dvwo5e0hs6h" path="res://Textures/UI/controls_button_tilemap.png" id="1_6bypt"]
+
+[node name="ButtonIcon" type="Node2D"]
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(-4.5, -6.5)
+texture = ExtResource("1_6bypt")
+hframes = 34
+vframes = 24
+frame = 459
+
+[node name="sprite2" type="Sprite2D" parent="."]
+position = Vector2(11.5, -6.5)
+texture = ExtResource("1_6bypt")
+hframes = 34
+vframes = 24
+frame = 460

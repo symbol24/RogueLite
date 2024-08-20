@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="GamepadIconData" load_steps=14 format=3 uid="uid://c556mnlta4ek5"]
+
+[ext_resource type="PackedScene" uid="uid://ke7ufm8ctqm6" path="res://Scenes/UI/button_icons/xbox/xbox_a.tscn" id="1_vmjy0"]
+[ext_resource type="PackedScene" uid="uid://b4chvtst2c4r5" path="res://Scenes/UI/button_icons/PS/ps_cross.tscn" id="2_o0luf"]
+[ext_resource type="PackedScene" uid="uid://qs4142fbk2ln" path="res://Scenes/UI/button_icons/switch/switch_b.tscn" id="3_j3d8u"]
+[ext_resource type="PackedScene" uid="uid://bntqgybbylbqn" path="res://Scenes/UI/button_icons/xbox/xbox_b.tscn" id="4_0g6ke"]
+[ext_resource type="PackedScene" uid="uid://chboy5dj0lgtw" path="res://Scenes/UI/button_icons/PS/ps_circle.tscn" id="5_ygpvs"]
+[ext_resource type="PackedScene" uid="uid://d1bg1yp3e6axn" path="res://Scenes/UI/button_icons/switch/switch_a.tscn" id="6_eidns"]
+[ext_resource type="PackedScene" uid="uid://br1mvyenrwnug" path="res://Scenes/UI/button_icons/xbox/xbox_x.tscn" id="7_m4klo"]
+[ext_resource type="PackedScene" uid="uid://cwcpokkxpts6l" path="res://Scenes/UI/button_icons/PS/ps_square.tscn" id="8_bal2v"]
+[ext_resource type="PackedScene" uid="uid://bnggo5quv11yk" path="res://Scenes/UI/button_icons/switch/switch_y.tscn" id="9_7xby4"]
+[ext_resource type="PackedScene" uid="uid://hroqsayo86cs" path="res://Scenes/UI/button_icons/xbox/xbox_y.tscn" id="10_0fdjc"]
+[ext_resource type="PackedScene" uid="uid://chosdsxp30ces" path="res://Scenes/UI/button_icons/PS/ps_triangle.tscn" id="11_ec6nu"]
+[ext_resource type="PackedScene" uid="uid://da6obrgcfnsds" path="res://Scenes/UI/button_icons/switch/switch_x.tscn" id="12_xa4v7"]
+[ext_resource type="Script" path="res://Code/UI/gamepad_icon_data.gd" id="13_7cr0q"]
+
+[resource]
+script = ExtResource("13_7cr0q")
+map = Array[Dictionary]([{
+"id": "xbox_a",
+"ps": ExtResource("2_o0luf"),
+"switch": ExtResource("3_j3d8u"),
+"xbox": ExtResource("1_vmjy0")
+}, {
+"id": "xbox_b",
+"ps": ExtResource("5_ygpvs"),
+"switch": ExtResource("6_eidns"),
+"xbox": ExtResource("4_0g6ke")
+}, {
+"id": "xbox_x",
+"ps": ExtResource("8_bal2v"),
+"switch": ExtResource("9_7xby4"),
+"xbox": ExtResource("7_m4klo")
+}, {
+"id": "xbox_y",
+"ps": ExtResource("11_ec6nu"),
+"switch": ExtResource("12_xa4v7"),
+"xbox": ExtResource("10_0fdjc")
+}])

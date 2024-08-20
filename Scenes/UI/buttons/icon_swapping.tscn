@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://nts0xrw48mrq"]
+
+[ext_resource type="Script" path="res://Code/UI/icon_swapping.gd" id="1_2dni8"]
+[ext_resource type="Theme" uid="uid://cx5h5wxtfunq8" path="res://Data/UI/Themes/main_theme.tres" id="2_2h2nd"]
+[ext_resource type="Script" path="res://Code/UI/r_rich_text_label.gd" id="3_rucof"]
+
+[node name="ButtonSwapping" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2dni8")
+
+[node name="gamepad" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="button" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="label" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 7)
+layout_mode = 0
+offset_left = 12.0
+offset_top = -11.0
+offset_right = 32.0
+offset_bottom = -4.0
+theme = ExtResource("2_2h2nd")
+bbcode_enabled = true
+text = "test"
+fit_content = true
+scroll_active = false
+script = ExtResource("3_rucof")

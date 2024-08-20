@@ -17,6 +17,14 @@ const INVENTORY_BASE_SIZE := 8
 	get:
 		return inventory_size / INVENTORY_BASE_SIZE
 
+@export var button_mapping := [
+	{
+		"action":"jump",
+		"gamepad":"xbox_a"
+	}
+]
+
+
 func get_save_dict() -> Dictionary:
 	save_count += 1
 	return {

@@ -5,7 +5,7 @@
 [node name="ButtonIcon" type="Node2D"]
 
 [node name="sprite" type="Sprite2D" parent="."]
-position = Vector2(1, -6)
+position = Vector2(0.5, -6.5)
 texture = ExtResource("1_woi6w")
 hframes = 34
 vframes = 24

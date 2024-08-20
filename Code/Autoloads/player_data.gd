@@ -104,3 +104,9 @@ func check_if_can_collect(_item:ItemData = null, _amount := 1) -> bool:
 		
 		return false
 	return false
+
+func get_button_for(_action_id := "") -> String:
+	for each in data.button_mapping:
+		if each["action"] == _action_id:
+			return each["gamepad"]
+	return ""
