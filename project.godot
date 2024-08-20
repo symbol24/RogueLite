@@ -28,6 +28,8 @@ GM="*res://Code/Autoloads/game_manager.gd"
 UI="*res://Scenes/UI/UI.tscn"
 Debug="*res://Code/Autoloads/debug.gd"
 PlayerData="*res://Code/Autoloads/player_data.gd"
+BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
+BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
 
 [debug]
 
@@ -43,7 +45,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/ridiculous_coding/plugin.cfg")
+enabled=PackedStringArray("res://addons/beehave/plugin.cfg", "res://addons/ridiculous_coding/plugin.cfg")
 
 [file_customization]
 
