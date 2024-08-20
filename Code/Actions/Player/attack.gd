@@ -36,12 +36,13 @@ func _ready():
 			attacks.append(each)
 	attacks.sort_custom(func(a, b): return a.id.naturalnocasecmp_to(b.id) < 0)
 
+func _input(event: InputEvent) -> void:
+	if action_available and r_owner.grounded and can_action and event.is_action_pressed("attack"):
+		combo_index = _combo_attack(combo_index, attacks)
+
 func _process(_delta):
 	if action_available:
-		if GM.is_playing() and r_owner.grounded:
-			if RInput.attack and can_action:
-				combo_index = _combo_attack(combo_index, attacks)
-			
+		if r_owner.grounded:
 			if !current_attack and !can_action:
 				timer += _delta
 			

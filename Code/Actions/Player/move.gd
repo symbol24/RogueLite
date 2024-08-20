@@ -2,8 +2,10 @@ class_name Move extends RAction
 
 func _physics_process(_delta):
 	if action_available:
-		r_owner.update_velocity(move(RInput.move_left_right, r_owner.velocity.x, _delta))
-		r_owner.update_direction(RInput.move_left_right)
+		r_owner.update_velocity(move(Input.get_axis("left", "right"), r_owner.velocity.x, _delta))
+		r_owner.update_direction(Input.get_axis("left", "right"))
+	else:
+		if r_owner.velocity.x != 0: r_owner.update_velocity(0)
 
 func move(_direction:float, _current_speed:float, _delta:float) -> float:
 	#Debug.log("_direction ", _direction)

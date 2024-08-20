@@ -34,6 +34,23 @@ func _ready() -> void:
 	super()
 	Signals.DisplayPopup.connect(_pool_popups)
 
+func _input(event: InputEvent) -> void:
+	if RInput.is_focused_on_ui:
+		if big_popup.is_visible():
+			if event.is_action_pressed("ui_cancel"):
+				Signals.PopupCancelled.emit(last_big_id)
+				_hide_big_popup()
+			elif has_confirm and RInput.ui_confirm:
+				Signals.ConfirmPopup.emit(last_big_id)
+				_hide_big_popup()
+		
+		if !big_popup.is_visible():
+			if event.is_action_pressed("ui_select"):
+				Signals.DisplayPopup.emit("help")
+			if !big_pool.is_empty():
+				var pop = big_pool.pop_front()
+				_display_big_popup(pop["id"], pop["type"])
+
 func _process(_delta: float) -> void:
 	if is_visible() and !get_tree().is_paused():
 		if text_only_popup.is_visible():
@@ -41,17 +58,7 @@ func _process(_delta: float) -> void:
 			if timer >= delay:
 				_hide_text_popup()
 	
-	if big_popup.is_visible():
-		if RInput.ui_cancel:
-			Signals.PopupCancelled.emit(last_big_id)
-			_hide_big_popup()
-		elif has_confirm and RInput.ui_confirm:
-			Signals.ConfirmPopup.emit(last_big_id)
-			_hide_big_popup()
-	
 	if !big_popup.is_visible():
-		if RInput.select or RInput.ui_select:
-			Signals.DisplayPopup.emit("help")
 		if !big_pool.is_empty():
 			var pop = big_pool.pop_front()
 			_display_big_popup(pop["id"], pop["type"])

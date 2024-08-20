@@ -145,7 +145,7 @@ func _toggle_end_run(_value := false):
 		get_tree().set_deferred("paused", _value)
 
 func is_playing() -> bool:
-	return playing
+	return !get_tree().paused
 
 func is_paused_with_menu() -> bool:
 	return previous_pause_type == PAUSETYPE.FULL

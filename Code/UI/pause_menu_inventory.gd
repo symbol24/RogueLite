@@ -31,15 +31,13 @@ func _ready():
 	Signals.AdditemToInventoryUi.connect(_add_item_to_inventory_ui)
 	Signals.UpdateCountOfitemInUi.connect(_update_count)
 
-func _process(_delta):
-	if in_focus:
-		if RInput.ui_sub_tab_left:
+func _input(event: InputEvent) -> void:
+	if in_focus and RInput.is_focused_on_ui:
+		if event.is_action_pressed("ui_sub_tab_left"):
 			current_tab -= 1
-		elif RInput.ui_sub_tab_right:
+		elif event.is_action_pressed("ui_sub_tab_right"):
 			current_tab += 1
-		elif RInput.ui_x:
-			_grab()
-		elif RInput.ui_mouse_left:
+		elif event.is_action_pressed("ui_x"):
 			_grab()
 
 func _grab():

@@ -10,13 +10,15 @@ func _ready():
 	super._ready()
 	Signals.CharacterGrounded.connect(_set_landed)
 
+func _input(event: InputEvent) -> void:
+	if action_available and event.is_action_pressed("jump"):
+		jump()
+
 func _physics_process(_delta):
 	if action_available:
 		if max_jump_count == 0 and r_owner.data:
 			max_jump_count = r_owner.data.jump_count
 			jump_count = r_owner.data.jump_count
-		if RInput.jump:
-			jump()
 			
 		_check_falling(r_owner.velocity.y)
 		_coyote_time(_delta)

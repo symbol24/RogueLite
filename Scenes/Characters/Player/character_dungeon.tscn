@@ -20,7 +20,7 @@
 radius = 5.0
 height = 28.0
 
-[sub_resource type="Resource" id="Resource_mwjej"]
+[sub_resource type="Resource" id="Resource_graat"]
 resource_local_to_scene = true
 script = ExtResource("7_s3u1e")
 id = "fall"
@@ -32,7 +32,7 @@ can_flip = true
 can_interact = false
 animation = "fall"
 
-[sub_resource type="Resource" id="Resource_ogig3"]
+[sub_resource type="Resource" id="Resource_yqk6u"]
 resource_local_to_scene = true
 script = ExtResource("7_s3u1e")
 id = "idle"
@@ -44,7 +44,7 @@ can_flip = true
 can_interact = true
 animation = "idle"
 
-[sub_resource type="Resource" id="Resource_71epv"]
+[sub_resource type="Resource" id="Resource_m01xv"]
 resource_local_to_scene = true
 script = ExtResource("7_s3u1e")
 id = "jump"
@@ -56,7 +56,7 @@ can_flip = true
 can_interact = false
 animation = "jump"
 
-[sub_resource type="Resource" id="Resource_exn0o"]
+[sub_resource type="Resource" id="Resource_phn8r"]
 resource_local_to_scene = true
 script = ExtResource("7_s3u1e")
 id = "walk"
@@ -68,7 +68,7 @@ can_flip = true
 can_interact = true
 animation = "walk"
 
-[sub_resource type="Resource" id="Resource_5048c"]
+[sub_resource type="Resource" id="Resource_l5hch"]
 resource_local_to_scene = true
 script = ExtResource("7_s3u1e")
 id = "dead"
@@ -346,6 +346,7 @@ _data = {
 }
 
 [node name="CharacterDungeon" type="CharacterBody2D"]
+process_mode = 1
 z_index = 100
 collision_layer = 2
 script = ExtResource("1_wi8wb")
@@ -375,7 +376,7 @@ visible = false
 
 [node name="state_machine" parent="." instance=ExtResource("7_rcci8")]
 unique_name_in_owner = true
-states = Array[ExtResource("7_s3u1e")]([SubResource("Resource_mwjej"), SubResource("Resource_ogig3"), SubResource("Resource_71epv"), SubResource("Resource_exn0o"), ExtResource("8_0qnyl"), SubResource("Resource_5048c"), ExtResource("9_8rb2q")])
+states = Array[ExtResource("7_s3u1e")]([SubResource("Resource_graat"), SubResource("Resource_yqk6u"), SubResource("Resource_m01xv"), SubResource("Resource_phn8r"), ExtResource("8_0qnyl"), SubResource("Resource_l5hch"), ExtResource("9_8rb2q")])
 
 [node name="hit_detetction" parent="." instance=ExtResource("9_oxksk")]
 visible = false

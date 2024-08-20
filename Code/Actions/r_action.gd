@@ -4,7 +4,7 @@ var r_owner:RCharacter
 var can_action := true
 var action_available:bool:
 	get:
-		return GM.is_playing() and r_owner and !r_owner.state_machine.is_state("dead") and r_owner.data is RCharacterData and r_owner.data
+		return GM.is_playing() and r_owner and !r_owner.state_machine.is_state("dead") and r_owner.data is RCharacterData and r_owner.data and RInput.is_focused_on_gameplay
 
 var input_timer := 0.0
 var input_delay := 0.3

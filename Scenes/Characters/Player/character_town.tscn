@@ -15,7 +15,7 @@
 radius = 5.0
 height = 28.0
 
-[sub_resource type="Resource" id="Resource_qfm0t"]
+[sub_resource type="Resource" id="Resource_5d5ky"]
 resource_local_to_scene = true
 script = ExtResource("6_qjecm")
 id = "idle"
@@ -27,7 +27,7 @@ can_flip = true
 can_interact = true
 animation = "idle"
 
-[sub_resource type="Resource" id="Resource_o6x1n"]
+[sub_resource type="Resource" id="Resource_ipbu6"]
 resource_local_to_scene = true
 script = ExtResource("6_qjecm")
 id = "walk"
@@ -96,6 +96,7 @@ _data = {
 }
 
 [node name="CharacterTown" type="CharacterBody2D"]
+process_mode = 1
 z_index = 100
 collision_layer = 2
 script = ExtResource("1_0ad2t")
@@ -118,7 +119,7 @@ shape = SubResource("CapsuleShape2D_sea4f")
 
 [node name="state_machine" parent="." instance=ExtResource("2_b8bml")]
 unique_name_in_owner = true
-states = Array[ExtResource("6_qjecm")]([SubResource("Resource_qfm0t"), ExtResource("7_ocfxc"), SubResource("Resource_o6x1n")])
+states = Array[ExtResource("6_qjecm")]([SubResource("Resource_5d5ky"), ExtResource("7_ocfxc"), SubResource("Resource_ipbu6")])
 
 [node name="animator" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

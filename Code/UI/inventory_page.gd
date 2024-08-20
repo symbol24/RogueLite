@@ -73,7 +73,8 @@ func get_slot_by_id(_slot_id := -1) -> InventorySquare:
 	return null
 
 func grab_first_focus():
-	squares[grid_pos.x][grid_pos.y].grab_focus()
+	await visibility_changed
+	squares[0][0].grab_focus()
 
 func grab_hover_by_id(_slot_id := -1):
 	if _slot_id != -1:

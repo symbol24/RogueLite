@@ -16,21 +16,21 @@ func _ready():
 	Signals.DebugError.connect(_debug_error)
 	Signals.DebugWarning.connect(_debug_warning)
 
-func _process(_delta):
-	if GM.is_debug:
-		if RInput.toggle_debug:
-			_toggle_display()
+func _input(event: InputEvent) -> void:
+	if GM.is_debug and event.is_action_pressed("debug"):
+		_toggle_display()
 
 func _toggle_display():
 	if !is_visible():
 		prev_focus = RInput.focus
 		Signals.UpdateInputFocus.emit(RInput.FOCUS.DEBUG)
+		show()
 		input_line.text = ""
 		input_line.grab_focus()
-		show()
 	else: 
 		Signals.UpdateInputFocus.emit(prev_focus)
 		hide()
+		input_line.text = ""
 
 func _parse_test(_value:= ""):
 	if _value:

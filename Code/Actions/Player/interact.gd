@@ -10,13 +10,14 @@ func _ready():
 	super()
 	interact_area.area_entered.connect(_area_entered)
 	interact_area.area_exited.connect(_area_exited)
-
+	
+func _input(event: InputEvent) -> void:
+	if action_available and can_action and interactable and event.is_action_pressed("interact"):
+		can_action = false
+		_interact()
+	
 func _process(_delta):
 	if action_available:
-		if can_action and interactable and RInput.interact:
-			can_action = false
-			_interact()
-		
 		if !can_action:
 			timer += _delta
 			if timer >= delay:
