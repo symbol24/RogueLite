@@ -9,8 +9,7 @@ const switch := "Nintendo Switch Pro Controller"
 enum TYPE {MOUSE_KEYBOARD, XBOX, PS3, PS4, PS5, SWITCH, GENERIC}
 enum FOCUS {GAMEPLAY, UIFOCUS, DEBUG}
 
-var toggle_debug = 0
-
+#Input focus stuff
 var focus := FOCUS.UIFOCUS:
 	set(_value):
 		previous_focus = focus
@@ -24,9 +23,6 @@ var is_focused_on_gameplay:bool:
 	get:
 		return focus == FOCUS.GAMEPLAY
 
-
-var any_input := false
-
 #GAMEPAD STUFF
 var active_id := -1:
 	set(_value):
@@ -37,19 +33,48 @@ var current_controls_type := TYPE.GENERIC:
 		Signals.ControllerTypeUpdated.emit(current_controls_type)
 var gamepad_type := TYPE.GENERIC
 
+#Mouse cursor stuff
+var confined := false
+var active_delay := false
+var hide_mouse_delay := 2.0
+var hide_mouse_timer := 0.0:
+	set(_value):
+		hide_mouse_timer = _value
+		if hide_mouse_timer >= hide_mouse_delay:
+			hide_mouse_timer = 0.0
+			if confined: Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED_HIDDEN)
+			else: Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
+#other stuff
+var any_input := false
+
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	Signals.UpdateInputFocus.connect(_toggle_focus)
 
+func _physics_process(_delta: float) -> void:
+	if active_delay:
+		hide_mouse_timer += _delta
+
 func _input(event: InputEvent) -> void:
 	if (event is InputEventKey or event is InputEventMouse):
 		if current_controls_type != TYPE.MOUSE_KEYBOARD: current_controls_type = TYPE.MOUSE_KEYBOARD
+		if Input.mouse_mode == Input.MOUSE_MODE_HIDDEN or Input.mouse_mode == Input.MOUSE_MODE_CONFINED_HIDDEN:
+			if confined: Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+			else: Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			_start_mouse_timer()
 	elif(event is InputEventJoypadButton):
 		if active_id == -1 and event.device != active_id:
 			_update_inputs_id(event.device)
 			active_id = event.device
 			_set_controller_type(Input.get_joy_name(active_id))
 		if current_controls_type != gamepad_type: current_controls_type = gamepad_type
+
+func _start_mouse_timer():
+	if active_delay and hide_mouse_timer != 0.0:
+		hide_mouse_timer = 0.0
+	elif !active_delay:
+		active_delay = true
 
 func _toggle_focus(_value := FOCUS.UIFOCUS):
 	focus = _value
