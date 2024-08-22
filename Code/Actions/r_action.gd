@@ -9,7 +9,7 @@ var action_available:bool:
 var input_timer := 0.0
 var input_delay := 0.3
 
-func _ready():
+func _ready() -> void:
 	r_owner = get_parent() as RCharacter
 
 func _process(_delta):

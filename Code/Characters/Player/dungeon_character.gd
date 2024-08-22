@@ -4,7 +4,7 @@ class_name DungeonCharacter extends RCharacter
 @onready var state_machine:RStateMachine = %state_machine
 @onready var dmg_marker:Marker2D = %dmg_numbers
 
-func _ready():
+func _ready() -> void:
 	Signals.DebugToggleGodMode.connect(_toggle_god_mode)
 	Signals.DebugCharacterHit.connect(_debug_character_hit)
 	Signals.DebugAddMaxHP.connect(_debug_update_max_hp)

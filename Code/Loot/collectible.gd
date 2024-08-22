@@ -21,5 +21,5 @@ func collect() -> Dictionary:
 		return {"item":data.duplicate(), "amount":amount}
 	return {}
 	
-func _destroy():
+func _destroy() -> void:
 	queue_free.call_deferred()

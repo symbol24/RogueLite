@@ -27,7 +27,7 @@ var has_combo := false:
 		return attacks.size() > 1
 var combo_started := false
 
-func _ready():
+func _ready() -> void:
 	super._ready()
 	Signals.AttackEnded.connect(_attack_ended)
 	var temp = get_children(false)
@@ -60,7 +60,7 @@ func _attack(_id := ""):
 	#Debug.log("Sending ", current_attack.id)
 	Signals.StartAttack.emit(r_owner, current_attack.id)
 
-func _reset_combo():
+func _reset_combo() -> void:
 	combo_index = 0
 	combo_timer = 0.0
 	combo_started = false

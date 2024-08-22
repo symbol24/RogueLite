@@ -2,7 +2,7 @@ class_name RDungeon extends RPlayWorld
 
 const LOOT_MANAGER = preload("res://Scenes/Loot/loot_manager.tscn")
 
-func _ready():
+func _ready() -> void:
 	_setup_loot_manager(LOOT_MANAGER)
 	Signals.ToggleDungeonUI.emit(true)
 	super()

@@ -5,7 +5,7 @@ const ITEM_TEXTURE_COIN = preload("res://Scenes/Items/Textures/item_texture_coin
 
 @export var impulse_force := 200.0
 
-func _ready():
+func _ready() -> void:
 	Signals.SpawnFromLootTable.connect(_spawn_loot)
 	Signals.SpawnOneItem.connect(_spawn_one_item)
 

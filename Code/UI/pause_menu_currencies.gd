@@ -5,11 +5,11 @@ extends RControl
 @onready var key_2: RRichTextLabel = %key2
 @onready var key_3: RRichTextLabel = %key3
 
-func _ready():
+func _ready() -> void:
 	super()
 	Signals.UpdateAllCurrencies.connect(_update_all_currencies)
 
-func _update_all_currencies():
+func _update_all_currencies() -> void:
 	if PlayerData.data != null:
 		if PlayerData.data.currencies.has(str(GM.CURRENCIES.GOLD)):
 			gold.text = str(PlayerData.data.currencies[str(GM.CURRENCIES.GOLD)])

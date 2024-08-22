@@ -6,7 +6,7 @@ var landed := false
 var coyote_delay := 0.3
 var coyote_timer := 0.0
 
-func _ready():
+func _ready() -> void:
 	super._ready()
 	Signals.CharacterGrounded.connect(_set_landed)
 
@@ -23,7 +23,7 @@ func _physics_process(_delta):
 		_check_falling(r_owner.velocity.y)
 		_coyote_time(_delta)
 
-func jump():
+func jump() -> void:
 	if jump_count > 0:
 		#Debug.log("Jump count: ", jump_count)
 		landed = false

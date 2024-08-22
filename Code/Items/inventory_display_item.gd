@@ -12,7 +12,7 @@ var grabbed := false
 var item_texture:ItemTexture
 var shadow:ItemTexture
 
-func _ready():
+func _ready() -> void:
 	super()
 	mouse_entered.connect(_mouse_entered)
 	mouse_exited.connect(_mouse_exited)
@@ -47,8 +47,8 @@ func toggle_grab(_value := false):
 	grabbed = _value
 	shadow.set_deferred("visible", _value)
 
-func _mouse_entered():
+func _mouse_entered() -> void:
 	Signals.SetHoverOnSquare.emit(current_slot)
 	
-func _mouse_exited():
+func _mouse_exited() -> void:
 	Signals.RemoveHoverOnSquare.emit(current_slot)

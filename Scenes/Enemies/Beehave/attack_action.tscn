@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://l6k6gfef7gvr"]
+
+[ext_resource type="Script" path="res://Code/Enemies/Beehave/attack_action.gd" id="1_n1v1w"]
+
+[node name="AttackAction" type="Node"]
+script = ExtResource("1_n1v1w")

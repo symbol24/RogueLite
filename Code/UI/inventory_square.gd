@@ -9,7 +9,7 @@ class_name InventorySquare extends RControl
 var item:InventoryDisplayItem
 var is_disabled := false
 
-func _ready():
+func _ready() -> void:
 	super()
 	focus_entered.connect(_focus_entered)
 	focus_exited.connect(_focus_exited)
@@ -34,17 +34,17 @@ func release(_item:InventoryDisplayItem = null):
 		Signals.MoveItemToNewParent.emit(temp, _item.current_slot)
 		add_item(_item)
 
-func _focus_entered():
+func _focus_entered() -> void:
 	Signals.ActiveInventorySquare.emit(self)
 	highlight.show()
 
-func _focus_exited():
+func _focus_exited() -> void:
 	highlight.hide()
 
-func _mouse_entered():
+func _mouse_entered() -> void:
 	hover.show()
 	
-func _mouse_exited():
+func _mouse_exited() -> void:
 	hover.hide()
 
 func add_item(_item:InventoryDisplayItem):
@@ -55,13 +55,13 @@ func add_item(_item:InventoryDisplayItem):
 		item.position = Vector2.ZERO
 		item.set_slot(get_meta("slot_id"))
 
-func remove_item():
+func remove_item() -> void:
 	if item:
 		remove_child.call_deferred(item)
 		item.queue_free.call_deferred()
 		item = null
 
-func disable():
+func disable() -> void:
 	is_disabled = true
 	set_deferred("modulate", disabled_color)
 	set_deferred("focus_mode", 0)

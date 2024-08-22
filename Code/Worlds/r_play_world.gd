@@ -4,7 +4,7 @@ const ITEM_MANAGER = preload("res://Scenes/Items/item_manager.tscn")
 
 var spawn_points:Array[SpawnPoint] = []
 
-func _ready():
+func _ready() -> void:
 	spawn_points = _setup_spawn_points()
 	Signals.UpdateInputFocus.emit(RInput.FOCUS.GAMEPLAY)
 	await get_tree().create_timer(1).timeout

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7xvl2dlilsi8"]
+
+[ext_resource type="Script" path="res://Code/Enemies/Beehave/chase_target_action.gd" id="1_axcl8"]
+
+[node name="ChaseTarget" type="Node"]
+script = ExtResource("1_axcl8")

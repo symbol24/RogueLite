@@ -7,7 +7,7 @@ var active := false
 var lines:Array[String] = []
 var prev_focus := RInput.FOCUS.GAMEPLAY
 
-func _ready():
+func _ready() -> void:
 	super()
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	active = GM.is_debug
@@ -20,7 +20,7 @@ func _input(event: InputEvent) -> void:
 	if GM.is_debug and event.is_action_pressed("debug"):
 		_toggle_display()
 
-func _toggle_display():
+func _toggle_display() -> void:
 	if !is_visible():
 		prev_focus = RInput.focus
 		Signals.UpdateInputFocus.emit(RInput.FOCUS.DEBUG)
@@ -32,7 +32,7 @@ func _toggle_display():
 		hide()
 		input_line.text = ""
 
-func _parse_test(_value:= ""):
+func _parse_test(_value:= "") -> void:
 	if _value:
 		_debug_print(_value)
 		lines.append(_value)
@@ -40,21 +40,21 @@ func _parse_test(_value:= ""):
 		Debug.do_command(split)
 	input_line.text = ""
 
-func _display_text(_value:Array[String] = []):
+func _display_text(_value:Array[String] = []) -> void:
 	display_label.text += "\n"
 	var x := 1
 	for word in _value:
 		display_label.text += word
 		if x < _value.size(): display_label.text += " "
 
-func _debug_print(_to_print := ""):
+func _debug_print(_to_print := "") -> void:
 	print(_to_print)
 	_display_text([_to_print])
 
-func _debug_error(_to_print := ""):
+func _debug_error(_to_print := "") -> void:
 	printerr(_to_print)
 	_display_text(["[color=indian_red]• ", _to_print, "[/color]"])
 
-func _debug_warning(_to_print := ""):
+func _debug_warning(_to_print := "") -> void:
 	print_rich("[color=khaki]- " + _to_print + "[/color]")
 	_display_text(["[color=khaki]- ", _to_print, "[/color]"])

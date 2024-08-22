@@ -1,0 +1,56 @@
+[gd_scene load_steps=11 format=3 uid="uid://dcjyfkqdx1tqo"]
+
+[ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_u8q0s"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector.gd" id="2_qulsv"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="3_5do4k"]
+[ext_resource type="PackedScene" uid="uid://dpjmp81pn4pj7" path="res://Scenes/Enemies/Beehave/check_state_condition.tscn" id="4_ws1it"]
+[ext_resource type="PackedScene" uid="uid://15a4b8ueyx1k" path="res://Scenes/Enemies/Beehave/idle_action.tscn" id="5_ya6in"]
+[ext_resource type="PackedScene" uid="uid://do2v4lljyu8wo" path="res://Scenes/Enemies/Beehave/check_target_distance_action.tscn" id="6_r7igk"]
+[ext_resource type="PackedScene" uid="uid://b7xvl2dlilsi8" path="res://Scenes/Enemies/Beehave/chase_target_action.tscn" id="7_s1jn6"]
+[ext_resource type="PackedScene" uid="uid://l6k6gfef7gvr" path="res://Scenes/Enemies/Beehave/attack_action.tscn" id="8_foxgk"]
+[ext_resource type="PackedScene" uid="uid://beittcpx4t2be" path="res://Scenes/Enemies/Beehave/delay_action.tscn" id="9_vrq6r"]
+[ext_resource type="PackedScene" uid="uid://dphecdwwp6nol" path="res://Scenes/Enemies/Beehave/delay_reset_action.tscn" id="10_mfvke"]
+
+[node name="RatBeehaveTree" type="Node" node_paths=PackedStringArray("blackboard", "actor")]
+script = ExtResource("1_u8q0s")
+actor_node_path = NodePath("..")
+blackboard = NodePath("@Node@17307")
+actor = NodePath("..")
+
+[node name="SelectorComposite" type="Node" parent="."]
+script = ExtResource("2_qulsv")
+
+[node name="idle_sequence" type="Node" parent="SelectorComposite"]
+script = ExtResource("3_5do4k")
+
+[node name="CheckStateCondition" parent="SelectorComposite/idle_sequence" instance=ExtResource("4_ws1it")]
+
+[node name="IdleAction" parent="SelectorComposite/idle_sequence" instance=ExtResource("5_ya6in")]
+
+[node name="CheckTargetDistanceAction" parent="SelectorComposite/idle_sequence" instance=ExtResource("6_r7igk")]
+
+[node name="chase_to_sequence" type="Node" parent="SelectorComposite"]
+script = ExtResource("3_5do4k")
+
+[node name="CheckStateCondition" parent="SelectorComposite/chase_to_sequence" instance=ExtResource("4_ws1it")]
+state_to_check = 4
+
+[node name="ChaseTarget" parent="SelectorComposite/chase_to_sequence" instance=ExtResource("7_s1jn6")]
+
+[node name="attack_sequence" type="Node" parent="SelectorComposite"]
+script = ExtResource("3_5do4k")
+
+[node name="CheckStateCondition" parent="SelectorComposite/attack_sequence" instance=ExtResource("4_ws1it")]
+state_to_check = 2
+
+[node name="IdleAction" parent="SelectorComposite/attack_sequence" instance=ExtResource("5_ya6in")]
+
+[node name="Delay" parent="SelectorComposite/attack_sequence" instance=ExtResource("9_vrq6r")]
+delay_id = "attack_delay"
+delay_in_seconds = 0.5
+
+[node name="AttackAction" parent="SelectorComposite/attack_sequence" instance=ExtResource("8_foxgk")]
+attack_animation = "attack_01"
+
+[node name="DelayReset" parent="SelectorComposite/attack_sequence" instance=ExtResource("10_mfvke")]
+delay_id = "attack_delay"

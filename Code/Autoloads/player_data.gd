@@ -9,7 +9,7 @@ var data:PlayerSaveData
 var collect_timer:SceneTreeTimer
 
 
-func _ready():
+func _ready() -> void:
 	Signals.Save.connect(_save)
 	Signals.Load.connect(_load)
 	Signals.DeleteSave.connect(_delete_save)
@@ -36,7 +36,7 @@ func _load():
 	data.set_save_data(save_file_data)
 	Debug.log("Save count: ", data.save_count)
 
-func _save():
+func _save() -> void:
 	if not DirAccess.open(FOLDER):
 		var _res = DirAccess.make_dir_absolute(FOLDER)
 	var to_save := {"save":"data"}
@@ -54,7 +54,7 @@ func _save():
 	save_file.store_line(json_string)
 	save_file.close()
 
-func _delete_save():
+func _delete_save() -> void:
 	if FileAccess.file_exists(FOLDER+FILE):
 		var dir = DirAccess.open(FOLDER)
 		var result = dir.remove(FOLDER+FILE)
@@ -81,7 +81,7 @@ func _save_delay(_value := 5.0):
 		if !collect_timer.is_connected("timeout", _save_timer_timeout):
 			collect_timer.timeout.connect(_save_timer_timeout)
 
-func _save_timer_timeout():
+func _save_timer_timeout() -> void:
 	Signals.Save.emit()
 
 func check_if_can_collect(_item:ItemData = null, _amount := 1) -> bool:

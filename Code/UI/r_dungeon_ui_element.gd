@@ -2,7 +2,7 @@ class_name RDungeonUiElement extends RControl
 
 var dungeon_ui:DungeonUi
 
-func _ready():
+func _ready() -> void:
 	super()
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	dungeon_ui = get_parent()

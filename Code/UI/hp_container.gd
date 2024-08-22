@@ -7,7 +7,7 @@ var start_size := 0.0
 var start_max := 0.0
 var last_max := 0.0
 
-func _ready():
+func _ready() -> void:
 	super()
 	Signals.HPUpdated.connect(_update_hp)
 	Signals.MaxHPUpdated.connect(_update_max_hp)

@@ -1,6 +1,6 @@
-[gd_scene load_steps=25 format=3 uid="uid://dvodbfubytheh"]
+[gd_scene load_steps=27 format=3 uid="uid://dvodbfubytheh"]
 
-[ext_resource type="Script" path="res://Code/Enemies/r_enemy.gd" id="1_s4dim"]
+[ext_resource type="Script" path="res://Code/Enemies/rat_enemy.gd" id="1_rqpve"]
 [ext_resource type="Resource" uid="uid://bkcvd884oic06" path="res://Data/Enemies/rat_enemy.tres" id="2_gcoco"]
 [ext_resource type="Texture2D" uid="uid://c40qkllnvbiwq" path="res://Textures/Enemies/Rat/Rat_Idle.png" id="2_wfvbj"]
 [ext_resource type="Script" path="res://Code/Utilities/r_animator.gd" id="2_xtvxb"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://orhusxvvcr5f" path="res://Scenes/Utilities/hit_detetction.tscn" id="11_mjabk"]
 [ext_resource type="Script" path="res://Code/Utilities/attack_area.gd" id="12_efsbc"]
 [ext_resource type="Resource" uid="uid://bb15pewgpc2tp" path="res://Data/Damages/Enemies/rat_attack.tres" id="13_3cagi"]
+[ext_resource type="Script" path="res://addons/beehave/blackboard.gd" id="15_n4jdw"]
+[ext_resource type="PackedScene" uid="uid://dcjyfkqdx1tqo" path="res://Scenes/Enemies/Beehave/rat_tree.tscn" id="16_ra8e2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b4r7x"]
 radius = 4.0
@@ -204,7 +206,6 @@ tracks/3/keys = {
 [sub_resource type="Animation" id="Animation_rdqga"]
 resource_name = "attack_01"
 length = 0.8
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -320,9 +321,15 @@ tracks/9/path = NodePath("%move_collider/..")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"values": []
+"times": PackedFloat32Array(0.2, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"attack_move_forward"
+}, {
+"args": [],
+"method": &"attack_move_back"
+}]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
@@ -584,8 +591,11 @@ _data = {
 
 [node name="RatEnemy" type="CharacterBody2D"]
 collision_layer = 8
-script = ExtResource("1_s4dim")
+script = ExtResource("1_rqpve")
 character_data = ExtResource("2_gcoco")
+
+[node name="get_character_timer" type="Timer" parent="."]
+unique_name_in_owner = true
 
 [node name="sprite" type="Sprite2D" parent="." groups=["flip"]]
 unique_name_in_owner = true
@@ -630,7 +640,7 @@ script = ExtResource("12_efsbc")
 id = "rat_attack"
 damages = Array[ExtResource("7_jdu8e")]([ExtResource("13_3cagi")])
 
-[node name="attack_collider" type="CollisionShape2D" parent="attacks/rat_attack"]
+[node name="attack_collider" type="CollisionShape2D" parent="attacks/rat_attack" groups=["flip"]]
 position = Vector2(7, -5)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_p5nav")
@@ -648,5 +658,11 @@ libraries = {
 }
 autoplay = "idle"
 script = ExtResource("2_xtvxb")
+
+[node name="rat_blackboard" type="Node" parent="."]
+script = ExtResource("15_n4jdw")
+
+[node name="RatBeehaveTree" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("16_ra8e2")]
+blackboard = NodePath("../rat_blackboard")
 
 [editable path="hit_detetction"]

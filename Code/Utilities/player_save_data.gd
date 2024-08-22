@@ -98,7 +98,7 @@ func _get_first_avail_slot() -> int:
 	#Debug.log("returning slot: ", slot)
 	return slot
 
-func _add_to_currencies(_data:CurrencyData = null, _amount := 1):
+func _add_to_currencies(_data:CurrencyData = null, _amount := 1) -> void:
 	if _data != null:
 		var updated := false
 		if currencies.has(str(_data.currency_type)):

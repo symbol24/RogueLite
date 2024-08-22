@@ -5,7 +5,7 @@ class_name SaveUi extends RControl
 var timer := 0.0
 var delay := 5.0
 
-func _ready():
+func _ready() -> void:
 	super()
 	Signals.Save.connect(_toggle_ui)
 
@@ -23,6 +23,6 @@ func _toggle_ui(_value := true):
 		_play_fade()
 	else: hide()
 
-func _play_fade():
+func _play_fade() -> void:
 	animator.play("fade")
 	

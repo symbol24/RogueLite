@@ -3,7 +3,7 @@ class_name TownCharacter extends RCharacter
 @onready var camera_remote:RRemoteTransform2D = %camera_remote
 @onready var state_machine:RStateMachine = %state_machine
 
-func _ready():
+func _ready() -> void:
 	Signals.StateUpdated.connect(_update_animation_from_state)
 	Signals.UpdateCharacterState.emit(self, "idle")
 	data = character_data.duplicate()

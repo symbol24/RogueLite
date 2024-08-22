@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpjmp81pn4pj7"]
+
+[ext_resource type="Script" path="res://Code/Enemies/Beehave/check_state_condition.gd" id="1_1ik72"]
+
+[node name="CheckStateCondition" type="Node"]
+script = ExtResource("1_1ik72")

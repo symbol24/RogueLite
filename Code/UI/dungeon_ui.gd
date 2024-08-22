@@ -1,6 +1,6 @@
 class_name DungeonUi extends RGameplayControl
 
-func _ready():
+func _ready() -> void:
 	super()
 	Signals.ToggleDungeonUI.connect(_toggle_ui)
 	Signals.UiElementReady.connect(_check_all_children_ready)

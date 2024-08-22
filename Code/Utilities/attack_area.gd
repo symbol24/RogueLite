@@ -6,7 +6,7 @@ class_name AttackArea extends RArea2D
 var attack_colliders:Array[CollisionShape2D] = []
 var r_owner:RCharacter
 
-func _ready():
+func _ready() -> void:
 	Signals.ToggleAttackCollider.connect(_toggle_attack_collider)
 	var temp = get_children()
 	for each in temp:

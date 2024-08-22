@@ -21,7 +21,7 @@ var item_grabbed:InventoryDisplayItem
 var character:MainCharacterData = null
 var manager:ItemManager = null
 
-func _ready():
+func _ready() -> void:
 	super()
 	Signals.GrabInventoryFocus.connect(_grab_inventory_focus)
 	Signals.CharacterSet.connect(_set_character_or_manager)
@@ -40,7 +40,7 @@ func _input(event: InputEvent) -> void:
 		elif event.is_action_pressed("ui_x"):
 			_grab()
 
-func _grab():
+func _grab() -> void:
 	if active_slot != null:
 		#Debug.log("active_slot ", active_slot)
 		if item_grabbed == null: 
@@ -85,7 +85,7 @@ func _grab_inventory_focus(_tab := current_tab):
 	if !pages.is_empty():
 		pages[_tab].grab_first_focus()
 
-func _set_active_slot(_value:InventorySquare = null):
+func _set_active_slot(_value:InventorySquare = null) -> void:
 	if _value != null:
 		active_slot = _value
 

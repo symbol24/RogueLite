@@ -19,7 +19,7 @@ var grid_pos := Vector2i.ZERO:
 var squares:Array[Array] = []
 var manager:ItemManager
 
-func _ready():
+func _ready() -> void:
 	super()
 	name = "inventory_page"
 	if GM.item_manager != null: manager = GM.item_manager
@@ -72,7 +72,7 @@ func get_slot_by_id(_slot_id := -1) -> InventorySquare:
 	Debug.error("No slot found with id: ", _slot_id)
 	return null
 
-func grab_first_focus():
+func grab_first_focus() -> void:
 	await visibility_changed
 	squares[0][0].grab_focus()
 

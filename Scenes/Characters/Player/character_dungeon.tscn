@@ -20,7 +20,7 @@
 radius = 5.0
 height = 28.0
 
-[sub_resource type="Resource" id="Resource_graat"]
+[sub_resource type="Resource" id="Resource_xak4u"]
 resource_local_to_scene = true
 script = ExtResource("7_s3u1e")
 id = "fall"
@@ -32,7 +32,7 @@ can_flip = true
 can_interact = false
 animation = "fall"
 
-[sub_resource type="Resource" id="Resource_yqk6u"]
+[sub_resource type="Resource" id="Resource_f7njh"]
 resource_local_to_scene = true
 script = ExtResource("7_s3u1e")
 id = "idle"
@@ -44,7 +44,7 @@ can_flip = true
 can_interact = true
 animation = "idle"
 
-[sub_resource type="Resource" id="Resource_m01xv"]
+[sub_resource type="Resource" id="Resource_tuypt"]
 resource_local_to_scene = true
 script = ExtResource("7_s3u1e")
 id = "jump"
@@ -56,7 +56,7 @@ can_flip = true
 can_interact = false
 animation = "jump"
 
-[sub_resource type="Resource" id="Resource_phn8r"]
+[sub_resource type="Resource" id="Resource_s7uoh"]
 resource_local_to_scene = true
 script = ExtResource("7_s3u1e")
 id = "walk"
@@ -68,7 +68,7 @@ can_flip = true
 can_interact = true
 animation = "walk"
 
-[sub_resource type="Resource" id="Resource_l5hch"]
+[sub_resource type="Resource" id="Resource_uow8h"]
 resource_local_to_scene = true
 script = ExtResource("7_s3u1e")
 id = "dead"
@@ -366,17 +366,19 @@ position = Vector2(0, -14)
 shape = SubResource("CapsuleShape2D_lv2t5")
 
 [node name="Attack" parent="." instance=ExtResource("4_r63py")]
-visible = false
 
 [node name="Jump" parent="." instance=ExtResource("5_e6krj")]
+visible = false
 
 [node name="Move" parent="." instance=ExtResource("6_lbd67")]
+visible = false
 
 [node name="interact" parent="." instance=ExtResource("7_5rhvi")]
+visible = false
 
 [node name="state_machine" parent="." instance=ExtResource("7_rcci8")]
 unique_name_in_owner = true
-states = Array[ExtResource("7_s3u1e")]([SubResource("Resource_graat"), SubResource("Resource_yqk6u"), SubResource("Resource_m01xv"), SubResource("Resource_phn8r"), ExtResource("8_0qnyl"), SubResource("Resource_l5hch"), ExtResource("9_8rb2q")])
+states = Array[ExtResource("7_s3u1e")]([SubResource("Resource_xak4u"), SubResource("Resource_f7njh"), SubResource("Resource_tuypt"), SubResource("Resource_s7uoh"), ExtResource("8_0qnyl"), SubResource("Resource_uow8h"), ExtResource("9_8rb2q")])
 
 [node name="hit_detetction" parent="." instance=ExtResource("9_oxksk")]
 visible = false
@@ -395,6 +397,7 @@ unique_name_in_owner = true
 position = Vector2(0, -32)
 
 [node name="collector" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 64
 script = ExtResource("11_n1vxx")

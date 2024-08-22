@@ -6,7 +6,7 @@ extends RMenuWorld
 @onready var load_button:Button = %load
 @onready var delete:Button = %delete
 
-func _ready():
+func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	save_button.pressed.connect(_save)
 	load_button.pressed.connect(_load)
@@ -16,17 +16,17 @@ func _ready():
 	Signals.UIReady.emit()
 	town.grab_focus()
 	
-func _town():
+func _town() -> void:
 	Signals.LoadNewWorld.emit("test_town")
 
-func _dungeon():
+func _dungeon() -> void:
 	Signals.LoadNewWorld.emit("test_dungeon")
 
-func _save():
+func _save() -> void:
 	Signals.Save.emit()
 
-func _load():
+func _load() -> void:
 	Signals.Load.emit()
 
-func _delete():
+func _delete() -> void:
 	Signals.DeleteSave.emit()

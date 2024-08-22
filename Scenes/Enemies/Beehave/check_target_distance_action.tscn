@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://do2v4lljyu8wo"]
+
+[ext_resource type="Script" path="res://Code/Enemies/Beehave/check_target_distance_action.gd" id="1_8xsl1"]
+
+[node name="CheckTargetDistanceAction" type="Node"]
+script = ExtResource("1_8xsl1")

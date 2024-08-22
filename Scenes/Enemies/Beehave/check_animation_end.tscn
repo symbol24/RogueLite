@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://8rtq0kk7j2fn"]
+
+[ext_resource type="Script" path="res://Code/Enemies/Beehave/check_animation_end.gd" id="1_qhvpv"]
+
+[node name="CheckAnimationEnd" type="Node"]
+script = ExtResource("1_qhvpv")

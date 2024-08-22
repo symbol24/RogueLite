@@ -7,7 +7,7 @@ var delay := 0.3
 var hitters := []
 var timer := 0.0
 
-func _ready():
+func _ready() -> void:
 	Signals.ToggleHitCollider.connect(_toggle_hit_collider)
 	r_owner = get_parent() as RCharacter
 	area_entered.connect(_area_entered)

@@ -15,7 +15,7 @@ var current_tab := 0:
 			Signals.GrabInventoryFocus.emit(0)
 var max_tabs := 0
 
-func _ready():
+func _ready() -> void:
 	super()
 	Signals.TogglePauseMenu.connect(_toggle_ui)
 	max_tabs = sub_menues.get_tab_count()

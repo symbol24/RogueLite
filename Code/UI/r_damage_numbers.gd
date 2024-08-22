@@ -7,7 +7,7 @@ const PHYSICAL = preload("res://Data/UI/dmg_numbers/physical.tres")
 var dmg_nmg:RRichTextLabel
 var pool := []
 
-func _ready():
+func _ready() -> void:
 	super()
 	Signals.DmgNmbRepool.connect(_repool)
 	Signals.DisplayDmgNumber.connect(_display_number)

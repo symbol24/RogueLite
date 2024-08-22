@@ -5,10 +5,11 @@
 
 [resource]
 script = ExtResource("1_paism")
-attack_distance = 1000.0
+attack_distance = 500.0
+chase_distance = 10000.0
 loot_table = ExtResource("1_enypu")
 id = "rat_enemy"
-speed = 100.0
+speed = 40.0
 jump_height = 100.0
 jump_count = 1
 acceleration = 700

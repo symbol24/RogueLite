@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dphecdwwp6nol"]
+
+[ext_resource type="Script" path="res://Code/Enemies/Beehave/delay_reset_action.gd" id="1_ddr6l"]
+
+[node name="DelayReset" type="Node"]
+script = ExtResource("1_ddr6l")

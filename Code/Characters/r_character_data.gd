@@ -51,7 +51,7 @@ func setup_data(_name := ""):
 	setup_starting_hp()
 	current_lives = starting_life_count
 
-func setup_starting_hp():
+func setup_starting_hp() -> void:
 	#Debug.log(id, " starts with ", current_hp , "/", max_hp)
 	#Debug.log(id, " has a base_hp of: ", base_hp)
 	current_hp = base_hp

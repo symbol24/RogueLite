@@ -1,6 +1,6 @@
 extends RControl
 
-func _ready():
+func _ready() -> void:
 	super()
 	Signals.ToggleLoadingScreen.connect(_toggle_loading_screen)
 	

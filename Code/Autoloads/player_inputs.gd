@@ -48,7 +48,7 @@ var hide_mouse_timer := 0.0:
 #other stuff
 var any_input := false
 
-func _ready():
+func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	Signals.UpdateInputFocus.connect(_toggle_focus)
 
@@ -70,7 +70,7 @@ func _input(event: InputEvent) -> void:
 			_set_controller_type(Input.get_joy_name(active_id))
 		if current_controls_type != gamepad_type: current_controls_type = gamepad_type
 
-func _start_mouse_timer():
+func _start_mouse_timer() -> void:
 	if active_delay and hide_mouse_timer != 0.0:
 		hide_mouse_timer = 0.0
 	elif !active_delay:

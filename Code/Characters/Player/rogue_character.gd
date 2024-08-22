@@ -22,7 +22,7 @@ var grounded := true:
 		grounded = value
 		if pre_value != grounded: Signals.CharacterGrounded.emit(self)
 
-func _ready():
+func _ready() -> void:
 	data = character_data.duplicate()
 	data.setup_data()
 	if animator.is_node_ready():
@@ -95,5 +95,5 @@ func _emit_signal(_id := "", _opt1 := "", _opt2 := ""):
 func _character_hit(_owner:RCharacter = null, _dmgs:Array[Damage] = []):
 	pass
 
-func _toggle_god_mode():
+func _toggle_god_mode() -> void:
 	godmode = !godmode

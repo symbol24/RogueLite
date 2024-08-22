@@ -1,6 +1,6 @@
 extends RDungeonUiElement
 
-func _ready():
+func _ready() -> void:
 	super()
 	Signals.ToggleEndRunMenu.connect(_toggle_ui)
 	ui_ready = true

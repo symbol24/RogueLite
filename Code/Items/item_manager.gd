@@ -22,7 +22,7 @@ const ALL_ITEMS = "res://Data/Loot/Tables/all_items.tres"
 		else: printerr("Get all items failed with code: ", result)
 		run_get_all_items = false
 
-func _ready():
+func _ready() -> void:
 	Signals.DebugAddRandomItem.connect(_debug_add_random_item)
 
 func get_item(_id: int) -> ItemData:
@@ -47,7 +47,7 @@ func load_all_from_folder(_folder) -> Array:
 			to_return.append(load(_folder+file))
 	return to_return
 
-func _debug_add_random_item():
+func _debug_add_random_item() -> void:
 	var all_items = load(ALL_ITEMS)
 	var item = all_items.list.pick_random()
 	Signals.AddItem.emit(item["item"])

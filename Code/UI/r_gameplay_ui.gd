@@ -3,11 +3,11 @@ class_name RGameplayControl extends RControl
 var children_count := 0
 var children_ready := 0
 
-func _ready():
+func _ready() -> void:
 	super()
 	children_count = get_child_count(false)
 
-func _check_all_children_ready():
+func _check_all_children_ready() -> void:
 	#Debug.log("children_count == _get_ready_ui_elements() ", children_count, " == ", _get_ready_ui_elements())
 	if children_count == _get_ready_ui_elements():
 		Signals.UIReady.emit()

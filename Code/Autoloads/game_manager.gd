@@ -90,7 +90,7 @@ var rng = RandomNumberGenerator.new()
 # 4 - Delete building
 # 5 - display game
 
-func _ready():
+func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	rng.set_seed(rng_hash)
 	Signals.LoadNewWorld.connect(_load_new_world)
@@ -171,7 +171,7 @@ func _spawn_main_character(_world:RWorld):
 			world.add_child.call_deferred(new_char)
 			new_char.global_position = spawn_point.global_position
 
-func _spawn_camera():
+func _spawn_camera() -> void:
 	if camera: camera.queue_free()
 	camera = null
 	if world:
@@ -182,7 +182,7 @@ func _spawn_camera():
 		else:
 			camera.global_position = Vector2(160, 88)
 
-func _ui_ready():
+func _ui_ready() -> void:
 	_spawn_camera()
 	await get_tree().create_timer(loading_delay).timeout
 	if !playing: playing = true
@@ -218,7 +218,7 @@ func _complete_reload(_world):
 	get_tree().change_scene_to_packed(_world)
 	#Debug.log("reloadind", _world)
 
-func _complete_load():
+func _complete_load() -> void:
 	is_loading = false
 	var new_world = ResourceLoader.load_threaded_get(loading)
 	get_tree().change_scene_to_packed(new_world)
@@ -246,7 +246,7 @@ func _load_building(_path := "", _entrance := ""):
 		ResourceLoader.load_threaded_request(loading_building)
 		is_loading_building = true
 
-func _complete_load_building():
+func _complete_load_building() -> void:
 	is_loading_building = false
 	var new_building = ResourceLoader.load_threaded_get(loading_building)
 	building = new_building.instantiate()
@@ -257,7 +257,7 @@ func _complete_load_building():
 	if get_tree().paused: get_tree().set_deferred("paused", false)
 	Signals.ToggleLoadingScreen.emit(false)
 
-func _unload_building(_building:RBuilding):
+func _unload_building(_building:RBuilding) -> void:
 	Signals.ToggleLoadingScreen.emit(true)
 	playing = false
 	if !get_tree().paused: get_tree().set_deferred("paused", true)
@@ -275,7 +275,7 @@ func _end_run(_data):
 	if _data == character.data:
 		dungeon_run_ended = true
 
-func _end_run_check():
+func _end_run_check() -> void:
 	#Debug.log("dungeon_run_ended ", dungeon_run_ended)
 	if dungeon_run_ended: 
 		await get_tree().create_timer(1).timeout

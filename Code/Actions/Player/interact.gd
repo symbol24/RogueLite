@@ -6,7 +6,7 @@ var interactable:RInteractable = null
 var timer := 0.0
 var delay := 0.2
 
-func _ready():
+func _ready() -> void:
 	super()
 	interact_area.area_entered.connect(_area_entered)
 	interact_area.area_exited.connect(_area_exited)
@@ -24,7 +24,7 @@ func _process(_delta):
 				can_action = true
 				timer = 0.0
 
-func _interact():
+func _interact() -> void:
 	var _result = interactable.interact({})
 
 func _area_entered(_area):

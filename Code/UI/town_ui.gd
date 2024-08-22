@@ -1,6 +1,6 @@
 extends RGameplayControl
 
-func _ready():
+func _ready() -> void:
 	super()
 	Signals.ToggleTownUI.connect(_toggle_ui)
 

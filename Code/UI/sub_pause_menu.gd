@@ -3,7 +3,7 @@ class_name SubPauseMenu extends RControl
 @export var tab_name := ""
 @export var tab_id := -1
 
-func _ready():
+func _ready() -> void:
 	super()
 	Signals.PauseMenuTabFocus.connect(_check_in_focus)
 

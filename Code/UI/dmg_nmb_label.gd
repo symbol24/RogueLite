@@ -5,7 +5,7 @@ class_name DamageNumber extends RichTextLabel
 var vert = 0.0
 var visible_delay = 0.0
 
-func _ready():
+func _ready() -> void:
 	hide()
 	modulate = Color.TRANSPARENT
 
@@ -22,7 +22,7 @@ func set_new_data(_data:DamageNumberData, _is_critical := false):
 		vert = data.normal_vertical
 		visible_delay = data.normal_delay
 
-func start_display():
+func start_display() -> void:
 	show()
 	if modulate != Color.TRANSPARENT:
 		modulate = Color.TRANSPARENT

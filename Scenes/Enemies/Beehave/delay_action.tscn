@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://beittcpx4t2be"]
+
+[ext_resource type="Script" path="res://Code/Enemies/Beehave/delay_action.gd" id="1_b1vwy"]
+
+[node name="Delay" type="Node"]
+script = ExtResource("1_b1vwy")

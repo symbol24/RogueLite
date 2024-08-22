@@ -3,7 +3,7 @@ class_name Lootable extends Collectible
 var timer := 0.0
 var delay := 0.3
 
-func _ready():
+func _ready() -> void:
 	can_be_collected = false
 
 func _process(_delta):

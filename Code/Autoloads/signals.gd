@@ -1,6 +1,6 @@
 extends Node
 
-func _ready():
+func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 #Generic

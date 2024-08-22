@@ -53,7 +53,7 @@ var current_state:RState = NOTHING:
 			Signals.StateUpdated.emit(r_owner, current_state)
 			#print("new state ", current_state.id)
 
-func _ready():
+func _ready() -> void:
 	super._ready()
 	Signals.UpdateCharacterState.connect(_update_state)
 
