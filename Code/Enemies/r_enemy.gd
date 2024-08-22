@@ -25,7 +25,7 @@ func _ready() -> void:
 	_set_character()
 	if animator.is_node_ready():
 		items_to_flip = _get_flip(self)
-		Debug.log("ready? ", items_to_flip.size())
+		#Debug.log("ready? ", items_to_flip.size())
 		Signals.CharacterReady.emit(self)
 
 func _physics_process(_delta: float) -> void:
@@ -83,7 +83,7 @@ func _set_character():
 		if !get_character_timer.is_stopped():
 			get_character_timer.stop()
 	else:
-		Debug.log("GM.character ", GM.character)
+		#Debug.log("GM.character ", GM.character)
 		if get_character_timer.is_stopped():
 			if !get_character_timer.timeout.is_connected(_set_character):
 				get_character_timer.timeout.connect(_set_character)

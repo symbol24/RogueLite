@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3 uid="uid://cgj2auavbcorw"]
+
+[ext_resource type="Script" path="res://Code/Gear/weapon_data.gd" id="1_qktjd"]
+[ext_resource type="PackedScene" uid="uid://fj3nd3mllmcu" path="res://Scenes/Items/Textures/item_texture_01.tscn" id="2_l5jri"]
+
+[resource]
+script = ExtResource("1_qktjd")
+weapon_type = 0
+gear_name = "starter_sword"
+gear_type = 4
+stats = Array[Dictionary]([{
+"physical": 5.0
+}])
+abilities = []
+texture = ExtResource("2_l5jri")
+animation = ""
+action_paths = Array[String](["res://Scenes/Characters/Player/Actions/Weapons/starter_sword.tscn"])

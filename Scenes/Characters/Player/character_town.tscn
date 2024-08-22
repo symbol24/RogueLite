@@ -1,7 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://cg1am2xvadc37"]
+[gd_scene load_steps=17 format=3 uid="uid://cg1am2xvadc37"]
 
 [ext_resource type="Script" path="res://Code/Characters/Player/town_character.gd" id="1_0ad2t"]
-[ext_resource type="PackedScene" uid="uid://iapl7pc0s30h" path="res://Scenes/Characters/Player/Actions/move.tscn" id="2_1laym"]
 [ext_resource type="Texture2D" uid="uid://cvtsu65bm68p7" path="res://Textures/character/Player Template/Player Spritesheet.png" id="2_2p038"]
 [ext_resource type="PackedScene" uid="uid://b4l8w2tk2icqe" path="res://Scenes/Characters/Player/StateMachine/town_state_machine.tscn" id="2_b8bml"]
 [ext_resource type="Resource" uid="uid://f30cv8yiindy" path="res://Data/Characters/Player/Main/main.tres" id="2_qq0df"]
@@ -15,7 +14,7 @@
 radius = 5.0
 height = 28.0
 
-[sub_resource type="Resource" id="Resource_5d5ky"]
+[sub_resource type="Resource" id="Resource_hikw6"]
 resource_local_to_scene = true
 script = ExtResource("6_qjecm")
 id = "idle"
@@ -27,7 +26,7 @@ can_flip = true
 can_interact = true
 animation = "idle"
 
-[sub_resource type="Resource" id="Resource_ipbu6"]
+[sub_resource type="Resource" id="Resource_6ix7p"]
 resource_local_to_scene = true
 script = ExtResource("6_qjecm")
 id = "walk"
@@ -39,12 +38,29 @@ can_flip = true
 can_interact = true
 animation = "walk"
 
-[sub_resource type="Animation" id="Animation_teu28"]
+[sub_resource type="Animation" id="Animation_b2pbn"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_p8ixm"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("%sprite:frame")
+tracks/0/path = NodePath("sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -54,31 +70,15 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_h4mjc"]
-resource_name = "idle"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("%sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 0]
-}
-
-[sub_resource type="Animation" id="Animation_f7uaa"]
+[sub_resource type="Animation" id="Animation_7m0et"]
 resource_name = "walk"
 length = 0.6
 loop_mode = 1
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("%sprite:frame")
+tracks/0/path = NodePath("sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -88,11 +88,11 @@ tracks/0/keys = {
 "values": [8, 9, 10, 11, 12, 13]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_nqbir"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0woc7"]
 _data = {
-"RESET": SubResource("Animation_teu28"),
-"idle": SubResource("Animation_h4mjc"),
-"walk": SubResource("Animation_f7uaa")
+"RESET": SubResource("Animation_p8ixm"),
+"idle": SubResource("Animation_b2pbn"),
+"walk": SubResource("Animation_7m0et")
 }
 
 [node name="CharacterTown" type="CharacterBody2D"]
@@ -115,17 +115,14 @@ visible = false
 position = Vector2(0, -14)
 shape = SubResource("CapsuleShape2D_sea4f")
 
-[node name="Move" parent="." instance=ExtResource("2_1laym")]
-
 [node name="state_machine" parent="." instance=ExtResource("2_b8bml")]
 unique_name_in_owner = true
-states = Array[ExtResource("6_qjecm")]([SubResource("Resource_5d5ky"), ExtResource("7_ocfxc"), SubResource("Resource_ipbu6")])
+states = Array[ExtResource("6_qjecm")]([SubResource("Resource_hikw6"), ExtResource("7_ocfxc"), SubResource("Resource_6ix7p")])
 
 [node name="animator" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
-root_node = NodePath("../Move")
 libraries = {
-"": SubResource("AnimationLibrary_nqbir")
+"": SubResource("AnimationLibrary_0woc7")
 }
 script = ExtResource("5_tiech")
 

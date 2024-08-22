@@ -1,4 +1,6 @@
-extends RAction
+class_name MainCharacterAttack extends RAction
+
+@export var weapon_data:WeaponData
 
 var current_attack:AttackArea = null
 var attacks:Array[AttackArea] = []
@@ -78,3 +80,10 @@ func _attack_ended(_character:RCharacter, _name := ""):
 		current_attack = null
 		can_action = true
 		Signals.UpdateCharacterState.emit(r_owner, "idle")
+
+func _setup_damages() -> void:
+	if r_owner.data.weapon.damages.size() != attacks.size():
+		Debug.error("")
+	for each in r_owner.data.weapon.damages:
+		pass
+		

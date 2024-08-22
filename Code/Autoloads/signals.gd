@@ -32,6 +32,7 @@ signal WorldReady(world)
 signal SetItemManager(item_manager)
 
 #R Character
+signal DataSetupDone()
 signal CharacterReady(character)
 signal CharacterGrounded(character)
 signal HPUpdated(character, difference)
@@ -55,6 +56,7 @@ signal AddItem(item)
 signal AdditemToInventoryUi(dict)
 signal UpdateCountOfitemInUi(dict)
 signal InventoryFull(error_id)
+signal UpdateGearSaveData(type, gear, acc_slot)
 
 #loot
 signal Collect(target, item, amount)

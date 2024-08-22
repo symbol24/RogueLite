@@ -13,7 +13,7 @@
 [ext_resource type="Resource" uid="uid://w8my5xycdikp" path="res://Data/Characters/Player/States/hard_land.tres" id="9_dqr5w"]
 [ext_resource type="Resource" uid="uid://dlo72m51tw5d2" path="res://Data/Characters/Player/States/dead.tres" id="10_5wedh"]
 [ext_resource type="Resource" uid="uid://cvn4j7f2l622b" path="res://Data/Characters/Player/States/attack.tres" id="11_pw6gc"]
-[ext_resource type="PackedScene" uid="uid://bj3vbm3bjados" path="res://Scenes/Characters/Player/Actions/attack.tscn" id="13_v8aob"]
+[ext_resource type="PackedScene" uid="uid://bj3vbm3bjados" path="res://Scenes/Characters/Player/Actions/Weapons/starter_sword.tscn" id="13_v8aob"]
 [ext_resource type="AnimationLibrary" uid="uid://crgal3hqjoxp8" path="res://Data/Animations/dungeon_animations.res" id="15_5pkir"]
 [ext_resource type="Script" path="res://Code/Utilities/r_animator.gd" id="15_xk32d"]
 

@@ -16,10 +16,10 @@ class_name RCharacterData extends Resource
 
 @export_subgroup("attack")
 @export var physical:float = 0.0
-@export var magic:float = 0.0
+@export var magical:float = 0.0
 
 @export_subgroup("Defence")
-@export var base_armor:float = 0
+@export var armor:float = 0.0
 @export var magic_resist:float = 0.0
 
 var current_hp:float = 1.0:
@@ -54,8 +54,8 @@ func setup_data(_name := ""):
 func setup_starting_hp() -> void:
 	#Debug.log(id, " starts with ", current_hp , "/", max_hp)
 	#Debug.log(id, " has a base_hp of: ", base_hp)
-	current_hp = base_hp
-	max_hp = base_hp
+	current_hp = get_stat("base_hp")
+	max_hp = get_stat("base_hp")
 	#Debug.log(id, " is now at ", current_hp , "/", max_hp)
 
 func add_max_hp(_value := 0.0):
@@ -82,9 +82,15 @@ func apply_damage(_damage:Damage) -> float:
 	for type in _damage.types:
 		match type:
 			Damage.TYPE.PHYSICAL:
-				final_damage -= base_armor
+				final_damage -= get_stat("armor")
 			Damage.TYPE.MAGICAL:
-				final_damage -= final_damage * magic_resist
+				final_damage -= final_damage * get_stat("magic_resist")
 		if final_damage < 0.0: final_damage = 0.0
 	update_hp(-final_damage)
 	return final_damage
+
+func get_stat(_id := "") -> float:
+	return get(_id) + _get_gear_stat(_id)
+
+func _get_gear_stat(_id := "") -> float:
+	return 0.0

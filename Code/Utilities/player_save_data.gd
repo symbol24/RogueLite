@@ -24,6 +24,12 @@ const INVENTORY_BASE_SIZE := 8
 	}
 ]
 
+@export var helmet := ""
+@export var chest := ""
+@export var pants := ""
+@export var acc1 := ""
+@export var acc2 := ""
+@export var weapon := "res://Data/Gear/Weapons/Swords/starter_sword.tres"
 
 func get_save_dict() -> Dictionary:
 	save_count += 1
@@ -34,7 +40,13 @@ func get_save_dict() -> Dictionary:
 		"inventory_size":inventory_size,
 		"inventory":inventory,
 		"currencies":currencies,
-		"stash":stash
+		"stash":stash,
+		"helmet":helmet,
+		"chest":chest,
+		"pants":pants,
+		"acc1":acc1,
+		"acc2":acc2,
+		"weapon":weapon
 	}
 
 func set_save_data(_data:Dictionary = {}):
@@ -45,6 +57,13 @@ func set_save_data(_data:Dictionary = {}):
 	if _data.has("inventory"): inventory = _data["inventory"] as Array
 	if _data.has("currencies"): currencies = _data["currencies"] as Dictionary
 	if _data.has("stash"): stash = _data["stash"] as Array
+	if _data.has("helmet"): helmet = _data["helmet"]
+	if _data.has("chest"): chest = _data["chest"]
+	if _data.has("pants"): pants = _data["pants"]
+	if _data.has("acc1"): acc1 = _data["acc1"]
+	if _data.has("acc2"): helmet = _data["acc2"]
+	if _data.has("weapon"): helmet = _data["weapon"]
+	
 
 func add_item_to_inventory(_item:ItemData = null, _amount := 1):
 	if _item != null:

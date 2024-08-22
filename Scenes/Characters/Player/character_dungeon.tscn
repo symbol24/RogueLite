@@ -1,11 +1,8 @@
-[gd_scene load_steps=35 format=3 uid="uid://c7soajgfualrj"]
+[gd_scene load_steps=32 format=3 uid="uid://c7soajgfualrj"]
 
 [ext_resource type="Script" path="res://Code/Characters/Player/dungeon_character.gd" id="1_wi8wb"]
 [ext_resource type="Resource" uid="uid://f30cv8yiindy" path="res://Data/Characters/Player/Main/main.tres" id="2_0nbou"]
 [ext_resource type="Texture2D" uid="uid://cvtsu65bm68p7" path="res://Textures/character/Player Template/Player Spritesheet.png" id="3_p6wjx"]
-[ext_resource type="PackedScene" uid="uid://bj3vbm3bjados" path="res://Scenes/Characters/Player/Actions/attack.tscn" id="4_r63py"]
-[ext_resource type="PackedScene" uid="uid://biigovwg63m17" path="res://Scenes/Characters/Player/Actions/jump.tscn" id="5_e6krj"]
-[ext_resource type="PackedScene" uid="uid://iapl7pc0s30h" path="res://Scenes/Characters/Player/Actions/move.tscn" id="6_lbd67"]
 [ext_resource type="PackedScene" uid="uid://ceojig7lsy1xq" path="res://Scenes/Characters/Player/Actions/interact.tscn" id="7_5rhvi"]
 [ext_resource type="PackedScene" uid="uid://cb3ysor5w21bn" path="res://Scenes/Characters/Player/StateMachine/dungeon_state_machine.tscn" id="7_rcci8"]
 [ext_resource type="Script" path="res://Code/Characters/Player/StateMachine/r_state.gd" id="7_s3u1e"]
@@ -20,7 +17,7 @@
 radius = 5.0
 height = 28.0
 
-[sub_resource type="Resource" id="Resource_xak4u"]
+[sub_resource type="Resource" id="Resource_wdc3t"]
 resource_local_to_scene = true
 script = ExtResource("7_s3u1e")
 id = "fall"
@@ -32,7 +29,7 @@ can_flip = true
 can_interact = false
 animation = "fall"
 
-[sub_resource type="Resource" id="Resource_f7njh"]
+[sub_resource type="Resource" id="Resource_xxork"]
 resource_local_to_scene = true
 script = ExtResource("7_s3u1e")
 id = "idle"
@@ -44,7 +41,7 @@ can_flip = true
 can_interact = true
 animation = "idle"
 
-[sub_resource type="Resource" id="Resource_tuypt"]
+[sub_resource type="Resource" id="Resource_em2ij"]
 resource_local_to_scene = true
 script = ExtResource("7_s3u1e")
 id = "jump"
@@ -56,7 +53,7 @@ can_flip = true
 can_interact = false
 animation = "jump"
 
-[sub_resource type="Resource" id="Resource_s7uoh"]
+[sub_resource type="Resource" id="Resource_6hrqw"]
 resource_local_to_scene = true
 script = ExtResource("7_s3u1e")
 id = "walk"
@@ -68,7 +65,7 @@ can_flip = true
 can_interact = true
 animation = "walk"
 
-[sub_resource type="Resource" id="Resource_uow8h"]
+[sub_resource type="Resource" id="Resource_dmt15"]
 resource_local_to_scene = true
 script = ExtResource("7_s3u1e")
 id = "dead"
@@ -365,20 +362,12 @@ visible = false
 position = Vector2(0, -14)
 shape = SubResource("CapsuleShape2D_lv2t5")
 
-[node name="Attack" parent="." instance=ExtResource("4_r63py")]
-
-[node name="Jump" parent="." instance=ExtResource("5_e6krj")]
-visible = false
-
-[node name="Move" parent="." instance=ExtResource("6_lbd67")]
-visible = false
-
 [node name="interact" parent="." instance=ExtResource("7_5rhvi")]
 visible = false
 
 [node name="state_machine" parent="." instance=ExtResource("7_rcci8")]
 unique_name_in_owner = true
-states = Array[ExtResource("7_s3u1e")]([SubResource("Resource_xak4u"), SubResource("Resource_f7njh"), SubResource("Resource_tuypt"), SubResource("Resource_s7uoh"), ExtResource("8_0qnyl"), SubResource("Resource_uow8h"), ExtResource("9_8rb2q")])
+states = Array[ExtResource("7_s3u1e")]([SubResource("Resource_wdc3t"), SubResource("Resource_xxork"), SubResource("Resource_em2ij"), SubResource("Resource_6hrqw"), ExtResource("8_0qnyl"), SubResource("Resource_dmt15"), ExtResource("9_8rb2q")])
 
 [node name="hit_detetction" parent="." instance=ExtResource("9_oxksk")]
 visible = false

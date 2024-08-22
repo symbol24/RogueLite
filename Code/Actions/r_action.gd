@@ -1,5 +1,9 @@
 class_name RAction extends Node2D
 
+enum TYPE {BOTH = 0, DUNGEON = 1, TOWN = 2}
+
+@export var action_type := TYPE.TOWN
+
 var r_owner:RCharacter
 var can_action := true
 var action_available:bool:

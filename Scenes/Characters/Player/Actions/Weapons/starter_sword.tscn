@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=3 uid="uid://bj3vbm3bjados"]
+
+[ext_resource type="Script" path="res://Code/Actions/Player/attack.gd" id="1_mucbm"]
+[ext_resource type="Resource" uid="uid://cgj2auavbcorw" path="res://Data/Gear/Weapons/Swords/starter_sword.tres" id="2_y1eji"]
+[ext_resource type="Script" path="res://Code/Utilities/attack_area.gd" id="3_kclf3"]
+[ext_resource type="Script" path="res://Code/Utilities/damage.gd" id="4_bori1"]
+[ext_resource type="Resource" uid="uid://b3m26ih6jfyss" path="res://Data/Damages/Main/sword_attack_01.tres" id="5_tbt1g"]
+[ext_resource type="Resource" uid="uid://bs5adkf7p0laf" path="res://Data/Damages/Main/sword_attack_02.tres" id="6_iuhek"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rtqqs"]
+radius = 8.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q8us2"]
+
+[node name="Attack" type="Node2D"]
+script = ExtResource("1_mucbm")
+weapon_data = ExtResource("2_y1eji")
+action_type = 1
+
+[node name="sword_attack_01" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("3_kclf3")
+id = "sword_attack_01"
+damages = Array[ExtResource("4_bori1")]([ExtResource("5_tbt1g")])
+
+[node name="attack_collider" type="CollisionShape2D" parent="sword_attack_01" groups=["flip"]]
+unique_name_in_owner = true
+position = Vector2(17, -20)
+shape = SubResource("CapsuleShape2D_rtqqs")
+disabled = true
+
+[node name="sword_attack_02" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("3_kclf3")
+id = "sword_attack_02"
+damages = Array[ExtResource("4_bori1")]([ExtResource("6_iuhek")])
+
+[node name="attack_collider" type="CollisionShape2D" parent="sword_attack_02" groups=["flip"]]
+position = Vector2(11, -16)
+shape = SubResource("CapsuleShape2D_q8us2")
+disabled = true

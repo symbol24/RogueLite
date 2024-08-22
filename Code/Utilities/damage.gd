@@ -24,7 +24,12 @@ var damage_owner:RCharacter:
 
 func get_damage() -> Damage:
 	var _result = _check_crit()
-	final_damage = base_value * (1+critical_damage_multiplier)
+	var dmg_plus := 0.0
+	if TYPE.PHYSICAL in types:
+		dmg_plus += damage_owner.data.get_stat("physical")
+	if TYPE.MAGICAL in types:
+		dmg_plus += damage_owner.data.get_stat("magical")
+	final_damage = (base_value + dmg_plus) * (1+critical_damage_multiplier)
 	return self
 
 func _check_crit() -> Dictionary:
@@ -32,8 +37,8 @@ func _check_crit() -> Dictionary:
 	var _is_crit := false
 	var _crit_dmg := 0.0
 	if damage_owner and damage_owner.data is MainCharacterData:
-		var cc = crit_chance + damage_owner.data.crit_chance
-		var cd = crit_damage + damage_owner.data.crit_dmg
+		var cc = crit_chance + damage_owner.data.get_stat("crit_chance")
+		var cd = crit_damage + damage_owner.data.get_stat("crit_dmg")
 		
 		var check = GM.rng.randf_range(0,1)
 		var over := 0.0

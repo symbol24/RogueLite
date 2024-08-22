@@ -15,6 +15,7 @@ func _ready() -> void:
 	Signals.DeleteSave.connect(_delete_save)
 	Signals.AddItem.connect(_add_item)
 	Signals.Collect.connect(_collect)
+	Signals.UpdateGearSaveData.connect(_update_gear)
 
 func _load():
 	if not FileAccess.file_exists(FOLDER+FILE):
@@ -110,3 +111,27 @@ func get_button_for(_action_id := "") -> String:
 		if each["action"] == _action_id:
 			return each["gamepad"]
 	return ""
+
+func _update_gear(_type:=GM.GEARTYPE.HELMET, _gear_data:GearData = null, _acc_slot := 1) -> void:
+	var changed := false
+	match _type:
+		GM.GEARTYPE.HELMET:
+			data.helmet = _gear_data.resource_path
+			changed = true
+		GM.GEARTYPE.CHEST:
+			data.chest = _gear_data.resource_path
+			changed = true
+		GM.GEARTYPE.PANTS:
+			data.pants = _gear_data.resource_path
+			changed = true
+		GM.GEARTYPE.ACCESSORY:
+			if _acc_slot == 1: data.acc1 = _gear_data.resource_path
+			else: data.acc2 = _gear_data.resource_path
+			changed = true
+		GM.GEARTYPE.WEAPON:
+			data.weapon = _gear_data.resource_path
+			changed = true
+		_:
+			pass
+	if changed:
+		_save_delay(2.0)
